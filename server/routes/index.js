@@ -1,4 +1,5 @@
 const usersController = require('../controllers').users;
+const documentController = require('../controllers').document;
 
 module.exports = (app) => {
 app.get('/api', (req,res) => res.status(200).send({
@@ -6,4 +7,5 @@ app.get('/api', (req,res) => res.status(200).send({
 }));
 app.post('/api/users', usersController.create);
 app.get('/api/users', usersController.list);
+app.post('/api/users/:userId/title', documentController.create);
 }
