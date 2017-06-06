@@ -1,0 +1,16 @@
+{
+  "development": {
+    "username": "mercymuchai",
+    "password": null,
+    "database": "doc-mgt-sys",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "mercymuchai",
+    "password": null,
+    "database": "doc-mgt-sys-test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

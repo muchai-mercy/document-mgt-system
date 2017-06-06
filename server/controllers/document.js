@@ -1,0 +1,14 @@
+const Document = require('../models').Document;
+
+module.exports = {
+  create(req, res) {
+    return (Document
+      .create({
+        title: req.body.title,
+        content: req.body.content,
+       
+      }))
+      .then(document => res.status(201).send(document))
+      .catch(error => res.status(400).send(error));
+  }
+};
