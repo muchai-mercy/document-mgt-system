@@ -14,13 +14,19 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
   list(req, res) {
+    if (req.query.limit || req.query.offset) {
+      return User.findAll({
+        offset: req.query.offset,
+        limit: req.query.limit
+      })
+      .then(user => res.status(200).send(user))
+      .catch(error => res.status(400).send(error));
+    }
     return User
       .findAll({
         include: [{
           model: Document,
-          as: 'documents',
-          offset: 5,
-          limit: 5,
+          as: 'documents'
         }]
       })
       .then(user => res.status(200).send(user))

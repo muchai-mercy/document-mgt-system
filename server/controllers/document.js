@@ -14,6 +14,14 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
   list(req, res) {
+     if (req.query.limit || req.query.offset) {
+      return Document.findAll({
+        offset: req.query.offset,
+        limit: req.query.limit
+      })
+      .then(user => res.status(200).send(user))
+      .catch(error => res.status(400).send(error));
+     }
     return Document
       .findAll()
       .then(document => res.status(200).send(document))

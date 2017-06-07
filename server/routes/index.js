@@ -1,5 +1,5 @@
 const usersController = require('../controllers').users;
-const documentController = require('../controllers').document;
+const documentsController = require('../controllers').document;
 
 module.exports = (app) => {
 app.get('/api', (req,res) => res.status(200).send({
@@ -7,13 +7,15 @@ app.get('/api', (req,res) => res.status(200).send({
 }));
 app.post('/api/users', usersController.create);
 app.get('/api/users', usersController.list);
+app.get('get/users/?limit={integer}&offset={integer}', usersController.list);
 app.get('/api/users/:userId', usersController.retrieve);
 app.put('/api/users/:userId', usersController.update);
 app.delete('/api/users/:userId', usersController.destroy);
-app.post('/api/users/:userId/title', documentController.create);
-app.post('/api/document', documentController.create);
-app.get('/api/document', documentController.list);
-app.get('/api/document/:userId', documentController.retrieve);
-app.put('/api/document/:userId', documentController.update);
-app.delete('/api/document/:userId', documentController.destroy);
+app.post('/api/users/:userId/title', documentsController.create);
+app.post('/api/documents', documentsController.create);
+app.get('/api/documents/', documentsController.list);
+app.get('get/documents/?limit={integer}&offset={integer}', documentsController.list);
+app.get('/api/documents/:userId', documentsController.retrieve);
+app.put('/api/documents/:userId', documentsController.update);
+app.delete('/api/documents/:userId', documentsController.destroy);
 }
