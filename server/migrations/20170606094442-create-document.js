@@ -17,15 +17,16 @@ module.exports = {
       complete: {
         type: Sequelize.BOOLEAN
       },
-       userId: {
+      userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
           model: 'Users',
           key: 'id',
           as: 'userId',
+          allowNull: false,
         },
-       },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -36,7 +37,7 @@ module.exports = {
       },
     })
   },
-  down: function(queryInterface, Sequelize) {
+  down: function (queryInterface, Sequelize) {
     return queryInterface.dropTable('Documents');
   }
 };

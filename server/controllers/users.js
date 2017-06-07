@@ -18,7 +18,7 @@ module.exports = {
       .findAll({
         include: [{
           model: Document,
-          as: 'Document',
+          as: 'documents',
           offset: 5,
           limit: 5,
         }]
@@ -35,7 +35,6 @@ module.exports = {
         }]
       })
       .then(user => {
-        console.log("user", user)
         if (!user) {
           res.status(404).send({
             message: 'Document not found'
@@ -43,9 +42,7 @@ module.exports = {
         }
         return res.status(200).send(user);
       })
-      .catch(error => {
-        console.log("error", error)
-        res.status(400).send(error)
+      .catch(error => {res.status(400).send(error)
       }
         );
   },
