@@ -37,13 +37,56 @@ module.exports = {
       .then(user => {
         if (!user) {
           res.status(404).send({
-            message: 'Document not found'
+            message: 'User Not Found'
           });
         }
         return res.status(200).send(user);
       })
-      .catch(error => {res.status(400).send(error)
-      }
-        );
+      .catch(error => { res.status(400).send(error) });
+  },
+  update(req, res) {
+    return User
+      .findById(req.params.userId, {
+        include: [{
+          model: Document,
+          as: 'documents'
+        }]
+      })
+      .then(user => {
+        if (!user) {
+          res.status(404).send({
+            message: 'User Not Found'
+          });
+        }
+        return user
+          .update({
+            username: req.body.username || user.username,
+            password: req.body.password || user.password,
+            email: req.body.email || user.email
+          })
+          .then(() => res.status(200).send(user))
+          .catch(error => res.status(400).send(error));
+      })
+      .catch(error => res.status(400).send(error));
+  },
+  destroy(req, res) {
+    return User
+      .findById(req.params.userId)
+      .then(user => {
+        if (!user) {
+          res.status(404).send({
+            message: 'User Not Found'
+          });
+        }
+        return user
+          .destroy({
+            username: req.body.username || user.username,
+            password: req.body.password || user.password,
+            email: req.body.email || user.email
+          })
+          .then(() => res.status(200).send({ message: 'User successfully deleted' }))
+          .catch(error => res.status(400).send(error));
+      })
+      .catch(error => res.status(400).send(error));
   },
 };

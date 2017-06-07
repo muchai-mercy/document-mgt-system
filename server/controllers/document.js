@@ -31,8 +31,46 @@ module.exports = {
         }
         return res.status(200).send(document);
       })
-      .catch(error => {res.status(400).send(error)
-      }
-      );
-  }
+      .catch(error => { res.status(400).send(error) });
+  },
+  update(req, res) {
+    return Document
+      .findById(req.params.userId)
+      .then(document => {
+        if (!document) {
+          res.status(404).send({
+            message: 'Document Not Found'
+          });
+        }
+        return document
+          .update({
+            title: req.body.title || document.title,
+            content: req.body.content || document.content,
+            userId: req.body.userId || document.userId
+          })
+          .then(() => res.status(200).send(document))
+          .catch(error => res.status(400).send(error));
+      })
+      .catch(error => res.status(400).send(error));
+  },
+  destroy(req, res) {
+    return Document
+      .findById(req.params.userId)
+      .then(document => {
+        if (!document) {
+          res.status(404).send({
+            message: 'Document Not Found'
+          });
+        }
+        return document
+          .destroy({
+            title: req.body.title || document.title,
+            content: req.body.content || document.content,
+            userId: req.body.userId || document.userId
+          })
+          .then(() => res.status(200).send({ message: 'Document successfully deleted' }))
+          .catch(error => res.status(400).send(error));
+      })
+      .catch(error => res.status(400).send(error));
+  },
 };
