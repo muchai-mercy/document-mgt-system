@@ -1,4 +1,5 @@
-const db = require('../models')
+const bcrypt = require('bcrypt');
+const db = require('../models');
 const User = db.Users;
 const Document = db.Document;
 
@@ -7,7 +8,10 @@ module.exports = {
     return User
       .create({
         username: req.body.username,
-        password: req.body.password,
+        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
+        // validPassword: (password) => {
+        //   bcrypt.compareSync(password, this.password);
+        // },
         email: req.body.email
       })
       .then(user => res.status(201).send(user))
@@ -19,8 +23,8 @@ module.exports = {
         offset: req.query.offset,
         limit: req.query.limit
       })
-      .then(user => res.status(200).send(user))
-      .catch(error => res.status(400).send(error));
+        .then(user => res.status(200).send(user))
+        .catch(error => res.status(400).send(error));
     }
     return User
       .findAll({
@@ -95,4 +99,17 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
-};
+  findByq(req, res) {
+    return User
+      .findAll({
+        where: {
+          $or: [
+            { username: { $like: `%${req.query.q}%` } },
+            { email: { $like: `%${req.query.q}%` } }
+          ]
+        }
+      })
+      .then(response => res.status(200).send(response))
+      .catch(error => res.status(400).send(error));
+},
+}

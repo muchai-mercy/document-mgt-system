@@ -14,14 +14,14 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
   list(req, res) {
-     if (req.query.limit || req.query.offset) {
+    if (req.query.limit || req.query.offset) {
       return Document.findAll({
         offset: req.query.offset,
         limit: req.query.limit
       })
-      .then(user => res.status(200).send(user))
-      .catch(error => res.status(400).send(error));
-     }
+        .then(user => res.status(200).send(user))
+        .catch(error => res.status(400).send(error));
+    }
     return Document
       .findAll()
       .then(document => res.status(200).send(document))
@@ -79,6 +79,16 @@ module.exports = {
           .then(() => res.status(200).send({ message: 'Document successfully deleted' }))
           .catch(error => res.status(400).send(error));
       })
+      .catch(error => res.status(400).send(error));
+  },
+  findByTitle(req, res) {
+    return Document
+      .findAll({
+        where: {
+          title: { $like: `%${req.query.q}%` }
+        },
+      })
+      .then(response => res.status(200).send(response))
       .catch(error => res.status(400).send(error));
   },
 };
