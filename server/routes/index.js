@@ -11,7 +11,7 @@ app.get('get/users/?limit={integer}&offset={integer}', usersController.list);
 app.get('/api/users/:userId', usersController.retrieve);
 app.put('/api/users/:userId', usersController.update);
 app.delete('/api/users/:userId', usersController.destroy);
-app.post('/api/users/:userId/title', documentsController.create);
+app.get('/api/users/:userId/title', usersController.list);
 app.post('/api/documents', documentsController.create);
 app.get('/api/documents/', documentsController.list);
 app.get('get/documents/?limit={integer}&offset={integer}', documentsController.list);
