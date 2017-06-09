@@ -18,6 +18,6 @@ app.get('get/documents/?limit={integer}&offset={integer}', documentsController.l
 app.get('/api/documents/:userId', documentsController.retrieve);
 app.put('/api/documents/:userId', documentsController.update);
 app.delete('/api/documents/:userId', documentsController.destroy);
-app.get('/api/search/users/', usersController.findByq);
+app.get('/api/search/users/?q=', usersController.findByq);
 app.get('/api/search/documents/', documentsController.findByTitle);
 }
