@@ -14,13 +14,16 @@ describe('User', () => {
     done();
   });
   });
-  it('it should have a header', (done) => {
+  it('returns the newly created document', (done) => {
     request(app)
-    .get('/documents')
-    .expect(200)
+      .post('/documents')
+      .send({
+        title: "react",
+        content: "I love react"
+      })
+      .set('Accept', 'application/json')
       .end((err, res) => {
-        expect(res.body.message).to.be.a("string");
-        expect(res.body.message).to.include("Let's get this started!")
+        expect(res.body).to.be.an('object')
         done();
       });
   });
