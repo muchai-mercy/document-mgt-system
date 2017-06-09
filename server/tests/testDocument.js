@@ -1,7 +1,7 @@
 const request = require('supertest');
-const app = require('../../../app');
+const app = require('../../app');
 const expect = require('chai').expect;
-const users = ('../../controllers/document.js');
+const users = ('../controllers/document.js');
 
 describe('User', () => {
   it('returns a list of users', (done) => {
