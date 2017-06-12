@@ -3,6 +3,7 @@ const Document = db.Document;
 const Users = db.Users;
 
 module.exports = {
+  //create new document
   create(req, res) {
     return Document
       .create({
@@ -13,6 +14,8 @@ module.exports = {
       .then(document => res.status(201).send(document))
       .catch(error => res.status(400).send(error));
   },
+
+  //list all existing documents 
   list(req, res) {
     if (req.query.limit || req.query.offset) {
       return Document.findAll({
@@ -27,6 +30,8 @@ module.exports = {
       .then(document => res.status(200).send(document))
       .catch(error => res.status(400).send(error));
   },
+
+  //retrieve documents by Id
   retrieve(req, res) {
     return Document
       .findById(req.params.userId, {
@@ -41,6 +46,8 @@ module.exports = {
       })
       .catch(error => { res.status(400).send(error) });
   },
+
+  //update document detail
   update(req, res) {
     return Document
       .findById(req.params.userId)
@@ -61,6 +68,8 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+
+  //delete a document
   destroy(req, res) {
     return Document
       .findById(req.params.userId)
@@ -81,6 +90,8 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+
+  //search a document by title
   findByTitle(req, res) {
     return Document
       .findAll({

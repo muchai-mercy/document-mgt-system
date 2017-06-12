@@ -6,6 +6,7 @@ const User = db.Users;
 const Document = db.Document;
 
 module.exports = {
+  // create new user
   create(req, res) {
     return User
       .create({
@@ -19,6 +20,7 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
+  //login a user
   login(req, res) {
     User.findOne({
       where: {
@@ -41,10 +43,10 @@ module.exports = {
             });
           })
           .catch(() => {
-          res.status(401).send({
-            message: 'Wrong password/username combination',
-          });
-        })
+            res.status(401).send({
+              message: 'Wrong password/username combination',
+            });
+          })
       })
       .catch(() => {
         res.status(401).send({
@@ -52,6 +54,8 @@ module.exports = {
         });
       });
   },
+
+  // list all users inclusive of their documents and paginate
   list(req, res) {
     if (req.query.limit || req.query.offset) {
       return User.findAll({
@@ -71,6 +75,8 @@ module.exports = {
       .then(user => res.status(200).send(user))
       .catch(error => res.status(400).send(error));
   },
+
+  // retrieve users by Id
   retrieve(req, res) {
     return User
       .findById(req.params.userId, {
@@ -89,6 +95,8 @@ module.exports = {
       })
       .catch(error => { res.status(400).send(error) });
   },
+
+  // update username details
   update(req, res) {
     return User
       .findById(req.params.userId, {
@@ -114,6 +122,8 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+
+  //delete a user
   destroy(req, res) {
     return User
       .findById(req.params.userId)
@@ -134,6 +144,8 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+
+  //search for a user by query input
   findByq(req, res) {
     return User
       .findAll({
