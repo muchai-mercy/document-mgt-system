@@ -13,7 +13,7 @@ app.get('/api/users/:userId', usersController.retrieve);
 app.put('/api/users/:userId', usersController.update);
 app.delete('/api/users/:userId', usersController.destroy);
 app.get('/api/users/:userId/title', usersController.list);
-app.get('/api/search/users/?q=', usersController.findByq);
+app.get('/api/search/users/', usersController.findByq);
 
 app.post('/api/documents', documentsController.create);
 app.get('/api/documents/', documentsController.list);

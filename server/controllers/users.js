@@ -8,16 +8,19 @@ const Document = db.Document;
 module.exports = {
   // create new user
   create(req, res) {
-    return User
-      .create({
-        username: req.body.username,
-        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
-        email: req.body.email
-      })
-      .then(user => res.status(200).send(user), {
-        message: "User created!"
-      })
-      .catch(error => res.status(400).send(error));
+    bcrypt.hash(req.body.password, 2, (err, hash) => {
+      // Store hash in password DB. 
+      return User
+        .create({
+          username: req.body.username,
+          password: hash,
+          email: req.body.email,
+        })
+        .then(user => res.status(200).send(user), {
+          message: "User created!"
+        })
+        .catch(error => res.status(400).send(error));
+    });
   },
 
   //login a user
@@ -34,13 +37,19 @@ module.exports = {
           });
         }
         bcrypt.compare(req.body.password, user.password)
-          .then(() => {
-            const token = jwt.sign({ data: user.id }, secretKey, { expiresIn: '24h' });
-            res.status(200).send({
-              message: 'Successfully logged in',
-              token,
-              expiresIn: '24h'
-            });
+          .then((match) => {
+            if (match) {
+              const token = jwt.sign({ data: user.id }, secretKey, { expiresIn: '24h' });
+              req.user = user;
+              res.status(200).send({
+                message: 'Successfully logged in',
+                token
+              });
+            } else {
+              res.status(401).send({
+                message: 'Wrong password/username combinations',
+              });
+            }
           })
           .catch(() => {
             res.status(401).send({
@@ -99,26 +108,28 @@ module.exports = {
   // update username details
   update(req, res) {
     return User
-      .findById(req.params.userId, {
-        include: [{
-          model: Document,
-          as: 'documents'
-        }]
-      })
+      .findById(req.params.userId)
       .then(user => {
         if (!user) {
           res.status(404).send({
             message: 'User Not Found'
           });
+        } else {
+          if (req.body.password) {
+            bcrypt.hash(req.body.password, 2, (err, hash) => {
+              return user
+                .update({
+                  username: req.body.username || user.username,
+                  password: hash,
+                  email: req.body.email || user.email,
+                })
+                .then(() => res.status(200).send(user))
+                .catch(error => res.status(400).send(error));
+            });
+          } else {
+            return user.update()
+          }
         }
-        return user
-          .update({
-            username: req.body.username || user.username,
-            password: req.body.password || user.password,
-            email: req.body.email || user.email
-          })
-          .then(() => res.status(200).send(user))
-          .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));
   },
