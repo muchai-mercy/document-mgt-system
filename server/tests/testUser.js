@@ -14,7 +14,7 @@ describe('User', () => {
         done();
       });
   });
-  it('it should have a header', (done) => {
+  it('it should return a list of users', (done) => {
     request(app)
       .get('/users')
       .expect(200)

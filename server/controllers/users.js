@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const jwt = require('json-web-token');
+const jwt = require('jsonwebtoken');
 const secretKey = process.env.SECRET_TOKEN_KEY;
 const db = require('../models');
 const User = db.Users;
@@ -13,13 +13,13 @@ module.exports = {
         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
         email: req.body.email
       })
-      .then(user => res.status(200).send(user) ,{
+      .then(user => res.status(200).send(user), {
         message: "User created!"
       })
       .catch(error => res.status(400).send(error));
   },
 
-  loginUser(req, res) {
+  login(req, res) {
     User.findOne({
       where: {
         email: req.body.email
@@ -31,18 +31,26 @@ module.exports = {
             message: 'Invalid user',
           });
         }
-        if (bcrypt.compareSync(req.body.password, user.password)) {
-          const token = jwt.sign({ data: user.id }, secretKey, { expiresIn: '24h' });
-          return res.status(200).send({
-            message: 'Successfully logged in',
-            token,
-            expiresIn: '24h'
+        bcrypt.compare(req.body.password, user.password)
+          .then(() => {
+            const token = jwt.sign({ data: user.id }, secretKey, { expiresIn: '24h' });
+            res.status(200).send({
+              message: 'Successfully logged in',
+              token,
+              expiresIn: '24h'
+            });
+          })
+          .catch(() => {
+          res.status(401).send({
+            message: 'Wrong password/username combination',
           });
-        }
-        return res.status(401).send({
+        })
+      })
+      .catch(() => {
+        res.status(401).send({
           error: 'Wrong password/username combination'
         });
-      })
+      });
   },
   list(req, res) {
     if (req.query.limit || req.query.offset) {

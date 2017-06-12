@@ -1,5 +1,4 @@
 'use strict';
-const Users = require('./users');
 
 module.exports = (sequelize, DataTypes) => {
   const Document = sequelize.define('Document', {
