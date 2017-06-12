@@ -1,5 +1,6 @@
 const usersController = require('../controllers').users;
 const documentsController = require('../controllers').document;
+const authenticate = require('./../controllers/authenticate/authenticate');
 
 module.exports = (app) => {
 app.get('/api', (req,res) => res.status(200).send({
@@ -7,6 +8,7 @@ app.get('/api', (req,res) => res.status(200).send({
 }));
 app.post('/api/users', usersController.create);
 app.post('/api/users/login', usersController.login);
+app.use(authenticate.token);
 app.get('/api/users', usersController.list);
 app.get('get/users/?limit={integer}&offset={integer}', usersController.list);
 app.get('/api/users/:userId', usersController.retrieve);
