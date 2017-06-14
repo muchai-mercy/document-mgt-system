@@ -10,9 +10,13 @@ module.exports = {
         title: req.body.title,
         content: req.body.content,
         userId: req.body.userId
-      })
-      .then(document => res.status(201).send(document))
-      .catch(error => res.status(400).send(error));
+          .then(document => {
+            res.status(201).send(document)
+          })
+          .catch(error => {
+            res.status(400).send(error)
+          })
+      });
   },
 
   //list all existing documents 
@@ -44,7 +48,8 @@ module.exports = {
         }
         return res.status(200).send(document);
       })
-      .catch(error => { res.status(400).send(error);
+      .catch(error => {
+        res.status(400).send(error);
       });
   },
 

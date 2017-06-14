@@ -20,6 +20,7 @@
   "author": "Muchai",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-polyfill": "6.8.0",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
@@ -40,6 +41,7 @@
     "redux": "3.5.2",
     "redux-thunk": "2.0.1",
     "sequelize": "^3.30.4",
+    "superagent": "^3.5.2",
     "toastr": "2.1.2"
   },
   "devDependencies": {
