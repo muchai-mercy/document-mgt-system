@@ -14,18 +14,18 @@ describe('Documents', () => {
     done();
   });
   });
-  it('returns the newly created document', (done) => {
-    request(app)
-      .post('/documents')
-      .send({
-        title: "react",
-        content: "I love react"
-      })
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        expect(res.body).to.be.an('object')
-        done();
-      });
-  });
+  // it('returns the newly created document', (done) => {
+  //   request(app)
+  //     .post('/documents')
+  //     .send({
+  //       title: "react",
+  //       content: "I love react"
+  //     })
+  //     .set('Accept', 'application/json')
+  //     .end((err, res) => {
+  //       expect(res.body).to.be.an('object');
+  //       done();
+  //     });
+  // });
 });
 

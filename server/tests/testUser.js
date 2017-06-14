@@ -20,7 +20,7 @@ describe('User', () => {
       .expect(200)
       .end((err, res) => {
         expect(res.body.message).to.be.a("string");
-        expect(res.body.message).to.include("Let's get this started!")
+        expect(res.body.message).to.include("Let's get this started!");
         done();
       });
   });
@@ -30,11 +30,11 @@ describe('User', () => {
       .send({
         email: 'melcmill@yahoo.com',
         username: 'mercym',
-        password: '$2a$08$TSDwjww8G2/TWDQYEgroD.m2wpFHKkT6q7TXf2WPWCR8gmRg4I/Sy',
+        password: '$2a$08$TSDwjww8G2/TWDQYEgroD.m2wpFHKkT6q7TXf2WPWCR8gmRg4I/Sy'
       })
       .set('Accept', 'application/json')
       .end((err, res) => {
-        expect(res.body).to.be.an('object')
+        expect(res.body).to.be.an('object');
         done();
       });
   });

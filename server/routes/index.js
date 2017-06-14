@@ -8,7 +8,7 @@ app.get('/api', (req,res) => res.status(200).send({
 }));
 app.post('/api/users', usersController.create);
 app.post('/api/users/login', usersController.login);
-app.use(authenticate.token);
+app.use('/api', authenticate.token);
 app.get('/api/users', usersController.list);
 app.get('get/users/?limit={integer}&offset={integer}', usersController.list);
 app.get('/api/users/:userId', usersController.retrieve);
@@ -24,4 +24,4 @@ app.get('/api/documents/:userId', documentsController.retrieve);
 app.put('/api/documents/:userId', documentsController.update);
 app.delete('/api/documents/:userId', documentsController.destroy);
 app.get('/api/search/documents/', documentsController.findByTitle);
-}
+};

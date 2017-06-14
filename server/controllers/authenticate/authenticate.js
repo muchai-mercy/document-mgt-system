@@ -10,7 +10,7 @@ const authenticate = {
     if (!token) {
       return res.status(401).json({
         success: false,
-        message: 'No token provided',
+        message: 'No token provided'
       });
     }
 
@@ -22,7 +22,7 @@ const authenticate = {
           // Set status to unauthorized and return fail json
           return res.status(401).json({
             success: false,
-            message: 'Failed to authenticate token',
+            message: 'Failed to authenticate token'
           });
         }
         // Valid, save decoded object for possibly other routes to use
@@ -31,7 +31,7 @@ const authenticate = {
         next();
       });
     }
-  },
+  }
 };
 
-module.exports = authenticate
+module.exports = authenticate;

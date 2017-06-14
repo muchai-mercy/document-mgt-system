@@ -9,7 +9,7 @@ module.exports = {
       .create({
         title: req.body.title,
         content: req.body.content,
-        userId: req.body.userId,
+        userId: req.body.userId
       })
       .then(document => res.status(201).send(document))
       .catch(error => res.status(400).send(error));
@@ -44,7 +44,8 @@ module.exports = {
         }
         return res.status(200).send(document);
       })
-      .catch(error => { res.status(400).send(error) });
+      .catch(error => { res.status(400).send(error);
+      });
   },
 
   //update document detail
@@ -97,9 +98,9 @@ module.exports = {
       .findAll({
         where: {
           title: { $like: `%${req.query.q}%` }
-        },
+        }
       })
       .then(response => res.status(200).send(response))
       .catch(error => res.status(400).send(error));
-  },
+  }
 };

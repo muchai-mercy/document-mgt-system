@@ -121,13 +121,13 @@ module.exports = {
                 .update({
                   username: req.body.username || user.username,
                   password: hash,
-                  email: req.body.email || user.email,
+                  email: req.body.email || user.email
                 })
                 .then(() => res.status(200).send(user))
                 .catch(error => res.status(400).send(error));
             });
           } else {
-            return user.update()
+            return user.update();
           }
         }
       })
