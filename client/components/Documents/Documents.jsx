@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as documentActions from "../../actions/documentActions.js";
-// import { createDocument } from "../../api/consumeApi.js";
+import DocumentList from "./DocumentList.jsx";
 
 class DocumentsPage extends React.Component {
   constructor(props, context) {
@@ -11,12 +11,14 @@ class DocumentsPage extends React.Component {
   
 
 documentRow(document, index){
-  return <div key={index}>{document.title}</div>;
+  return <div key={index}>{document.title}
+  </div>;
 }
   render() {
+    const {documents} = this.props;
     return (
       <div>
-        {this.props.document.map(this.documentRow)}
+       <DocumentList documents={documents} />
       </div>
     );
   }
@@ -24,7 +26,6 @@ documentRow(document, index){
 DocumentsPage.propTypes = {
   actions: PropTypes.object.isRequired,
   document: PropTypes.array.isRequired,
-  createDocuments: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
