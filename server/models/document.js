@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     complete: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.BOOLEAN
       // allowNull: false
     }
   }, {
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         Document.belongsTo(models.Users, {
           foreignKey: 'userId',
           onDelete: 'CASCADE'
-        })
+        });
       }
     }
   });

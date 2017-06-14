@@ -41,9 +41,10 @@ documentRow(document, index){
     );
   }
 }
-DocumentsPage.PropTypes = {
-  actions: PropTypes.func.isRequired,
-  document:PropTypes.array.isRequired
+DocumentsPage.propTypes = {
+  actions: PropTypes.object.isRequired,
+  document: PropTypes.array.isRequired,
+  createDocuments: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

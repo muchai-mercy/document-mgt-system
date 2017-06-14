@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
           msg: "Enter valid email address"
         }
       }
-    },
+    }
   },
     {
       classMethods: {
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
           Users.hasMany(models.Document, {
             foreignKey: 'userId',
             as: 'documents'
-          })
+          });
         }
       }
     });

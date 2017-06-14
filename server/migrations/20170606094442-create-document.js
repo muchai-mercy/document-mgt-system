@@ -24,8 +24,8 @@ module.exports = {
           model: 'Users',
           key: 'id',
           as: 'userId',
-          allowNull: false,
-        },
+          allowNull: false
+        }
       },
       createdAt: {
         allowNull: false,
@@ -34,8 +34,8 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-    })
+      }
+    });
   },
   down: (queryInterface) => {
     return queryInterface.dropTable('Documents');

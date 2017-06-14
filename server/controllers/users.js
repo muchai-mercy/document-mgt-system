@@ -14,7 +14,7 @@ module.exports = {
         .create({
           username: req.body.username,
           password: hash,
-          email: req.body.email,
+          email: req.body.email
         })
         .then(user => res.status(200).send(user), {
           message: "User created!"
@@ -33,7 +33,7 @@ module.exports = {
       .then((user) => {
         if (!user) {
           return res.status(403).send({
-            message: 'Invalid user',
+            message: 'Invalid user'
           });
         }
         bcrypt.compare(req.body.password, user.password)
@@ -47,15 +47,15 @@ module.exports = {
               });
             } else {
               res.status(401).send({
-                message: 'Wrong password/username combinations',
+                message: 'Wrong password/username combinations'
               });
             }
           })
           .catch(() => {
             res.status(401).send({
-              message: 'Wrong password/username combination',
+              message: 'Wrong password/username combination'
             });
-          })
+          });
       })
       .catch(() => {
         res.status(401).send({
@@ -102,7 +102,8 @@ module.exports = {
         }
         return res.status(200).send(user);
       })
-      .catch(error => { res.status(400).send(error) });
+      .catch(error => { res.status(400).send(error);
+      });
   },
 
   // update username details
@@ -169,5 +170,5 @@ module.exports = {
       })
       .then(response => res.status(200).send(response))
       .catch(error => res.status(400).send(error));
-  },
-}
+  }
+};
