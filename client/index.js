@@ -8,6 +8,7 @@ import { postDocuments , allDocuments } from "./actions/documentActions";
 import routes from "./Routes.js";
 import "./styles/styles.scss";
 import "../node_modules/materialize-css/dist/css/materialize.min.css";
+import "../node_modules/toastr/build/toastr.min.css";
 
 const store = configureStore();
 // store.dispatch(postDocuments());

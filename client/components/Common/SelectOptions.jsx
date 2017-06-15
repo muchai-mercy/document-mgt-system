@@ -5,8 +5,8 @@ const SelectOptions = ({ name, label, onChange, defaultOption, value, error, opt
     <label>Category</label>
     <select className="browser-default">
       <option value="" disabled selected>Select Access</option>
-      <option value="1">Public</option>
-      <option value="2">Private</option>
+      <option value="1">Public 🌞</option>
+      <option value="2">Private 😉</option>
     </select>
     {error && <div className="alert-danger">{error}</div>}
   </div>

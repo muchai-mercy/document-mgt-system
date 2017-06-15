@@ -26,7 +26,7 @@ class DocumentsPage extends React.Component {
     return (
       <div>
         <input type="submit"
-               value="Create Document"
+               value="Create Document 🙌"
                className="btn btn-primary"
                onClick={this.redirectToCreateDocumentPage}/>
         <DocumentList document={document} />

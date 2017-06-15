@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as documentActions from "../../actions/documentActions.js";
 import DocumentsForm from "./DocumentsForm.jsx";
+import toastr from "toastr";
 
 class ManageDocument extends React.Component {
   constructor(props, context) {
@@ -20,6 +21,7 @@ componentWillReceiveProps(nextProps){
   if (this.props.document.id != nextProps.document.id) {
     // update state on reload when props change
     this.setState({document: Object.assign({}, nextProps.document)});
+    
   }
 }
   updateDocumentState(event) {
@@ -33,6 +35,7 @@ componentWillReceiveProps(nextProps){
     event.preventDefault();
     this.props.actions.postDocuments(this.state.document);
     this.props.actions.allDocuments();
+    toastr.success('Document Created 😎!');
     this.context.router.push('/documents');
     
   }
@@ -50,7 +53,7 @@ componentWillReceiveProps(nextProps){
         <button 
            onClick={this.deleteDocuments} 
            className="btn btn-default">
-           Delete
+           Delete 👎
        </button>
       </div>
     );
