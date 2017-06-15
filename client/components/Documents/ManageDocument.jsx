@@ -15,7 +15,12 @@ class ManageDocument extends React.Component {
     this.updateDocumentState = this.updateDocumentState.bind(this);
     this.postDocuments = this.postDocuments.bind(this);
   }
-
+componentWillReceiveProps(nextProps){
+  if (this.props.document.id != nextProps.document.id) {
+    // update state on reload when props change
+    this.setState({document: Object.assign({}, nextProps.document)});
+  }
+}
   updateDocumentState(event) {
     const field = event.target.name;
     let document = this.state.document;
@@ -64,7 +69,7 @@ function mapStateToProps(state, ownProps) {
   const documentId = ownProps.params.id; // from the path documents/:id
   let document = {id: '', title: '', content: '', category: ''};
 
-  if (documentId) {
+  if (documentId && state.document.length > 0) {
     document = getDocumentById(state.document, documentId);
   }
   return {
