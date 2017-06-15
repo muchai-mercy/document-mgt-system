@@ -8,17 +8,17 @@ class DocumentsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
-  
 
-documentRow(document, index){
-  return <div key={index}>{document.title}
-  </div>;
-}
+
+  documentRow(document, index) {
+    return <div key={index}>{document.title}
+    </div>;
+  }
   render() {
-    const {documents} = this.props;
+    const { document } = this.props;
     return (
       <div>
-       <DocumentList documents={documents} />
+        <DocumentList document={document} />
       </div>
     );
   }
@@ -33,7 +33,7 @@ function mapStateToProps(state, ownProps) {
     document: state.document
   };
 }
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(documentActions, dispatch)
   };
