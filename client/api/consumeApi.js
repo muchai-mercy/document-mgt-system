@@ -20,3 +20,12 @@ export const postEndpoint = (endpoint => {
 
 
 
+//delete endpoint
+export const deleteEndpoint = (endpoint => {
+  const url = endpoint;
+  return (
+    request
+    .delete(url)
+  );
+});
+

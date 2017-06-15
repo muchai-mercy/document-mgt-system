@@ -14,6 +14,7 @@ class ManageDocument extends React.Component {
     };
     this.updateDocumentState = this.updateDocumentState.bind(this);
     this.postDocuments = this.postDocuments.bind(this);
+    this.deleteDocuments = this.deleteDocuments.bind(this);
   }
 componentWillReceiveProps(nextProps){
   if (this.props.document.id != nextProps.document.id) {
@@ -35,6 +36,9 @@ componentWillReceiveProps(nextProps){
     this.context.router.push('/documents');
     
   }
+    deleteDocuments(event) {
+    this.props.actions.deleteDocuments(this.state.document);
+  }
   render() {
     return (
       <div>
@@ -43,6 +47,11 @@ componentWillReceiveProps(nextProps){
         onChange={this.updateDocumentState}
         onSave={this.postDocuments}
         errors={this.state.errors}/>
+        <button 
+           onClick={this.deleteDocuments} 
+           className="btn btn-default">
+           Delete
+       </button>
       </div>
     );
   }

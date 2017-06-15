@@ -1,17 +1,19 @@
 import * as types from './actionTypes';
-import { postEndpoint, getEndpoint } from "../api/consumeApi";
+import { postEndpoint, getEndpoint , deleteEndpoint } from "../api/consumeApi";
 
 export function allDocumentsSuccess(documents) {
   return {type: types.ALL_DOCUMENTS_SUCCESS, documents};
 }
 
-export function postDocumentsSuccess(documents) {
+export function postDocumentsSuccess(document) {
   return {type: types.POST_DOCUMENTS_SUCCESS, document};
 }
-export function updateDocumentsSuccess(documents) {
+export function updateDocumentsSuccess(document) {
   return {type: types.UPDATE_DOCUMENTS_SUCCESS, document};
 }
-
+export function deleteDocumentsSuccess(document) {
+  return {type: types.DELETE_DOCUMENTS_SUCCESS, document};
+}
 export function allDocuments() {
   return (dispatch) => {
     getEndpoint('/api/documents')
@@ -30,20 +32,19 @@ export function postDocuments(documents) {
 }
 export function updateDocuments(documents) {
   return (dispatch) => {
-    postEndpoint(`/api/documents/x${documents.id}`)
+    postEndpoint(`/api/documents/${documents.id}`)
     .send(documents)
     .end((err, res) => dispatch(updateDocumentsSuccess({ documents: res.body })
     ));
   };
 }
 
-// export function saveDocument(document) {
-//   return (dispatch, getState) => {
-//     postEndpoint('/api/documents')
-//     .send(document)
-//     .end((err, res) => dispatch(postDocumentsSuccess({ document: res.body })
-//     )).catch(error => { 
-//       throw(error);
-//     });
-//   };
-// }
+export function deleteDocuments(documents) {
+  return (dispatch) => {
+    deleteEndpoint(`/api/documents/${documents.id}`)
+    .send(documents)
+    .end((err, res) => dispatch(deleteDocumentsSuccess(documents)
+    ));
+  };
+}
+
