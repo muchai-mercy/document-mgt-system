@@ -11,7 +11,6 @@ const DocumentList = ({ document }) => {
       </tr>
       </thead>
       <tbody>
-        {console.log("Here they are: ", document)}
         {document ? document.map(document =>
 
          <DocumentsListRow key={document.id} document={document}/>

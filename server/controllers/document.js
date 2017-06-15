@@ -10,13 +10,13 @@ module.exports = {
         title: req.body.title,
         content: req.body.content,
         userId: req.body.userId
-          .then(document => {
-            res.status(201).send(document)
-          })
+      })
+        .then(document => {
+          res.status(201).send(document);
+        })
           .catch(error => {
-            res.status(400).send(error)
-          })
-      });
+            res.status(400).send(error);
+          });
   },
 
   //list all existing documents 
