@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as documentActions from "../../actions/documentActions.js";
 import DocumentsForm from "./DocumentsForm.jsx";
-import {allDocuments} from "../../actions/documentActions.js";
 
 class ManageDocument extends React.Component {
   constructor(props, context) {
@@ -27,8 +26,8 @@ class ManageDocument extends React.Component {
   postDocuments(event) {
     event.preventDefault();
     this.props.actions.postDocuments(this.state.document);
+    this.props.actions.allDocuments();
     this.context.router.push('/documents');
-    allDocuments();
     
   }
   render() {
@@ -55,8 +54,19 @@ ManageDocument.contextTypes = {
   router: PropTypes.object
 };
 
+function getDocumentById(document, id){
+const documents = document.filter(document => document.id == id);
+if (documents) return documents[0]; //return the first doc
+return null;
+}
+
 function mapStateToProps(state, ownProps) {
+  const documentId = ownProps.params.id; // from the path documents/:id
   let document = {id: '', title: '', content: '', category: ''};
+
+  if (documentId) {
+    document = getDocumentById(state.document, documentId);
+  }
   return {
     document: document
   };
