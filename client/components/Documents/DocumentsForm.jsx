@@ -26,7 +26,7 @@ const DocumentsForm = ({ document, onSave, onChange, loading, errors }) => (
     <SelectOptions
       name="category"
       label="category"
-      value={document.userId}
+      value={document.category}
       onChange={onChange}
     />
 

@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    complete: {
-      type: DataTypes.BOOLEAN
-      // allowNull: false
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     classMethods: {

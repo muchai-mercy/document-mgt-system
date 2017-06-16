@@ -14,8 +14,8 @@ module.exports = {
       content: {
         type: Sequelize.STRING
       },
-      complete: {
-        type: Sequelize.BOOLEAN
+      category: {
+        type: Sequelize.STRING
       },
       userId: {
         type: Sequelize.INTEGER,

@@ -8,6 +8,7 @@ const DocumentList = ({ document }) => {
       <tr>
         <th>Title</th>
         <th>Content</th>
+         <th>Category</th>
       </tr>
       </thead>
       <tbody>

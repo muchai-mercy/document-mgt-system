@@ -12,9 +12,11 @@ module.exports = {
       // Store hash in password DB. 
       return User
         .create({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
           username: req.body.username,
+          email: req.body.email,
           password: hash,
-          email: req.body.email
         })
         .then(user => res.status(200).send(user), {
           message: "User created!"

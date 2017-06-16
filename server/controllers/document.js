@@ -9,7 +9,8 @@ module.exports = {
       .create({
         title: req.body.title,
         content: req.body.content,
-        userId: req.body.userId
+        userId: req.body.userId,
+        category: req.body.category
       })
         .then(document => {
           res.status(201).send(document);
