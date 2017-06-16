@@ -5,6 +5,8 @@ import HomePage from "./components/Home/Homepage.jsx";
 import AboutPage from "./components/About/AboutPage.jsx";
 import DocumentsPage from "./components/Documents/Documents.jsx";
 import ManageDocument from "./components/Documents/ManageDocument.jsx";
+import UsersPage from "./components/Users/Users.jsx";
+import ManageUsers from "./components/Users/ManageUsers.jsx";
 
 export default (
   <Route path="/" component={App}>
@@ -13,6 +15,8 @@ export default (
     <Route path="document" component={ManageDocument} />
     <Route path="documents/:id" component={ManageDocument} />
     <Route path="about" component={AboutPage} />
-
+    <Route path="users" component={UsersPage} />
+    <Route path="user" component={ManageUsers} />
+    <Route path="users/:id" component={ManageUsers} />
   </Route>
 );

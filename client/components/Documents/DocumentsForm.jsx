@@ -7,7 +7,7 @@ import SelectOptions from '../Common/SelectOptions.jsx';
 
 const DocumentsForm = ({ document, onSave, onChange, loading, errors }) => (
   <form onSubmit={onSave}>
-    <h3> Manage Documents </h3>
+    <h3> Create Document </h3>
     <TextInput
       name="title"
       label="Title"
