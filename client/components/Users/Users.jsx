@@ -12,12 +12,12 @@ class UsersPage extends React.Component {
   }
 
 
-  duserRow(user, index) {
+  userRow(user, index) {
     return <div key={index}>{user.username}
     </div>;
   }
 
-  redirectToCreateUserPage(){
+  redirectToCreateUserPage() {
     browserHistory.push('/user');
   }
 
@@ -26,9 +26,9 @@ class UsersPage extends React.Component {
     return (
       <div>
         <input type="submit"
-               value="Create User 🙌"
-               className="btn btn-primary"
-               onClick={this.redirectToCreateUserPage}/>
+          value="Create User 🙌"
+          className="btn btn-primary"
+          onClick={this.redirectToCreateUserPage} />
         <UsersList user={user} />
       </div>
     );

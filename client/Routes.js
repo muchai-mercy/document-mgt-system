@@ -7,10 +7,12 @@ import DocumentsPage from "./components/Documents/Documents.jsx";
 import ManageDocument from "./components/Documents/ManageDocument.jsx";
 import UsersPage from "./components/Users/Users.jsx";
 import ManageUsers from "./components/Users/ManageUsers.jsx";
+import Login from "./components/Authentication/Login.jsx";
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
+    <Route path="/login" component={Login} />
     <Route path="documents" component={DocumentsPage} />
     <Route path="document" component={ManageDocument} />
     <Route path="documents/:id" component={ManageDocument} />

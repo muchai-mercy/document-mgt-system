@@ -5,6 +5,8 @@ const UsersListRow = ({ user }) => {
   return (
     <tr>
       <td><Link to={`/users/${user.id}`}>{user.username}</Link></td>
+      <td>{user.firstName}</td>
+      <td>{user.lastName}</td>
       <td>{user.email}</td>
     </tr>
   );
