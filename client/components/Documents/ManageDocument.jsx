@@ -8,7 +8,7 @@ import toastr from "toastr";
 class ManageDocument extends React.Component {
   constructor(props, context) {
     super(props, context);
-    
+
     this.state = {
       document: Object.assign({}, this.props.document),
       errors: {}
@@ -17,18 +17,18 @@ class ManageDocument extends React.Component {
     this.postDocuments = this.postDocuments.bind(this);
     this.deleteDocuments = this.deleteDocuments.bind(this);
   }
-componentWillReceiveProps(nextProps){
-  if (this.props.document.id != nextProps.document.id) {
-    // update state on reload when props change
-    this.setState({document: Object.assign({}, nextProps.document)});
-    
+  componentWillReceiveProps(nextProps) {
+    if (this.props.document.id != nextProps.document.id) {
+      // update state on reload when props change
+      this.setState({ document: Object.assign({}, nextProps.document) });
+
+    }
   }
-}
   updateDocumentState(event) {
     const field = event.target.name;
     let document = this.state.document;
     document[field] = event.target.value;
-    return this.setState({document: document});
+    return this.setState({ document: document });
   }
 
   postDocuments(event) {
@@ -37,23 +37,24 @@ componentWillReceiveProps(nextProps){
     this.props.actions.allDocuments();
     toastr.success('Document Created 😎!');
     this.context.router.push('/documents');
-    
+
   }
-    deleteDocuments(event) {
+  deleteDocuments(event) {
     this.props.actions.deleteDocuments(this.state.document);
+    toastr.success('Document Deleted 😯');
   }
   render() {
     return (
       <div>
-        <DocumentsForm 
-        document={this.state.document}
-        onChange={this.updateDocumentState}
-        onSave={this.postDocuments}
-        errors={this.state.errors}/>
-        <button 
-           onClick={this.deleteDocuments} 
-           className="btn btn-default">
-           Delete 👎
+        <DocumentsForm
+          document={this.state.document}
+          onChange={this.updateDocumentState}
+          onSave={this.postDocuments}
+          errors={this.state.errors} />
+        <button
+          onClick={this.deleteDocuments}
+          className="btn btn-default">
+          Delete 👎
        </button>
       </div>
     );
@@ -71,15 +72,15 @@ ManageDocument.contextTypes = {
   router: PropTypes.object
 };
 
-function getDocumentById(document, id){
-const documents = document.filter(document => document.id == id);
-if (documents) return documents[0]; //return the first doc
-return null;
+function getDocumentById(document, id) {
+  const documents = document.filter(document => document.id == id);
+  if (documents) return documents[0]; //return the first doc
+  return null;
 }
 
 function mapStateToProps(state, ownProps) {
   const documentId = ownProps.params.id; // from the path documents/:id
-  let document = {id: '', title: '', content: '', category: ''};
+  let document = { id: '', title: '', content: '', category: '' };
 
   if (documentId && state.document.length > 0) {
     document = getDocumentById(state.document, documentId);

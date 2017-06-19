@@ -7,7 +7,7 @@ import * as sessionActions from '../../actions/sessionActions';
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { credentials: { email: '', password: '' } }
+    this.state = { credentials: { email: '', password: '' } };
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
   }
@@ -21,7 +21,7 @@ class Login extends React.Component {
 
   onSave(event) {
     event.preventDefault();
-    this.props.actions.LoginUser(this.state.credentials);
+    this.props.actions.loginUser(this.state.credentials);
   }
 
   render() {
@@ -30,13 +30,13 @@ class Login extends React.Component {
         < form>
           < TextInput
             name="email"
-            label="email"
+            label="Enter Email"
             value={this.state.credentials.email}
             onChange={this.onChange} />
 
           < TextInput
             name="password"
-            label="password"
+            label="Enter Password"
             type="password"
             value={this.state.credentials.password}
             onChange={this.onChange} />

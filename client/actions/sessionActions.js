@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
-import AuthenticateApi from "../api/authenticateApi";
+import { postEndpoint } from "../api/consumeApi";
+// import AuthenticateApi from "../api/authenticateApi";
 
 
 export function loginSuccess() {
@@ -8,11 +9,9 @@ export function loginSuccess() {
 
 export function loginUser(credentials) {  
   return function(dispatch) {
-    return AuthenticateApi.login(credentials).then(response => {
-      sessionStorage.setItem('jwt', response.jwt);
-      dispatch(loginSuccess());
-    }).catch(error => {
-      throw(error);
-    });
+    postEndpoint('/api/users/login')
+    .send(credentials)
+    .end((err, res) => dispatch(loginSuccess()
+    ));
   };
 }

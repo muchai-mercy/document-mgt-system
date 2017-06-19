@@ -1,6 +1,6 @@
 import React from "react";
 import TextInput from "../Common/TextInput.jsx";
-import SelectInput from "../Common/SelectInput.jsx";
+// import SelectInput from "../Common/SelectInput.jsx";
 import TextArea from "../Common/TextArea.jsx";
 import SelectOptions from '../Common/SelectOptions.jsx';
 
@@ -42,8 +42,8 @@ const DocumentsForm = ({ document, onSave, onChange, loading, errors }) => (
 DocumentsForm.propTypes = {
   document: React.PropTypes.object.isRequired,
   onSave: React.PropTypes.func.isRequired,
-  onChange: React.PropTypes.isRequired,
-  loading: React.PropTypes.bool,
-  errors: React.PropTypes.object
+  onChange: React.PropTypes.func.isRequired,
+  loading: React.PropTypes.bool.isRequired,
+  errors: React.PropTypes.object.isRequired
 };
 export default DocumentsForm;

@@ -12,7 +12,7 @@ import Login from "./components/Authentication/Login.jsx";
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="/login" component={Login} />
+    <Route path="login" component={Login} />
     <Route path="documents" component={DocumentsPage} />
     <Route path="document" component={ManageDocument} />
     <Route path="documents/:id" component={ManageDocument} />

@@ -41,6 +41,7 @@ componentWillReceiveProps(nextProps){
   }
     deleteUsers(event) {
     this.props.actions.deleteUsers(this.state.user);
+      toastr.success('User Deleted 😯');
   }
   render() {
     return (
@@ -79,7 +80,7 @@ return null;
 
 function mapStateToProps(state, ownProps) {
   const userId = ownProps.params.id; // from the path users/:id
-  let user = {id: '', title: '', content: '', category: ''};
+  let user = {id: '', firstName: '', lastName: '', email: '', password: ''};
 
   if (userId && state.user.length > 0) {
     user = getUserById(state.user, userId);

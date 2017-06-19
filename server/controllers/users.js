@@ -53,13 +53,13 @@ module.exports = {
               });
             }
           })
-          .catch(() => {
+          .catch((err) => {
             res.status(401).send({
               message: 'Wrong password/username combination'
             });
           });
       })
-      .catch(() => {
+      .catch((err) => {
         res.status(401).send({
           error: 'Wrong password/username combination'
         });
