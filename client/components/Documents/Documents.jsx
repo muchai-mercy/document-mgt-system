@@ -10,7 +10,9 @@ class DocumentsPage extends React.Component {
     super(props, context);
     this.redirectToCreateDocumentPage = this.redirectToCreateDocumentPage.bind(this);
   }
-
+componentDidMount() {
+  this.props.actions.allDocuments();
+}
 
   documentRow(document, index) {
     return <div key={index}>{document.title}

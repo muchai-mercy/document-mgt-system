@@ -10,6 +10,9 @@ class UsersPage extends React.Component {
     super(props, context);
     this.redirectToCreateUserPage = this.redirectToCreateUserPage.bind(this);
   }
+  componentDidMount() {
+    this.props.actions.allUsers();
+  }
 
 
   userRow(user, index) {

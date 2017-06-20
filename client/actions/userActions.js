@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { postEndpoint, getEndpoint , deleteEndpoint } from "../api/consumeApi";
+import { postEndpoint, getEndpoint , putEndpoint, deleteEndpoint } from "../api/consumeApi";
 
 export function allUsersSuccess(users) {
   return {type: types.ALL_USERS_SUCCESS, users};
@@ -32,7 +32,7 @@ export function postUsers(users) {
 }
 export function updateUsers(users) {
   return (dispatch) => {
-    postEndpoint(`/api/users/${users.id}`)
+    putEndpoint(`/api/users/${users.id}`)
     .send(users)
     .end((err, res) => dispatch(updateUsersSuccess({ users: res.body })
     ));

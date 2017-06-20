@@ -21,16 +21,10 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
-        len: {
-          args: [8, 20],
-          msg: "Email address needs to have 8 to 20 characters"
-        },
-        isEmail: {
-          msg: "Enter valid email address"
-        }
-      }
+        isEmail: true
+      },
+      isUnique: true,
     }
   },
     {

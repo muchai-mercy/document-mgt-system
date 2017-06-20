@@ -15,6 +15,7 @@ class ManageUsers extends React.Component {
     };
     this.updateUserState = this.updateUserState.bind(this);
     this.postUsers = this.postUsers.bind(this);
+    this.updateUsers = this.updateUsers.bind(this);
     this.deleteUsers = this.deleteUsers.bind(this);
   }
 componentWillReceiveProps(nextProps){
@@ -39,6 +40,13 @@ componentWillReceiveProps(nextProps){
     this.context.router.push('/users');
     
   }
+   updateUsers(event) {
+    event.preventDefault();
+    this.props.actions.updateUsers(this.state.user);
+    toastr.success('User Updated 😎!');
+    this.context.router.push('/users');
+
+  }
     deleteUsers(event) {
     this.props.actions.deleteUsers(this.state.user);
       toastr.success('User Deleted 😯');
@@ -50,10 +58,11 @@ componentWillReceiveProps(nextProps){
         user={this.state.user}
         onChange={this.updateUserState}
         onSave={this.postUsers}
+        onUpdate={this.updateUsers}
         errors={this.state.errors}/>
         <button 
            onClick={this.deleteUsers} 
-           className="btn btn-default">
+           className="btn btn-default"style={{backgroundColor: '#f44336'}}>
            Delete 👎
        </button>
       </div>
@@ -74,7 +83,7 @@ ManageUsers.contextTypes = {
 
 function getUserById(user, id){
 const users = user.filter(user => user.id == id);
-if (users) return users[0]; //return the first doc
+if (users) return users[0]; //return the first user
 return null;
 }
 

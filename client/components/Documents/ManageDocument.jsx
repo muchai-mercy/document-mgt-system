@@ -15,6 +15,7 @@ class ManageDocument extends React.Component {
     };
     this.updateDocumentState = this.updateDocumentState.bind(this);
     this.postDocuments = this.postDocuments.bind(this);
+    this.updateDocuments = this.updateDocuments.bind(this);
     this.deleteDocuments = this.deleteDocuments.bind(this);
   }
   componentWillReceiveProps(nextProps) {
@@ -34,8 +35,14 @@ class ManageDocument extends React.Component {
   postDocuments(event) {
     event.preventDefault();
     this.props.actions.postDocuments(this.state.document);
-    this.props.actions.allDocuments();
     toastr.success('Document Created 😎!');
+    this.context.router.push('/documents');
+
+  }
+  updateDocuments(event) {
+    event.preventDefault();
+    this.props.actions.updateDocuments(this.state.document);
+    toastr.success('Document Updated 😎!');
     this.context.router.push('/documents');
 
   }
@@ -44,16 +51,18 @@ class ManageDocument extends React.Component {
     toastr.success('Document Deleted 😯');
   }
   render() {
+    console.log(this.state.document);
     return (
       <div>
         <DocumentsForm
           document={this.state.document}
           onChange={this.updateDocumentState}
           onSave={this.postDocuments}
+          onUpdate={this.updateDocuments}
           errors={this.state.errors} />
         <button
           onClick={this.deleteDocuments}
-          className="btn btn-default">
+          className="btn btn-default" style={{backgroundColor: '#f44336'}}>
           Delete 👎
        </button>
       </div>

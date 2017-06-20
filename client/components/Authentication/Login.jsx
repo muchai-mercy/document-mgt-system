@@ -43,7 +43,7 @@ class Login extends React.Component {
 
           < input
             type="submit"
-            className="btn btn-primary"
+            className="btn waves-effect waves-light"
             onClick={this.onSave} />
         </form>
       </div>

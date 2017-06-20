@@ -18,7 +18,14 @@ export const postEndpoint = (endpoint => {
   );
 });
 
-
+//put endpoint
+export const putEndpoint = (endpoint => {
+  const url = endpoint;
+  return (
+    request
+    .put(url)
+  );
+});
 
 //delete endpoint
 export const deleteEndpoint = (endpoint => {

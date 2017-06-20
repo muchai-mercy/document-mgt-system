@@ -8,6 +8,7 @@ const Document = db.Document;
 module.exports = {
   // create new user
   create(req, res) {
+    // console.log(req.body);
     bcrypt.hash(req.body.password, 2, (err, hash) => {
       // Store hash in password DB. 
       return User
@@ -21,7 +22,8 @@ module.exports = {
         .then(user => res.status(200).send(user), {
           message: "User created!"
         })
-        .catch(error => res.status(400).send(error));
+        .catch(error => {res.status(400).send(error);
+        });
     });
   },
 
