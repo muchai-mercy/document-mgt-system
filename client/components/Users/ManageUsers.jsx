@@ -59,12 +59,13 @@ componentWillReceiveProps(nextProps){
         onChange={this.updateUserState}
         onSave={this.postUsers}
         onUpdate={this.updateUsers}
-        errors={this.state.errors}/>
-        <button 
+        errors={this.state.errors}
+        onDelete={this.deleteUsers}/>
+        {/*<button 
            onClick={this.deleteUsers} 
            className="btn btn-default"style={{backgroundColor: '#f44336'}}>
            Delete 👎
-       </button>
+       </button>*/}
       </div>
     );
   }

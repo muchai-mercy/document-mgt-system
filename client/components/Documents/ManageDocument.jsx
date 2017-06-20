@@ -51,7 +51,6 @@ class ManageDocument extends React.Component {
     toastr.success('Document Deleted 😯');
   }
   render() {
-    console.log(this.state.document);
     return (
       <div>
         <DocumentsForm
@@ -59,12 +58,8 @@ class ManageDocument extends React.Component {
           onChange={this.updateDocumentState}
           onSave={this.postDocuments}
           onUpdate={this.updateDocuments}
-          errors={this.state.errors} />
-        <button
-          onClick={this.deleteDocuments}
-          className="btn btn-default" style={{backgroundColor: '#f44336'}}>
-          Delete 👎
-       </button>
+          errors={this.state.errors}
+          onDelete={this.deleteDocuments}/>
       </div>
     );
   }

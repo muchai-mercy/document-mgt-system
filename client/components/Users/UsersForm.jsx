@@ -38,6 +38,7 @@ const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate}) => (
 
     <TextArea
       name="password"
+      type="password"
       label="Password"
       value={user.password}
       onChange={onChange}

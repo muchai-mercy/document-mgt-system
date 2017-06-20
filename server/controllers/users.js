@@ -43,7 +43,7 @@ module.exports = {
         bcrypt.compare(req.body.password, user.password)
           .then((match) => {
             if (match) {
-              const token = jwt.sign({ data: user.id }, secretKey, { expiresIn: '24h' });
+              const token = jwt.sign({ data: {id: user.id, username: user.username} }, secretKey, { expiresIn: '24h' });
               req.user = user;
               res.status(200).send({
                 message: 'Successfully logged in',

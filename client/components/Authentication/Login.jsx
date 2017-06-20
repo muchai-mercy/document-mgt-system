@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import TextInput from '../Common/TextInput.jsx';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as sessionActions from '../../actions/sessionActions';
+import * as sessionActions from '../../actions/sessionActions.js';
 
 class Login extends React.Component {
   constructor(props) {
@@ -34,10 +34,10 @@ class Login extends React.Component {
             value={this.state.credentials.email}
             onChange={this.onChange} />
 
-          < TextInput
-            name="password"
-            label="Enter Password"
+          <input
+          name="password"
             type="password"
+            label="Enter Password"
             value={this.state.credentials.password}
             onChange={this.onChange} />
 

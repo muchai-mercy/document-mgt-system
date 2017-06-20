@@ -29,6 +29,8 @@
     "express": "^4.15.3",
     "jquery": "2.2.3",
     "jsonwebtoken": "^7.4.1",
+    "jwt-decode": "^2.2.0",
+    "materialize-css": "^0.98.2",
     "morgan": "^1.8.2",
     "node-sass": "^4.5.3",
     "pg": "^6.2.3",
