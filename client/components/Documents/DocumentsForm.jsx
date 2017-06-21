@@ -1,11 +1,10 @@
 import React from "react";
 import TextInput from "../Common/TextInput.jsx";
-// import SelectInput from "../Common/SelectInput.jsx";
 import TextArea from "../Common/TextArea.jsx";
 import SelectOptions from '../Common/SelectOptions.jsx';
 
 
-const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate, onDelete }) => (
+const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }) => (
   document.id !='' ? 
   <form onSubmit={onUpdate}>
     <h3> Create Document </h3>
@@ -38,14 +37,14 @@ const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate, 
       className="btn btn-primary"
       onSave={onSave}
     />
-    <input
+    {/*<input
       type="submit"
       disabled={loading}
       value={loading ? 'Deleting...' : 'Delete 👎'}
       className="btn btn-primary"
       style={{backgroundColor: '#f44336', margin: '5px'}}
       onDelete={onDelete}
-    />
+    />*/}
   </form> :
    <form onSubmit={onSave}>
     <h3> Create Document </h3>
@@ -85,7 +84,7 @@ DocumentsForm.propTypes = {
   document: React.PropTypes.object.isRequired,
   onSave: React.PropTypes.func.isRequired,
   onUpdate: React.PropTypes.func.isRequired,
-  onDelete: React.PropTypes.func.isRequired,
+  // onDelete: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
   loading: React.PropTypes.bool.isRequired,
   errors: React.PropTypes.object.isRequired

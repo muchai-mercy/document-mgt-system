@@ -1,7 +1,5 @@
 import { LOGIN_SUCCESS } from "./actionTypes";
 import { postEndpoint } from "../api/consumeApi";
-// import AuthenticateApi from "../api/authenticateApi";
-
 
 export function loginSuccess() {
   return {type: LOGIN_SUCCESS};

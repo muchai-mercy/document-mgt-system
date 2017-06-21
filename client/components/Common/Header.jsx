@@ -27,10 +27,10 @@ render(){
         ? <Link to={`/users/${user.id}`} activeClassName="active">{user.data.username} </Link>
         : <Link to="/login" activeClassName="active">Login</Link>
       }
-      {user
+      {/*{user
         ? <Link to="#" activeClassName="active" onClick={this.logoutUser}>Logout</Link>
         : null
-      }
+      }*/}
       </div>
     );
   }

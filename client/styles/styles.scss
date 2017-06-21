@@ -2,3 +2,16 @@
   font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: black
 }
+
+#search-wrapper card {
+  font: inherit;
+  display:  block;
+  font-size: 16px;
+  height: 54px;
+  padding: 0 45px 0 15px;
+  background-color: transparent;
+  box-sizing: content-box;
+  line-height: normal;
+  color: inherit;
+  width: 100%
+}

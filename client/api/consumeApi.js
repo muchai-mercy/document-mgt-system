@@ -36,3 +36,11 @@ export const deleteEndpoint = (endpoint => {
   );
 });
 
+// search endpoint
+export const searchEndpoint = (endpoint => {
+  const url = endpoint;
+  return (
+    request
+    .search(url)
+  );
+});
