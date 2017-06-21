@@ -23,17 +23,17 @@ render(){
        {" | "}
       <Link to="/users" activeClassName="active">Users</Link>
       {" | "}
-     {user
-            ? <Link to={`/users/${user.id}`} activeClassName="active">{user.data.name} </Link>
-            : <Link to="/login" activeClassName="active">Login </Link>
-          }
-          {user
-            ? <Link to="#" activeClassName="active" onClick={this.logoutUser}>Logout</Link>
-            : null
-          }
+      {user
+        ? <Link to={`/users/${user.id}`} activeClassName="active">{user.data.username} </Link>
+        : <Link to="/login" activeClassName="active">Login</Link>
+      }
+      {user
+        ? <Link to="#" activeClassName="active" onClick={this.logoutUser}>Logout</Link>
+        : null
+      }
       </div>
-  );
-}
+    );
+  }
 }
 Header.propTypes = {
   // session: PropTypes.object.isRequired,
