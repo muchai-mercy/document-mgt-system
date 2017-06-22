@@ -103,7 +103,7 @@ module.exports = {
     return Document
       .findAll({
         where: {
-          title: { $like: `%${req.query.q}%` }
+          title: { $ilike: `%${req.query.q}%` }
         }
       })
       .then(response => res.status(200).send(response))

@@ -8,14 +8,16 @@ import ManageDocument from "./components/Documents/ManageDocument.jsx";
 import UsersPage from "./components/Users/Users.jsx";
 import ManageUsers from "./components/Users/ManageUsers.jsx";
 import Login from "./components/Authentication/Login.jsx";
+import SignUp from "./components/Authentication/SignUp.jsx";
 import searchDocument from "./components/Documents/searchDocument.jsx";
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-      {/*<IndexRoute component={searchDocument} />*/}
     <Route path="login" component={Login} />
+    <Route path="signup" component={SignUp} />
     <Route path="documents" component={DocumentsPage} />
+    <Route path="documents" component={searchDocument} />
     <Route path="document" component={ManageDocument} />
     <Route path="documents/:id" component={ManageDocument} />
     <Route path="about" component={AboutPage} />

@@ -60,9 +60,9 @@ class ManageDocument extends React.Component {
           onUpdate={this.updateDocuments}
           errors={this.state.errors}/>
           <button 
-           onClick={this.deleteDocuments} 
-           className="btn btn-default"style={{backgroundColor: '#f44336'}}>
-           Delete 👎
+           onClick={this.deleteDocuments}
+           className="btn btn-default"style={{backgroundColor: '#f44336',marginLeft: "84%", marginTop: "-60px"}}>
+           Delete
        </button>
       </div>
     );

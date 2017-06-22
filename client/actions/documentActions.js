@@ -1,4 +1,3 @@
-// import * as types from './actionTypes';
 import { ALL_DOCUMENTS_SUCCESS, POST_DOCUMENTS_SUCCESS, UPDATE_DOCUMENTS_SUCCESS, DELETE_DOCUMENTS_SUCCESS, SEARCH_DOCUMENTS_SUCCESS } from './actionTypes';
 import { postEndpoint, getEndpoint , deleteEndpoint, putEndpoint } from "../api/consumeApi";
 
@@ -54,11 +53,10 @@ export function deleteDocuments(documents) {
   };
 }
 
-// export function searchDocuments(title ) {
-//   return (dispatch) => {
-//     postEndpoint(`/api/search/documents/?q=${title}`)
-//     .send(title)
-//     .end((err, res) => dispatch(searchDocumentsSuccess({ documents: res.body.title })
-//     ));
-//   };
-// }
+export function searchDocuments(title) {
+  return (dispatch) => {
+    getEndpoint(`/api/search/documents/?q=${title}`)
+    .end((err, res) => dispatch(searchDocumentsSuccess(res.body)
+    ));
+  };
+}

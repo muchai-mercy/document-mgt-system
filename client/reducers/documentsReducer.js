@@ -23,7 +23,7 @@ export default function documentsReducer(state = [], action) {
       return newState;
     }
     case types.SEARCH_DOCUMENTS_SUCCESS:
-      return action.documents;
+      return action.title;
 
     default:
       return state;

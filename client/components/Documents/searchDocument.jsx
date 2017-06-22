@@ -4,35 +4,45 @@ import { bindActionCreators } from "redux";
 import * as documentActions from "../../actions/documentActions.js";
 import toastr from "toastr";
 
-class searchDocument extends React.Component {
+class SearchDoc extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    this.documentSearch = this.documentSearch.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
-  componentDidMount() {
-  this.props.actions.searchDocuments();
-}
- 
+
+  documentSearch(title) {
+    this.props.actions.searchDocuments(title);
+  }
+  onChange(event) {
+    event.preventDefault();
+    return this.setState({ title: event.target.value });
+  }
+  onSubmit(event) {
+    event.preventDefault();
+    this.documentSearch(this.state.title);
+  }
   render() {
     return (
-       <div className="search-wrapper card">
-       <input
-       id= "search"
-       label="Search"/>
-        <i className="material-icons">search</i>
-        {/*<div className="search-results"></div>*/}
-        </div>
+      <div className="search-wrapper card" style={{ marginLeft: "84%", marginTop: "-40px" }}>
+        <input
+        id="search"
+          onChange={this.onChange} />
+        <i className="material-icons" style={{ paddingLeft: "160px"}}
+          onClick={this.onSubmit}>search</i>
+      </div>
     );
   }
 }
-
 //Props Validation
-searchDocument.PropTypes = {
+SearchDoc.propTypes = {
   actions: PropTypes.object.isRequired
-}
+};
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(documentActions, dispatch)
   };
 }
-export default connect(null, mapDispatchToProps)(searchDocument);
+export default connect(null, mapDispatchToProps)(SearchDoc);

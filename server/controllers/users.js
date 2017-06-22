@@ -47,7 +47,8 @@ module.exports = {
               req.user = user;
               res.status(200).send({
                 message: 'Successfully logged in',
-                token
+                token,
+                username: user.username,
               });
             } else {
               res.status(401).send({
@@ -167,8 +168,8 @@ module.exports = {
       .findAll({
         where: {
           $or: [
-            { username: { $like: `%${req.query.q}%` } },
-            { email: { $like: `%${req.query.q}%` } }
+            { username: { $ilike: `%${req.query.q}%` } },
+            { email: { $ilike: `%${req.query.q}%` } }
           ]
         }
       })

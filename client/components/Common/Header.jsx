@@ -9,25 +9,34 @@ import * as sessionActions from '../../actions/sessionActions';
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.logOut = this.logOut.bind(this);
   }
-render(){
-  const token = localStorage.getItem('jwt');
-  const user = token && jwtDecode(token);
-  return (
-     <div className="card-panel teal lighten-2">
-      <IndexLink to="/" activeClassName="active"> Home</IndexLink>
-      {" | "}
-      <Link to="/documents" activeClassName="active">Documents</Link>
-       {" | "}
-      <Link to="/about" activeClassName="active">About</Link>
-       {" | "}
-      <Link to="/users" activeClassName="active">Users</Link>
-      {" | "}
-      {user
-        ? <Link to={`/users/${user.id}`} activeClassName="active">{user.data.username} </Link>
-        : <Link to="/login" activeClassName="active">Login</Link>
-      }
-      {/*{user
+
+  logOut() {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('username');
+  }
+  render() {
+    const token = localStorage.getItem('jwt');
+    const username = localStorage.getItem('username');
+    const user = token && jwtDecode;
+    return (
+      <div className="card-panel teal lighten-2">
+        <IndexLink to="/" activeClassName="active"> Home</IndexLink>
+        {" | "}
+        <Link to="/documents" activeClassName="active">Documents</Link>
+        {" | "}
+        <Link to="/about" activeClassName="active">About</Link>
+        {" | "}
+        <Link to="/users" activeClassName="active">Users</Link>
+        {" | "}
+        {token ?
+          (<Link to={"/login"} onClick={this.logOut} activeClassName="active"> Logout {username}</Link>)
+          : (<Link to="/login" activeClassName="active">Login</Link>)
+        }
+        {" | "}
+        <Link to="/signup" activeClassName="active">SignUp</Link>
+        {/*{user
         ? <Link to="#" activeClassName="active" onClick={this.logoutUser}>Logout</Link>
         : null
       }*/}
@@ -35,9 +44,6 @@ render(){
     );
   }
 }
-Header.propTypes = {
-  // session: PropTypes.object.isRequired,
-};
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(sessionActions, dispatch)

@@ -33,18 +33,11 @@ const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }
     <input
       type="submit"
       disabled={loading}
-      value={loading ? 'Saving...' : 'Save 👍'}
+      value={loading ? 'Saving...' : 'Save'}
       className="btn btn-primary"
+      style={{marginTop: "10px"}}
       onSave={onSave}
     />
-    {/*<input
-      type="submit"
-      disabled={loading}
-      value={loading ? 'Deleting...' : 'Delete 👎'}
-      className="btn btn-primary"
-      style={{backgroundColor: '#f44336', margin: '5px'}}
-      onDelete={onDelete}
-    />*/}
   </form> :
    <form onSubmit={onSave}>
     <h3> Create Document </h3>
@@ -73,8 +66,9 @@ const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }
     <input
       type="submit"
       disabled={loading}
-      value={loading ? 'Saving...' : 'Save 👍'}
+      value={loading ? 'Saving...' : 'Save'}
       className="btn btn-primary"
+      style={{marginTop: "10px"}}
       onSave={onSave}
     />
 
@@ -84,7 +78,6 @@ DocumentsForm.propTypes = {
   document: React.PropTypes.object.isRequired,
   onSave: React.PropTypes.func.isRequired,
   onUpdate: React.PropTypes.func.isRequired,
-  // onDelete: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
   loading: React.PropTypes.bool.isRequired,
   errors: React.PropTypes.object.isRequired

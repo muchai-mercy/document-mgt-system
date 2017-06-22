@@ -1,4 +1,3 @@
-// import * as types from './actionTypes';
 import { ALL_USERS_SUCCESS, POST_USERS_SUCCESS, UPDATE_USERS_SUCCESS, DELETE_USERS_SUCCESS } from "./actionTypes";
 import { postEndpoint, getEndpoint , putEndpoint, deleteEndpoint } from "../api/consumeApi";
 
