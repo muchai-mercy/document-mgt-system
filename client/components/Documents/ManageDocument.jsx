@@ -52,7 +52,7 @@ class ManageDocument extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="doc-form">
         <DocumentsForm
           document={this.state.document}
           onChange={this.updateDocumentState}

@@ -3,7 +3,7 @@
   color: black
 }
 
-#search-wrapper card {
+.search-wrapper card {
   font: inherit;
   display:  block;
   font-size: 16px;
@@ -14,4 +14,9 @@
   line-height: normal;
   color: inherit;
   width: 100%
+}
+
+.doc-form {
+ width: 50%;
+ margin-left: 25%;
 }

@@ -1,9 +1,6 @@
 import React from "react";
 import TextInput from "../Common/TextInput.jsx";
-import SelectInput from "../Common/SelectInput.jsx";
 import TextArea from "../Common/TextArea.jsx";
-// import SelectOptions from '../Common/SelectOptions.jsx';
-
 
 const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate}) => (
     user.id !='' ? 

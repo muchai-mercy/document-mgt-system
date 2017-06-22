@@ -54,11 +54,11 @@ export function deleteDocuments(documents) {
   };
 }
 
-export function searchDocuments(title ) {
-  return (dispatch) => {
-    postEndpoint(`/api/search/documents/?q=${title}`)
-    .send(title)
-    .end((err, res) => dispatch(searchDocumentsSuccess({ documents: res.body.title })
-    ));
-  };
-}
+// export function searchDocuments(title ) {
+//   return (dispatch) => {
+//     postEndpoint(`/api/search/documents/?q=${title}`)
+//     .send(title)
+//     .end((err, res) => dispatch(searchDocumentsSuccess({ documents: res.body.title })
+//     ));
+//   };
+// }

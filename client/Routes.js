@@ -13,7 +13,7 @@ import searchDocument from "./components/Documents/searchDocument.jsx";
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-      <IndexRoute component={searchDocument} />
+      {/*<IndexRoute component={searchDocument} />*/}
     <Route path="login" component={Login} />
     <Route path="documents" component={DocumentsPage} />
     <Route path="document" component={ManageDocument} />

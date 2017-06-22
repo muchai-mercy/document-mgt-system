@@ -3,10 +3,12 @@ import React, { PropTypes } from 'react';
 const SelectOptions = ({ name, label, onChange, defaultOption, value, error, options }) => (
   <div className="select=form">
     <label>Category</label>
-    <select className="browser-default">
+    <select className="browser-default" 
+    name="category" 
+    onChange={onChange}>
       <option value="" disabled selected>Select Access</option>
-      <option value="1">Public 🌞</option>
-      <option value="2">Private 😉</option>
+      <option value="Public">Public 🌞</option>
+      <option value="Private">Private 😉</option>
     </select>
     {error && <div className="alert-danger">{error}</div>}
   </div>

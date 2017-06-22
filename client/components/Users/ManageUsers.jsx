@@ -53,7 +53,7 @@ componentWillReceiveProps(nextProps){
   }
   render() {
     return (
-      <div>
+      <div className="doc-form">
         <UsersForm 
         user={this.state.user}
         onChange={this.updateUserState}
