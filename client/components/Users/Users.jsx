@@ -29,12 +29,16 @@ class UsersPage extends React.Component {
     const { user } = this.props;
     return (
       <div>
+        { localStorage.getItem('role') === 'Admin' ? 
+        <div>
         <input type="submit"
           value="Create User 🙌"
           className="btn btn-primary"
           onClick={this.redirectToCreateUserPage} />
           <SearchUser />
         <UsersList user={user} />
+        </div>
+        : null}
       </div>
     );
   }

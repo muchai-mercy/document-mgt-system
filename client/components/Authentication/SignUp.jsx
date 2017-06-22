@@ -16,7 +16,8 @@ class SignUp extends React.Component {
       lastName: '',
       username: '',
       email: '',
-      password: ''
+      password: '',
+      role: 'User'
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);

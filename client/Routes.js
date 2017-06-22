@@ -19,8 +19,12 @@ export default (
     <Route path="document" component={ManageDocument} />
     <Route path="documents/:id" component={ManageDocument} />
     <Route path="about" component={AboutPage} />
+    { localStorage.getItem('role') === 'Admin' ? 
+    <div>
     <Route path="users" component={UsersPage} />
     <Route path="user" component={ManageUsers} />
     <Route path="users/:id" component={ManageUsers} />
+    </div>
+    : null}
   </Route>
 );

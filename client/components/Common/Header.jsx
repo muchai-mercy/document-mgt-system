@@ -27,9 +27,10 @@ class Header extends React.Component {
         {" | "}
         <Link to="/documents" activeClassName="active">Documents</Link>
         {" | "}
-        <Link to="/about" activeClassName="active">About</Link>
-        {" | "}
+        <Link to="/about" activeClassName="active">About   </Link>
+        {localStorage.getItem('role') === 'Admin' ?
         <Link to="/users" activeClassName="active">Users</Link>
+        : null}
         {" | "}
         {token ?
           (<Link to={"/login"} onClick={this.logOut} activeClassName="active"> Logout {username}</Link>)

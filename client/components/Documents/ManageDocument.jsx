@@ -5,6 +5,7 @@ import * as documentActions from "../../actions/documentActions.js";
 import DocumentsForm from "./DocumentsForm.jsx";
 import toastr from "toastr";
 
+const userId = localStorage.getItem('userId');
 class ManageDocument extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -34,7 +35,7 @@ class ManageDocument extends React.Component {
 
   postDocuments(event) {
     event.preventDefault();
-    this.props.actions.postDocuments(this.state.document);
+    this.props.actions.postDocuments(Object.assign({}, this.state.document, { userId}));
     toastr.success('Document Created 😎!');
     this.context.router.push('/documents');
 

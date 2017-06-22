@@ -53,11 +53,16 @@ class Login extends React.Component {
 Login.propTypes = {
   actions: PropTypes.object.isRequired,
 };
+function mapStateToProps(state, ownProps) {
+  return {
+    credentials: state.credentials
+  };
+}
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(sessionActions, dispatch)
   };
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
 

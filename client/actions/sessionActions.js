@@ -16,6 +16,8 @@ export function loginUser(credentials) {
         if (!err) {
           localStorage.setItem('jwt', res.body.token);
           localStorage.setItem('username', res.body.username);
+          localStorage.setItem('userId', res.body.id);
+          localStorage.setItem('role', res.body.role);
           return dispatch(loginSuccess({ token: res.body.token }));
         }
       });
@@ -31,7 +33,7 @@ export const userSignup = userInfo => (dispatch) => {
       .send(userInfo)
       .then((res) => {
         localStorage.setItem('jwt', res.body.token);
-        dispatch(loginSuccess({token: res.body.token}));
+        dispatch(loginSuccess({ token: res.body.token }));
       })
       .catch((error) => {
         "Login failed";

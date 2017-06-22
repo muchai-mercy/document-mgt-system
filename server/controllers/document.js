@@ -22,6 +22,7 @@ module.exports = {
 
   //list all existing documents 
   list(req, res) {
+    // console.log('useeer', req.user);
     if (req.query.limit || req.query.offset) {
       return Document.findAll({
         offset: req.query.offset,

@@ -19,6 +19,7 @@ export function searchDocumentsSuccess(title) {
   return { type: SEARCH_DOCUMENTS_SUCCESS, title };
 }
 const token = localStorage.getItem('jwt');
+const userId = localStorage.getItem('userId');
 
 export function allDocuments(limit = 3, offset = 0) {
   return (dispatch) => {

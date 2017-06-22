@@ -1,6 +1,7 @@
 import React from "react";
 import TextInput from "../Common/TextInput.jsx";
 import TextArea from "../Common/TextArea.jsx";
+import SelectOptions from './SelectOptions.jsx';
 
 const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
   user.id != '' ?
@@ -38,6 +39,12 @@ const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
         type="password"
         label="Password"
         value={user.password}
+        onChange={onChange}
+      />
+      <SelectOptions
+        name="role"
+        label="Role"
+        value={user.role}
         onChange={onChange}
       />
 
@@ -82,6 +89,12 @@ const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
         name="password"
         label="Password"
         value={user.password}
+        onChange={onChange}
+      />
+      <SelectOptions
+        name="role"
+        label="Role"
+        value={user.role}
         onChange={onChange}
       />
 

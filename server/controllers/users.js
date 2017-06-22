@@ -18,6 +18,7 @@ module.exports = {
           username: req.body.username,
           email: req.body.email,
           password: hash,
+          role: req.body.role,
         })
         .then(user => res.status(200).send(user), {
           message: "User created!"
@@ -43,12 +44,14 @@ module.exports = {
         bcrypt.compare(req.body.password, user.password)
           .then((match) => {
             if (match) {
-              const token = jwt.sign({ data: {id: user.id, username: user.username} }, secretKey, { expiresIn: '24h' });
+              const token = jwt.sign({ data: {id: user.id, username: user.username, role: user.role} }, secretKey, { expiresIn: '24h' });
               req.user = user;
               res.status(200).send({
                 message: 'Successfully logged in',
                 token,
                 username: user.username,
+                id: user.id,
+                role: user.role
               });
             } else {
               res.status(401).send({
