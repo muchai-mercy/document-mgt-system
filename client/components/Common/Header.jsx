@@ -3,6 +3,7 @@ import jwtDecode from "jwt-decode";
 import { Link, IndexLink } from "react-router";
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import * as sessionActions from '../../actions/sessionActions';
 
 
@@ -36,10 +37,6 @@ class Header extends React.Component {
         }
         {" | "}
         <Link to="/signup" activeClassName="active">SignUp</Link>
-        {/*{user
-        ? <Link to="#" activeClassName="active" onClick={this.logoutUser}>Logout</Link>
-        : null
-      }*/}
       </div>
     );
   }
