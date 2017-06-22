@@ -1,9 +1,10 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { browserHistory } from "react-router";
 import * as userActions from "../../actions/userActions.js";
 import UsersList from "./UsersList.jsx";
-import { browserHistory } from "react-router";
+import SearchUser from "./SearchUsers.jsx";
 
 class UsersPage extends React.Component {
   constructor(props, context) {
@@ -16,8 +17,8 @@ class UsersPage extends React.Component {
 
 
   userRow(user, index) {
-    return <div key={index}>{user.username}
-    </div>;
+    return (<div key={index}>{user.username}
+    </div>);
   }
 
   redirectToCreateUserPage() {
@@ -32,6 +33,7 @@ class UsersPage extends React.Component {
           value="Create User 🙌"
           className="btn btn-primary"
           onClick={this.redirectToCreateUserPage} />
+          <SearchUser />
         <UsersList user={user} />
       </div>
     );

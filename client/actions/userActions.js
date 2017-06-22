@@ -1,4 +1,4 @@
-import { ALL_USERS_SUCCESS, POST_USERS_SUCCESS, UPDATE_USERS_SUCCESS, DELETE_USERS_SUCCESS } from "./actionTypes";
+import { ALL_USERS_SUCCESS, POST_USERS_SUCCESS, UPDATE_USERS_SUCCESS, DELETE_USERS_SUCCESS, SEARCH_USERS_SUCCESS } from "./actionTypes";
 import { postEndpoint, getEndpoint , putEndpoint, deleteEndpoint } from "../api/consumeApi";
 
 export function allUsersSuccess(users) {
@@ -13,6 +13,9 @@ export function updateUsersSuccess(user) {
 }
 export function deleteUsersSuccess(user) {
   return {type: DELETE_USERS_SUCCESS, user};
+}
+export function searchUsersSuccess(username, email) {
+  return {type: SEARCH_USERS_SUCCESS, username, email};
 }
 export function allUsers() {
   return (dispatch) => {
@@ -44,6 +47,14 @@ export function deleteUsers(users) {
     deleteEndpoint(`/api/users/${users.id}`)
     .send(users)
     .end((err, res) => dispatch(deleteUsersSuccess(users)
+    ));
+  };
+}
+
+export function searchUsers(username, email) {
+  return (dispatch) => {
+    getEndpoint(`/api/search/users/?q=${username}&q=${email}`)
+    .end((err, res) => dispatch(searchUsersSuccess(res.body)
     ));
   };
 }

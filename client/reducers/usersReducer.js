@@ -22,6 +22,9 @@ export default function usersReducer(state = [], action) {
       browserHistory.push('/users');
       return newState;
     }
+    case types.SEARCH_DOCUMENTS_SUCCESS:
+      return (action.username, action.email);
+
 
     default:
       return state;
