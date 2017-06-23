@@ -3,7 +3,6 @@ import { postEndpoint, getEndpoint, deleteEndpoint, putEndpoint } from "../api/c
 
 export function allDocumentsSuccess(documents) {
   return { type: ALL_DOCUMENTS_SUCCESS, documents };
-
 }
 
 export function postDocumentsSuccess(document) {
@@ -18,6 +17,7 @@ export function deleteDocumentsSuccess(document) {
 export function searchDocumentsSuccess(documents) {
   return { type: SEARCH_DOCUMENTS_SUCCESS, documents };
 }
+
 const token = localStorage.getItem('jwt');
 const userId = localStorage.getItem('userId');
 

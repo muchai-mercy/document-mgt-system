@@ -22,17 +22,20 @@ module.exports = {
 
   //list all existing documents 
   list(req, res) {
-    console.log('useeerr', req.decoded.data);
+    let documentQuery = {};
+      // if not admin get only the docs belonging to the authenticated user
+    if(req.decoded.data.role != "Admin"){
+      documentQuery["where"] = {userId: req.decoded.data.id};
+    }
     if (req.query.limit || req.query.offset) {
-      return Document.findAll({
-        offset: req.query.offset,
-        limit: req.query.limit
-      })
-        .then(user => res.status(200).send(user))
+      documentQuery["offset"] = req.query.offset;
+      documentQuery["limit"] = req.query.limit;
+      return Document.findAll(documentQuery)
+        .then(document => res.status(200).send(document))
         .catch(error => res.status(400).send(error));
     }
     return Document
-      .findAll()
+      .findAll(documentQuery)
       .then(document => res.status(200).send(document))
       .catch(error => res.status(400).send(error));
   },
