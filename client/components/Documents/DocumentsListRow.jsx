@@ -13,6 +13,6 @@ const DocumentsListRow = ({ document }) => {
 
 DocumentsListRow.propTypes = {
   document: PropTypes.object.isRequired
-}
+};
 
 export default DocumentsListRow;

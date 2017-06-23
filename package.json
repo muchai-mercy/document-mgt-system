@@ -14,8 +14,7 @@
     "open:client": "babel-node app.js",
     "lint": "node_modules/.bin/esw webpack.config.* client server",
     "lint:watch": "npm run lint -- --watch",
-    "test": "mocha yc --reporter spec client/tests/**/*.spec/.js",
-    "test:back": "nyc --reporter=html --reporter=text mocha server/tests/**/*.js --timeout 10000",
+    "test": "nyc --reporter=html --reporter=text mocha server/tests/**/*.js --timeout 30000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test:watch": "npm run test -- --watch"
   },

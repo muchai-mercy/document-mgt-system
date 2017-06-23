@@ -22,7 +22,7 @@ module.exports = {
 
   //list all existing documents 
   list(req, res) {
-    // console.log('useeer', req.user);
+    console.log('useeerr', req.decoded.data);
     if (req.query.limit || req.query.offset) {
       return Document.findAll({
         offset: req.query.offset,
@@ -73,8 +73,7 @@ module.exports = {
           })
           .then(() => res.status(200).send(document))
           .catch(error => res.status(400).send(error));
-      })
-      .catch(error => res.status(400).send(error));
+      });
   },
 
   //delete a document
@@ -93,10 +92,9 @@ module.exports = {
             content: req.body.content || document.content,
             userId: req.body.userId || document.userId
           })
-          .then(() => res.status(200).send({ message: 'Document successfully deleted' }))
+          .then(() => res.status(204).send())
           .catch(error => res.status(400).send(error));
-      })
-      .catch(error => res.status(400).send(error));
+      });
   },
 
   //search a document by title

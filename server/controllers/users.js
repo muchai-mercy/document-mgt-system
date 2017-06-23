@@ -20,7 +20,7 @@ module.exports = {
           password: hash,
           role: req.body.role,
         })
-        .then(user => res.status(200).send(user), {
+        .then(user => res.status(201).send(user), {
           message: "User created!"
         })
         .catch(error => {res.status(400).send(error);
@@ -64,11 +64,6 @@ module.exports = {
               message: 'Wrong password/username combination'
             });
           });
-      })
-      .catch((err) => {
-        res.status(401).send({
-          error: 'Wrong password/username combination'
-        });
       });
   },
 
@@ -139,8 +134,7 @@ module.exports = {
             return user.update();
           }
         }
-      })
-      .catch(error => res.status(400).send(error));
+      });
   },
 
   //delete a user
@@ -159,10 +153,9 @@ module.exports = {
             password: req.body.password || user.password,
             email: req.body.email || user.email
           })
-          .then(() => res.status(200).send({ message: 'User successfully deleted' }))
+          .then(() => res.status(204).send())
           .catch(error => res.status(400).send(error));
-      })
-      .catch(error => res.status(400).send(error));
+      });
   },
 
   //search for a user by query input

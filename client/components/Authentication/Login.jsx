@@ -3,6 +3,7 @@ import TextInput from '../Common/TextInput.jsx';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as sessionActions from '../../actions/sessionActions.js';
+import toastr from "toastr";
 
 class Login extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class Login extends React.Component {
   onSave(event) {
     event.preventDefault();
     this.props.actions.loginUser(this.state.credentials);
+     toastr.success('Logged in successfully!');
   }
 
   render() {
@@ -35,7 +37,7 @@ class Login extends React.Component {
             onChange={this.onChange} />
 
           <input
-          name="password"
+            name="password"
             type="password"
             label="Enter Password"
             value={this.state.credentials.password}
@@ -45,6 +47,8 @@ class Login extends React.Component {
             type="submit"
             className="btn waves-effect waves-light"
             onClick={this.onSave} />
+            
+
         </form>
       </div>
     );

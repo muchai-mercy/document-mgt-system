@@ -7,6 +7,9 @@ import toastr from "toastr";
 class SearchDoc extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      title: ''
+    };
 
     this.documentSearch = this.documentSearch.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -20,7 +23,7 @@ class SearchDoc extends React.Component {
     event.preventDefault();
     return this.setState({ title: event.target.value });
   }
-  onSubmit(event) {
+  onSubmit(title) {
     event.preventDefault();
     this.documentSearch(this.state.title);
   }

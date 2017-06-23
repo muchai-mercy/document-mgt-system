@@ -15,8 +15,8 @@ export function updateDocumentsSuccess(document) {
 export function deleteDocumentsSuccess(document) {
   return { type: DELETE_DOCUMENTS_SUCCESS, document };
 }
-export function searchDocumentsSuccess(title) {
-  return { type: SEARCH_DOCUMENTS_SUCCESS, title };
+export function searchDocumentsSuccess(documents) {
+  return { type: SEARCH_DOCUMENTS_SUCCESS, documents };
 }
 const token = localStorage.getItem('jwt');
 const userId = localStorage.getItem('userId');

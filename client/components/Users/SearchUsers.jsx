@@ -31,7 +31,7 @@ class SearchUser extends React.Component {
         id="search"
           onChange={this.onChange} />
         <i className="material-icons" style={{ paddingLeft: "160px"}}
-          onClick={this.onSubmit} />
+          onClick={this.onSubmit}>search </i>
       </div>
     );
   }
