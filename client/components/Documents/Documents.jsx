@@ -7,7 +7,7 @@ import * as documentActions from "../../actions/documentActions.js";
 import DocumentList from "./DocumentList.jsx";
 import SearchDoc from "./SearchDocument.jsx";
 
-class DocumentsPage extends React.Component {
+export class DocumentsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -34,7 +34,7 @@ class DocumentsPage extends React.Component {
   }
 
   render() {
-    const { document } = this.props;
+    const { documents } = this.props;
     return (
       <div>
         <div>
@@ -44,7 +44,7 @@ class DocumentsPage extends React.Component {
           onClick={this.redirectToCreateDocumentPage} />
            <SearchDoc />
            </div>
-        <DocumentList document={document} />
+        <DocumentList documents={documents} />
         <Pagination
           activePage={this.state.activePage}
           itemsCountPerPage={3}
@@ -58,12 +58,12 @@ class DocumentsPage extends React.Component {
 }
 DocumentsPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  document: PropTypes.array.isRequired,
+  documents: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    document: state.document
+    documents: state.documents
   };
 }
 function mapDispatchToProps(dispatch) {

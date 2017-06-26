@@ -7,13 +7,12 @@ import SelectOptions from '../Common/SelectOptions.jsx';
 const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }) => (
   document.id !='' ? 
   <form onSubmit={onUpdate}>
-    <h3> Create Document </h3>
+    <h4> Update Document </h4>
     <TextInput
       name="title"
       label="Title"
       value={document.title}
       onChange={onChange}
-
     />
 
     <TextArea
@@ -40,13 +39,12 @@ const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }
     />
   </form> :
    <form onSubmit={onSave}>
-    <h3> Create Document </h3>
+    <h4> Create Document </h4>
     <TextInput
       name="title"
       label="Title"
       value={document.title}
       onChange={onChange}
-
     />
 
     <TextArea

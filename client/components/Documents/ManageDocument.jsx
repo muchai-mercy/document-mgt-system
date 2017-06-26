@@ -1,12 +1,13 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import { browserHistory } from "react-router";
 import * as documentActions from "../../actions/documentActions.js";
 import DocumentsForm from "./DocumentsForm.jsx";
 import toastr from "toastr";
 
 const userId = localStorage.getItem('userId');
-class ManageDocument extends React.Component {
+export class ManageDocument extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -32,10 +33,26 @@ class ManageDocument extends React.Component {
     document[field] = event.target.value;
     return this.setState({ document: document });
   }
+  documentFormisValid() {
+    let formisValid = true;
+    let errors = {};
 
+    if (this.state.document.title.length < 6) {
+      errors.title = 'Title must be at least 6 characters.';
+      formisValid = false;
+    }
+
+    this.setState({ errors: errors });
+    return formisValid;
+  }
   postDocuments(event) {
     event.preventDefault();
-    this.props.actions.postDocuments(Object.assign({}, this.state.document, { userId}));
+    if (!this.documentFormisValid()) {
+      toastr.error('Title must be at least 6 characters!');
+      return;
+    }
+    this.setState({ saving: true });
+    this.props.actions.postDocuments(Object.assign({}, this.state.document, { userId }));
     toastr.success('Document Created 😎!');
     this.context.router.push('/documents');
 
@@ -50,6 +67,7 @@ class ManageDocument extends React.Component {
   deleteDocuments(event) {
     this.props.actions.deleteDocuments(this.state.document);
     toastr.success('Document Deleted 😯');
+    browserHistory.push('/documents');
   }
   render() {
     return (
@@ -59,11 +77,11 @@ class ManageDocument extends React.Component {
           onChange={this.updateDocumentState}
           onSave={this.postDocuments}
           onUpdate={this.updateDocuments}
-          errors={this.state.errors}/>
-          <button 
-           onClick={this.deleteDocuments}
-           className="btn btn-default"style={{backgroundColor: '#f44336',marginLeft: "82%", marginTop: "-60px"}}>
-           Delete
+          errors={this.state.errors} />
+        <button
+          onClick={this.deleteDocuments}
+          className="btn btn-default" style={{ backgroundColor: '#f44336', marginLeft: "82%", marginTop: "-60px" }}>
+          Delete
        </button>
       </div>
     );

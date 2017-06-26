@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import TextInput from '../Common/TextInput.jsx';
 import { bindActionCreators } from 'redux';
+import { browserHistory } from "react-router";
 import { connect } from 'react-redux';
 import * as sessionActions from '../../actions/sessionActions.js';
 import toastr from "toastr";
@@ -23,7 +24,8 @@ class Login extends React.Component {
   onSave(event) {
     event.preventDefault();
     this.props.actions.loginUser(this.state.credentials);
-     toastr.success('Logged in successfully!');
+    toastr.success('Logged in successfully!');
+    browserHistory.push('/');
   }
 
   render() {
@@ -47,7 +49,7 @@ class Login extends React.Component {
             type="submit"
             className="btn waves-effect waves-light"
             onClick={this.onSave} />
-            
+
 
         </form>
       </div>

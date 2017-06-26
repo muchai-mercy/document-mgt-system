@@ -1,5 +1,4 @@
 import * as types from '../actions/actionTypes';
-import { browserHistory } from "react-router";
 
 export default function usersReducer(state = [], action) {
   switch (action.type) {
@@ -19,12 +18,10 @@ export default function usersReducer(state = [], action) {
         return user.id == action.user.id;
       });
       newState.splice(indexOfUserToDelete, 1);
-      browserHistory.push('/users');
       return newState;
     }
     case types.SEARCH_DOCUMENTS_SUCCESS:
       return (action.username, action.email);
-
 
     default:
       return state;

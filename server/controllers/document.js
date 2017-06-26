@@ -110,5 +110,26 @@ module.exports = {
       })
       .then(response => res.status(200).send(response))
       .catch(error => res.status(400).send(error));
+  },
+  //get all public documents
+    findPublicDocs(req, res) { 
+    return Document
+    .findAll({
+       where: {
+        category: { $iLike: 'Public' }
+      }
+    })
+    .then((data) => {
+      if (!data) {
+        return res.status(404).send({
+          message: 'No Documents Found',
+          });
+        }
+        return res.status(200).send(data);
+      })
+      .catch((error) => {
+        res.status(400).send(error);
+      });
   }
 };
+

@@ -6,7 +6,7 @@ import SelectOptions from './SelectOptions.jsx';
 const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
   user.id != '' ?
     <form onSubmit={onUpdate}>
-      <h3> Manage Users </h3>
+      <h4> Update Data </h4>
       <TextArea
         name="firstName"
         label="First Name"
@@ -57,7 +57,7 @@ const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
       />
     </form> :
     <form onSubmit={onSave}>
-      <h3> Manage Users </h3>
+      <h4> Manage Users </h4>
       <TextArea
         name="firstName"
         label="First Name"

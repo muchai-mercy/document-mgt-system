@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import DocumentsListRow from "./DocumentsListRow.jsx";
 
-const DocumentList = ({ document }) => {
+const DocumentList = ({ documents }) => {
   return (
     <table className="table">
       <thead>
@@ -12,7 +12,7 @@ const DocumentList = ({ document }) => {
         </tr>
       </thead>
       <tbody>
-        {document ? document.map(document =>
+        {documents ? documents.map(document =>
 
           <DocumentsListRow key={document.id} document={document} />
         ) : <span />}
@@ -22,7 +22,7 @@ const DocumentList = ({ document }) => {
 };
 
 DocumentList.propTypes = {
-  document: PropTypes.array.isRequired
+  documents: PropTypes.array.isRequired
 };
 
 export default DocumentList;
