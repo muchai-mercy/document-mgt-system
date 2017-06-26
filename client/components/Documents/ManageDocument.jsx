@@ -59,6 +59,10 @@ export class ManageDocument extends React.Component {
   }
   updateDocuments(event) {
     event.preventDefault();
+    if (!this.documentFormisValid()) {
+      toastr.error('Title must be at least 6 characters!');
+      return;
+    }
     this.props.actions.updateDocuments(this.state.document);
     toastr.success('Document Updated 😎!');
     this.context.router.push('/documents');

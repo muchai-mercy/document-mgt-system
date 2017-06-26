@@ -6,7 +6,7 @@ import * as userActions from "../../actions/userActions.js";
 import UsersForm from "./UsersForm.jsx";
 import toastr from "toastr";
 
-class ManageUsers extends React.Component {
+export class ManageUsers extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -32,9 +32,24 @@ class ManageUsers extends React.Component {
     user[field] = event.target.value;
     return this.setState({ user: user });
   }
+userFormisValid() {
+    let formisValid = true;
+    let errors = {};
 
+    if (this.state.user.username.length < 5) {
+      errors.username = 'Username must be at least 5 characters.';
+      formisValid = false;
+    }
+
+    this.setState({ errors: errors });
+    return formisValid;
+  }
   postUsers(event) {
     event.preventDefault();
+     if (!this.userFormisValid()) {
+      toastr.error('Username must be at least 5 characters!');
+      return;
+    }
     this.props.actions.postUsers(this.state.user);
     this.props.actions.allUsers();
     toastr.success('User Created 😎!');
@@ -43,6 +58,10 @@ class ManageUsers extends React.Component {
   }
   updateUsers(event) {
     event.preventDefault();
+    if (!this.userFormisValid()) {
+      toastr.error('Username must be at least 6 characters!');
+      return;
+    }
     this.props.actions.updateUsers(this.state.user);
     toastr.success('User Updated 😎!');
     this.context.router.push('/users');
@@ -91,7 +110,7 @@ function getUserById(user, id) {
 
 function mapStateToProps(state, ownProps) {
   const userId = ownProps.params.id; // from the path users/:id
-  let user = { id: '', firstName: '', lastName: '', email: '', password: '' };
+  let user = { id: '', firstName: '', lastName: '', username: '', email: '', password: '' };
 
   if (userId && state.user.length > 0) {
     user = getUserById(state.user, userId);

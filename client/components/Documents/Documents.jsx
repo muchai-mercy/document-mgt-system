@@ -7,7 +7,7 @@ import * as documentActions from "../../actions/documentActions.js";
 import DocumentList from "./DocumentList.jsx";
 import SearchDoc from "./SearchDocument.jsx";
 
-export class DocumentsPage extends React.Component {
+class DocumentsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
