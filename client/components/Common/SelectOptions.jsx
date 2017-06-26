@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const SelectOptions = ({ name, label, onChange, defaultOption, value, error, options }) => (
+export const SelectOptions = ({ name, label, onChange, defaultOption, value, error, options }) => (
   <div className="select=form">
     <label>Category</label>
     <select className="browser-default" 

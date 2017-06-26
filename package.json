@@ -15,7 +15,7 @@
     "lint": "node_modules/.bin/esw webpack.config.* client server",
     "lint:watch": "npm run lint -- --watch",
     "test": "npm run test:front; npm run test:back",
-    "test:front": "mocha --require tools/testSetup.js --require mock-local-storage \"client/tests/**/*.test.js\"",
+    "test:front": "nyc --reporter=html --reporter=text mocha --require tools/testSetup.js --require mock-local-storage client/tests/**/*.test.js",
     "test:back": "nyc --reporter=html --reporter=text mocha server/tests/**/*.js --timeout 30000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test:watch": "npm run test -- --watch"
