@@ -28,10 +28,20 @@ describe('Documents Actions', () => {
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
-describe('Async tests', () =>{
-  afterEach(() =>  {
+describe('Async tests', () => {
+  afterEach(() => {
     nock.cleanAll();
   });
+  it('should create BEGIN_AJAX_CALL and ALL_DOCUMENTS_SUCCESS when loading documents', (done) => {
+    const expectedActions = {
+      type: types.POST_DOCUMENTS_SUCCESS,
+      body: {document: [{ id: '10', title: 'Clothes', content: 'Women clothes', category: 'Public' }]}
+    };
+    const store = mockStore({ document: [], expectedActions });
+    store.dispatch(documentActions.allDocuments()).then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).type.toEqual(types.ALL_DOCUMENTS_SUCCESS);
+      done();
+    });
+  });
 });
-it('should')
-

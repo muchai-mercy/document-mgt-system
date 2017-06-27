@@ -7,9 +7,19 @@ const app = require('../../app');
 const User = ('../controllers/users.js');
 
 chai.use(chaiHttp);
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo1LCJ1c2VybmFtZSI6Im1pa2V5Iiwicm9sZSI6IkFkbWluIn0sImlhdCI6MTQ5ODIxOTM5NCwiZXhwIjoxNDk4MzA1Nzk0fQ.gGNtmDQ5ghu5IdqW420DR9dLwYSsajPs4cPUzhMPtuk';
+let token = '';
 
 describe('Users', () => {
+  // login
+  beforeEach('login user', (done) => {
+    chai.request(app)
+      .post('/api/users/login')
+      .send({ email: 'tests@gmail.com', password: 'tests' })
+      .then((res) => {
+        token = res.body.token;
+        done();
+      });
+  });
   describe('/GET/users', () => {
     it('should GET all users', (done) => {
       chai.request(app)
@@ -55,7 +65,7 @@ describe('/POST user', () => {
         firstName: "Mike",
         lastName: "Mikey",
         username: "mikey",
-        email: "mickeyy@yail.com",
+        email: "mickeyy@yal.com",
         password: "mikey",
         role: 'User'
       })

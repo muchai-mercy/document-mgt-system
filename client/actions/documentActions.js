@@ -25,7 +25,7 @@ const userId = localStorage.getItem('userId');
 
 export function allDocuments(limit = 3, offset = 0) {
   return (dispatch) => {
-    getEndpoint(`/api/documents?limit=${limit}&offset=${offset}`)
+    getEndpoint(`/api/documents/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)
       .end((err, res) => dispatch(allDocumentsSuccess(res.body)
       ));

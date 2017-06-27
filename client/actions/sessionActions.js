@@ -2,8 +2,8 @@ import request from "superagent";
 import { LOGIN_SUCCESS, SIGNUP_USER } from "./actionTypes";
 import { postEndpoint } from "../api/consumeApi";
 
-export const loginSuccess = () => {
-  return { type: LOGIN_SUCCESS };
+export const loginSuccess = (token) => {
+  return { type: LOGIN_SUCCESS, token };
 };
 
 export const signUpUser = user => ({ type: SIGNUP_USER, user });
@@ -23,7 +23,6 @@ export function loginUser(credentials) {
       });
   };
 }
-
 
 export const userSignup = userInfo => (dispatch) => {
   dispatch(signUpUser(userInfo));

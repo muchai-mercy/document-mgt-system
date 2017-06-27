@@ -41,12 +41,18 @@ class Header extends React.Component {
     );
   }
 }
+function mapStateToProps(dispatch) {
+  return {
+  token: state.token
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(sessionActions, dispatch)
   };
 }
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
 

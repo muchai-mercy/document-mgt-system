@@ -7,9 +7,21 @@ const app = require('../../app');
 const users = ('../controllers/document.js');
 
 chai.use(chaiHttp);
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo1LCJ1c2VybmFtZSI6Im1pa2V5Iiwicm9sZSI6IkFkbWluIn0sImlhdCI6MTQ5ODIxOTM5NCwiZXhwIjoxNDk4MzA1Nzk0fQ.gGNtmDQ5ghu5IdqW420DR9dLwYSsajPs4cPUzhMPtuk';
+let token = '';
+
 
 describe('Documents', () => {
+  // login /
+  beforeEach('login user', (done) => {
+    chai.request(app)
+      .post('/api/users/login')
+      .send({ email: 'tests@gmail.com', password: 'tests' })
+      .then((res) => {
+        token = res.body.token;
+        done();
+      });
+  });
+
   describe('/GET', () => {
     it('returns a list of existing documents', (done) => {
       chai.request(app)
@@ -24,7 +36,7 @@ describe('Documents', () => {
   describe('/GET/document by id', () => {
     it('should GET a document by its id', (done) => {
       chai.request(app)
-        .get('/api/documents/3')
+        .get('/api/documents/6')
         .set('access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
@@ -86,20 +98,6 @@ describe('Documents', () => {
         });
     });
   });
-
-
-  describe('/GET/<document>', () => {
-    it('it should GET a document by the given id', (done) => {
-      chai.request(app)
-        .get('/api/documents/3')
-        .set('access-token', token)
-        .end((err, res) => {
-          res.should.have.status(200);
-          done();
-        });
-    });
-  });
-
 
   describe('/GET/search/documents/?q={}', () => {
     it('it should GET a document by searching', (done) => {

@@ -111,13 +111,8 @@ function getDocumentById(document, id) {
 
 function mapStateToProps(state, ownProps) {
   const documentId = ownProps.params.id; // from the path documents/:id
-  let document = { id: '', title: '', content: '', category: '' };
-
-  if (documentId && state.document.length > 0) {
-    document = getDocumentById(state.document, documentId);
-  }
   return {
-    document: document
+    document: getDocumentById(state.documents, documentId)
   };
 }
 function mapDispatchToProps(dispatch) {
