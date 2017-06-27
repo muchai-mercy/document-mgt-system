@@ -36,7 +36,7 @@ describe('Documents', () => {
   describe('/GET/document by id', () => {
     it('should GET a document by its id', (done) => {
       chai.request(app)
-        .get('/api/documents/6')
+        .get('/api/documents/1')
         .set('access-token', token)
         .end((err, res) => {
           res.should.have.status(200);

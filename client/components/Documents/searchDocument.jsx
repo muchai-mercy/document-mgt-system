@@ -7,9 +7,6 @@ import toastr from "toastr";
 class SearchDoc extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      title: ''
-    };
 
     this.documentSearch = this.documentSearch.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -23,25 +20,18 @@ class SearchDoc extends React.Component {
     event.preventDefault();
     return this.setState({ title: event.target.value });
   }
-  onSubmit(title) {
+  onSubmit(event) {
     event.preventDefault();
     this.documentSearch(this.state.title);
   }
   render() {
     return (
-      <div className="search-wrapper card">
-        <input
-          id="search"
-          onChange={this.handleSearchInput}
-        />
-        <i className="material-icons"
-        onClick={this.onSubmit}>search</i>
-      {/*<div className="search-wrapper card" style={{ marginLeft: "84%", marginTop: "-40px" }}>
+      <div className="search-wrapper card" style={{ marginLeft: "84%", marginTop: "-40px" }}>
         <input
         id="search"
           onChange={this.onChange} />
         <i className="material-icons" style={{ paddingLeft: "160px"}}
-          onClick={this.onSubmit}>search</i>*/}
+          onClick={this.onSubmit}>search</i>
       </div>
     );
   }

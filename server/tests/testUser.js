@@ -35,7 +35,7 @@ describe('Users', () => {
 describe('/GET user by id', () => {
   it('should GET a user by its id', (done) => {
     chai.request(app)
-      .get('/api/users/4')
+      .get('/api/users/1')
       .set('access-token', token)
       .end((err, res) => {
         res.should.have.status(200);

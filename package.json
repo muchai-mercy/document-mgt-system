@@ -14,6 +14,7 @@
     "open:client": "babel-node app.js",
     "lint": "node_modules/.bin/esw webpack.config.* client server",
     "lint:watch": "npm run lint -- --watch",
+    "pretest": "export NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
     "test": "npm run test:front; npm run test:back",
     "test:front": "nyc --reporter=html --reporter=text mocha --require tools/testSetup.js --require mock-local-storage client/tests/**/*.test.js",
     "test:back": "nyc --reporter=html --reporter=text mocha server/tests/**/*.js --timeout 30000",
