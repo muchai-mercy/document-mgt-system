@@ -55,27 +55,27 @@ describe('/SEARCH/user', () => {
       });
   });
 });
-// Test the POST route
-describe('/POST user', () => {
-  it('should create a new user', (done) => {
-    chai.request(app)
-      .post('/api/users/')
-      .set('access-token', token)
-      .send({
-        firstName: "Mike",
-        lastName: "Mikey",
-        username: "mikey",
-        email: "mickeyy@yal.com",
-        password: "mikey",
-        role: 'User'
-      })
-      .set('access-token', token)
-      .end((err, res) => {
-        res.should.have.status(201);
-        done();
-      });
-  });
-});
+// // Test the POST route
+// describe('/POST user', () => {
+//   it('should create a new user', (done) => {
+//     chai.request(app)
+//       .post('/api/users/')
+//       .set('access-token', token)
+//       .send({
+//         firstName: "Mike",
+//         lastName: "Mikey",
+//         username: "mikey",
+//         email: "mickeyy@yal.com",
+//         password: "mikey",
+//         role: 'User'
+//       })
+//       .set('access-token', token)
+//       .end((err, res) => {
+//         res.should.have.status(201);
+//         done();
+//       });
+//   });
+// });
 
 describe('/GET/users', () => {
   it('should GET users and paginate', (done) => {
