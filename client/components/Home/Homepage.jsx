@@ -5,7 +5,6 @@ import Pagination from "react-js-pagination";
 import { browserHistory, Link } from "react-router";
 import * as documentActions from "../../actions/documentActions.js";
 import DocumentList from "../Documents/DocumentList.jsx";
-// import SearchDoc from "../Documents/SearchDocument.jsx";
 
 class HomePage extends React.Component {
   constructor(props) {

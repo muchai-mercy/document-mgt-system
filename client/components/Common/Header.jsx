@@ -22,22 +22,21 @@ class Header extends React.Component {
     const username = localStorage.getItem('username');
     const user = token && jwtDecode;
     return (
-      <div className="card-panel teal lighten-2">
-        <IndexLink to="/" activeClassName="active"> Home</IndexLink>
+      <div className="card-panel teal lighten-2 header">
+        <IndexLink to="/" activeClassName="active" style={{color:"white"}}> Home</IndexLink>
         {" | "}
-        <Link to="/documents" activeClassName="active">Documents</Link>
+        <Link to="/documents" activeClassName="active"style={{color:"white"}}>Documents</Link>
         {" | "}
-        <Link to="/about" activeClassName="active">About   </Link>
-        {localStorage.getItem('role') === 'Admin' ?
-        <Link to="/users" activeClassName="active">Users</Link>
-        : null}
+        <Link to="/about" activeClassName="active"style={{color:"white"}}>About   </Link>
+        {localStorage.getItem('role') === 'Admin' &&
+        <Link to="/users" activeClassName="active"style={{color:"white"}}>Users</Link>}
         {" | "}
         {token ?
-          (<Link to={"/login"} onClick={this.logOut} activeClassName="active"> Logout {username}</Link>)
-          : (<Link to="/login" activeClassName="active">Login</Link>)
+          (<Link to={"/login"} onClick={this.logOut} activeClassName="active"style={{color:"white"}}> Logout {username}</Link>)
+          : (<Link to="/login" activeClassName="active"style={{color:"white"}}>Login</Link>)
         }
         {" | "}
-        <Link to="/signup" activeClassName="active">SignUp</Link>
+        <Link to="/signup" activeClassName="active"style={{color:"white"}}>SignUp</Link>
       </div>
     );
   }

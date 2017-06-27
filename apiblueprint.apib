@@ -76,6 +76,7 @@ Logs in an existing user.
 
 Lists all existing users inclusive of their documents.
 + Requires authentication and admin access
+
 + Response 200 (application/json)
 
        [
@@ -241,8 +242,8 @@ Deletes a user whose id is specified, i.e `/api/users/6`
 
 + Response 204 (application/json)
 
- - If the user does not exist:
- + Response 404 (application/json)
+- If the user does not exist:
++ Response 404 (application/json)
           {
             "message": "User not Found"
           }
@@ -285,7 +286,7 @@ Search a user by their username, i.e `/api/search/users/?q=mi`
 
 ### create a document [POST /api/documents]
 - Creates a new document specific to the user.
-- Requires authentication
++ Requires authentication
 - The following fields are required:
 
 + title
@@ -316,9 +317,9 @@ Search a user by their username, i.e `/api/search/users/?q=mi`
 ### list documents [GET /api/documents]
 
 - Lists all existing documents. Users can view all documents they created. Admin logged in can view all documents.
-- Requires authentication
++ Requires authentication
 
-- Response 200 (application/json)
++ Response 200 (application/json)
 [
   {
     "id": 92,
@@ -336,7 +337,7 @@ Search a user by their username, i.e `/api/search/users/?q=mi`
 - Lists all pulic existing documents. Users can view all public documents.
 - Does not require authentication
 
-- Response 200 (application/json)
++ Response 200 (application/json)
      [
   {
     "id": 1,
@@ -407,7 +408,7 @@ Search a user by their username, i.e `/api/search/users/?q=mi`
 
 - Lists all documents existing for authenticated user with limit and offset given.
 - For example: `/api/documents/?limit=2&offset=1`
-- Requires authentication
++ Requires authentication
 
 + Response 200 (application/json)
    [
@@ -434,7 +435,7 @@ Search a user by their username, i.e `/api/search/users/?q=mi`
 ### Get a specific document [GET /api/documents/:id]
 - Gets a document with the ID provided.
 - For example: `/api/documents/87`
-- Requires authentication
++ Requires authentication
 + Response 200 (application/json). (Admin is logged in)
     {
   "id": 87,
@@ -503,7 +504,7 @@ Search a user by their username, i.e `/api/search/users/?q=mi`
 ### Update a document [PUT /api/documents/:id]
 Updates the document whose id is provided.
 -  For example: `/api/documents/87`
-- Requires authentication
++ Requires authentication
 
 + Response 200 (application/json)
      {
@@ -522,7 +523,7 @@ Updates the document whose id is provided.
 - For example i.e `/api/documents/87`
 - Requires authentication
 
-- Response 204 (application/json)
++ Response 204 (application/json)
 
  - If the document does not exist:
  + Response 404 (application/json)

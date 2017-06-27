@@ -28,3 +28,10 @@ describe('Documents Actions', () => {
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
+describe('Async tests', () =>{
+  afterEach(() =>  {
+    nock.cleanAll();
+  });
+});
+it('should')
+
