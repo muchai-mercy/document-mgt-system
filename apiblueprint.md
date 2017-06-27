@@ -1,0 +1,587 @@
+FORMAT: 1A
+
+# DocLab
+Doclab is a simple document management system that allows users to implement all CRUD operations. It is a build API that gives users a chance to manage documents.
+
+## Specifics
+The endpoints of the API require authentication except login, viewing all users and creating a user for the admin.
+
+## Users Enpoints
+
+### Create a new user  [POST /api/users]
+
+- Creates a new user.
+- You may create a new user who could own an account, or they could as well register and it calls this endpoint.
+- To register as an Admin, it requirer Admin access.
+- The following fields are required:
+
++ First Name
++ Last Name
++ Username
++ Email address
++ Password
++ Role
+
++ Request (application/json)
+
+      {
+        "firstName": "Mercy",
+        "lastName": "Much",
+        "username": "muchai",
+        "email": "muchai@gmail.com",
+        "password": muchai,
+        "role": "User"
+      }
+
++ Response 201 (application/json)
+
+          {
+             "id": 22,
+             "firstName": "Mercy",
+             "lastName": "Much",
+             "username": "muchai",
+             "email": "muchai@gmail.com",
+             "password": "$2a$04$i4/3DK9Ief7j62VD57FwiObL6Vn96dImJmIoWeCFrdlSnk7idK1we",
+             "role": "User",
+             "updatedAt": "2017-06-27T08:27:50.008Z",
+             "createdAt": "2017-06-27T08:27:50.008Z"
+          }
+
+### Login a User [POST /api/users/login]
+
+Logs in an existing user.
+
+- The following fields are required:
++ Email address
++ Password
+
++ Request (application/json)
+
+          {
+              "username": "muchai@gmail.com",
+              "password": "muchai"
+          }
+
++ Response 200 (application/json)
+
+          {
+           "message": "Successfully logged in",
+           "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoyMiwidXNlcm5hbWUiOiJtdWNoYWkiLCJyb2xlIjoiVXNlciJ9LCJpYXQiOjE0OTg1NTIzMjIsImV4cCI6MTQ5ODYzODcyMn0.pHHoHqEeB02m2LNj6r65EZ8NMTLKsry0Sn_csgAvdOY"
+           "username": "muchai",
+           "id": 22,
+           "role": "User"
+          }
+
+### List all Users [GET /api/users]
+
+Lists all existing users inclusive of their documents.
++ Requires authentication and admin access
++ Response 200 (application/json)
+
+       [
+  {
+    "id": 5,
+    "firstName": "Mike",
+    "lastName": "Mikey",
+    "username": "mikey",
+    "password": "$2a$04$4A.ghVBHlhqF9YH.SrfXgOFeZuZaIzTb6kdyU0/5aD95WMIHv5Xme",
+    "email": "mikey@gmail.com",
+    "role": "Admin",
+    "createdAt": "2017-06-22T18:05:22.202Z",
+    "updatedAt": "2017-06-22T18:05:22.202Z",
+    "documents": [
+      {
+        "id": 82,
+        "title": "Sequelize",
+        "content": "has got it right",
+        "category": "Private",
+        "createdAt": "2017-06-23T14:27:29.582Z",
+        "updatedAt": "2017-06-23T14:27:29.582Z",
+        "userId": 5
+      },
+      {
+        "id": 90,
+        "title": "Basic  Variant",
+        "content": "Let's get redirected",
+        "category": "Public",
+        "createdAt": "2017-06-26T11:48:48.562Z",
+        "updatedAt": "2017-06-26T11:48:48.562Z",
+        "userId": 5
+      },
+    ]
+  },
+  {
+    "id": 3,
+    "firstName": "man",
+    "lastName": "hue",
+    "username": "humanie",
+    "password": "$2a$04$rLsHxEryZGL18xTnqKLqceccHde8rHo8Y9rx.ZfCAwBqzvkHzu71K",
+    "email": "human@gmail.com",
+    "role": "User",
+    "createdAt": "2017-06-22T17:00:12.438Z",
+    "updatedAt": "2017-06-26T12:15:09.176Z",
+    "documents": []
+  },
+  {
+    "id": 4,
+    "firstName": "Ray",
+    "lastName": "Rayray",
+    "username": "muchai",
+    "password": "$2a$04$xmV/R39iRMs.EYnXh2s14e7JDa6ZTk9RLCTpu5ElhiBQ8/yQweZje",
+    "email": "melcmillerz@yahoo.com",
+    "role": "User",
+    "createdAt": "2017-06-22T17:09:20.535Z",
+    "updatedAt": "2017-06-26T12:40:24.751Z",
+    "documents": [
+        "id": 6,
+        "title": "Women",
+        "content": "Let's get redirected",
+        "category": "Public",
+        "createdAt": "2017-06-23T08:30:44.290Z",
+        "updatedAt": "2017-06-23T08:30:44.290Z",
+        "userId": 4
+      },
+      {
+        "id": 1,
+        "title": "Basic  Variant",
+        "content": "Here we go",
+        "category": "Public",
+        "createdAt": "2017-06-22T17:19:04.874Z",
+        "updatedAt": "2017-06-22T17:19:04.874Z",
+        "userId": 4
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "firstName": "Mercy",
+    "lastName": "Much",
+    "username": "muchai",
+    "password": "$2a$04$i4/3DK9Ief7j62VD57FwiObL6Vn96dImJmIoWeCFrdlSnk7idK1we",
+    "email": "muchai@gmail.com",
+    "role": "User",
+    "createdAt": "2017-06-27T08:27:50.008Z",
+    "updatedAt": "2017-06-27T08:27:50.008Z",
+    "documents": []
+  }
+]
+
+### Pagination for users [GET /api/users/?limit={integer}&offset={integer}]
+
+- Gives a list of existing users displaying dependent on the limit and offset given
+- For example:`/api/users/?limit=1&offset=0`
+
++ Requires authentication and admin access
+
++ Response 200 (application/json)
+
+       [
+  {
+    "id": 5,
+    "firstName": "Mike",
+    "lastName": "Mikey",
+    "username": "mikey",
+    "password": "$2a$04$4A.ghVBHlhqF9YH.SrfXgOFeZuZaIzTb6kdyU0/5aD95WMIHv5Xme",
+    "email": "mikey@gmail.com",
+    "role": "Admin",
+    "createdAt": "2017-06-22T18:05:22.202Z",
+    "updatedAt": "2017-06-22T18:05:22.202Z"
+  }
+]
+
+### Get a specific user [GET /api/users/:id]
+
+Displays a specific user i.e, `/api/users/3`
++ Requires authentication
+
++ Response 200 (application/json)
+
+         {
+  "id": 3,
+  "firstName": "man",
+  "lastName": "hue",
+  "username": "humanie",
+  "password": "$2a$04$rLsHxEryZGL18xTnqKLqceccHde8rHo8Y9rx.ZfCAwBqzvkHzu71K",
+  "email": "human@gmail.com",
+  "role": "User",
+  "createdAt": "2017-06-22T17:00:12.438Z",
+  "updatedAt": "2017-06-26T12:15:09.176Z",
+  "documents": []
+}
+### Updates user information [PUT /api/users/:id]
+
+Update details of a user whose id is specified, i.e `/api/users/3`
++ Requires authentication
+
++ Request (application/json)
+
+        {
+           firstName: "manie",
+           username: "human
+        }
+
++ Response 200 (application/json)
+{
+  "id": 3,
+  "firstName": "manie",
+  "lastName": "hue",
+  "username": "human",
+  "password": "$2a$04$WP74ecwbV7zITFHo5SmB9OPQvLJnRH3RODbvfDmnqVqZxnvbDAgC.",
+  "email": "human@gmail.com",
+  "role": "User",
+  "createdAt": "2017-06-22T17:00:12.438Z",
+  "updatedAt": "2017-06-27T08:46:17.127Z"
+}
+
+
+### Delete a user [DELETE /api/users/:UserId]
+
+Deletes a user whose id is specified, i.e `/api/users/6`
++ Requires authentication and Admin access
+
++ Response 204 (application/json)
+
+ - If the user does not exist:
+ + Response 404 (application/json)
+          {
+            "message": "User not Found"
+          }
+
+### Search for a User [GET /api/users/search]
+
+Search a user by their username, i.e `/api/search/users/?q=mi`
+
++ Response 200 (application/json)
+   [
+  {
+    "id": 5,
+    "firstName": "Mike",
+    "lastName": "Mikey",
+    "username": "mikey",
+    "password": "$2a$04$4A.ghVBHlhqF9YH.SrfXgOFeZuZaIzTb6kdyU0/5aD95WMIHv5Xme",
+    "email": "mikey@gmail.com",
+    "role": "Admin",
+    "createdAt": "2017-06-22T18:05:22.202Z",
+    "updatedAt": "2017-06-22T18:05:22.202Z"
+  },
+  {
+    "id": 4,
+    "firstName": "Ray",
+    "lastName": "Rayray",
+    "username": "muchai",
+    "password": "$2a$04$xmV/R39iRMs.EYnXh2s14e7JDa6ZTk9RLCTpu5ElhiBQ8/yQweZje",
+    "email": "melcmillerz@yahoo.com",
+    "role": "User",
+    "createdAt": "2017-06-22T17:09:20.535Z",
+    "updatedAt": "2017-06-26T12:40:24.751Z"
+  }
+]
+
+## Documents Enpoints
+
+- All documents endpoints require authentication. They are specific to the user. 
+- The admin can view all documents belonging to all users.
+- Other users only have access to public documents and their own private documents.
+
+### create a document [POST /api/documents]
+- Creates a new document specific to the user.
+- Requires authentication
+- The following fields are required:
+
++ title
++ content
++ userId
++ category: [select options] `Public` or `Private`
+
++ Request (application/json)
+
+          {
+            title: 'React',
+            content: 'React with redux',
+            access: 'Public',
+            userId: 21
+          }
+
++ Response 201 (application/json)
+     {
+  "id": 92,
+  "title": "Redux",
+  "content": "React with redux",
+  "userId": 22,
+  "category": "Public",
+  "updatedAt": "2017-06-27T08:58:12.562Z",
+  "createdAt": "2017-06-27T08:58:12.562Z"
+    }
+
+### list documents [GET /api/documents]
+
+- Lists all existing documents. Users can view all documents they created. Admin logged in can view all documents.
+- Requires authentication
+
+- Response 200 (application/json)
+[
+  {
+    "id": 92,
+    "title": "Redux",
+    "content": "React with redux",
+    "category": "Public",
+    "createdAt": "2017-06-27T08:58:12.562Z",
+    "updatedAt": "2017-06-27T08:58:12.562Z",
+    "userId": 22
+  }
+]
+
+### List all Public documents [GET /api/documents/public]
+
+- Lists all pulic existing documents. Users can view all public documents.
+- Does not require authentication
+
+- Response 200 (application/json)
+     [
+  {
+    "id": 1,
+    "title": "Basic  Variant",
+    "content": "Here we go",
+    "category": "Public",
+    "createdAt": "2017-06-22T17:19:04.874Z",
+    "updatedAt": "2017-06-22T17:19:04.874Z",
+    "userId": 4
+  },
+  {
+    "id": 85,
+    "title": "Kinuthia",
+    "content": "Create Document is clickable",
+    "category": "Public",
+    "createdAt": "2017-06-23T14:30:16.752Z",
+    "updatedAt": "2017-06-23T14:30:16.752Z",
+    "userId": 5
+  },
+  {
+    "id": 6,
+    "title": "Women",
+    "content": "Let's get redirected",
+    "category": "Public",
+    "createdAt": "2017-06-23T08:30:44.290Z",
+    "updatedAt": "2017-06-23T08:30:44.290Z",
+    "userId": 4
+  },
+  {
+    "id": 88,
+    "title": "Men",
+    "content": "Let's get redirected",
+    "category": "Public",
+    "createdAt": "2017-06-23T17:33:30.684Z",
+    "updatedAt": "2017-06-23T17:33:30.684Z",
+    "userId": 5
+  },
+  {
+    "id": 90,
+    "title": "Basic  Variant",
+    "content": "Let's get redirected",
+    "category": "Public",
+    "createdAt": "2017-06-26T11:48:48.562Z",
+    "updatedAt": "2017-06-26T11:48:48.562Z",
+    "userId": 5
+  },
+  {
+    "id": 91,
+    "title": "Redux",
+    "content": "React with redux",
+    "category": "Public",
+    "createdAt": "2017-06-27T08:57:42.420Z",
+    "updatedAt": "2017-06-27T08:57:42.420Z",
+    "userId": null
+  },
+  {
+    "id": 92,
+    "title": "Redux",
+    "content": "React with redux",
+    "category": "Public",
+    "createdAt": "2017-06-27T08:58:12.562Z",
+    "updatedAt": "2017-06-27T08:58:12.562Z",
+    "userId": 22
+  }
+     ]
+
+### Pagination for documents [GET /api/documents/?limit={integer}&offset={integer}]
+
+- Lists all documents existing for authenticated user with limit and offset given.
+- For example: `/api/documents/?limit=2&offset=1`
+- Requires authentication
+
++ Response 200 (application/json)
+   [
+  {
+    "id": 85,
+    "title": "Kinuthia",
+    "content": "Create Document is clickable",
+    "category": "Public",
+    "createdAt": "2017-06-23T14:30:16.752Z",
+    "updatedAt": "2017-06-23T14:30:16.752Z",
+    "userId": 5
+  },
+  {
+    "id": 86,
+    "title": "Men",
+    "content": "Here we go",
+    "category": "Private",
+    "createdAt": "2017-06-23T14:57:19.908Z",
+    "updatedAt": "2017-06-23T14:57:19.908Z",
+    "userId": 4
+  }
+]
+
+### Get a specific document [GET /api/documents/:id]
+- Gets a document with the ID provided.
+- For example: `/api/documents/87`
+- Requires authentication
++ Response 200 (application/json). (Admin is logged in)
+    {
+  "id": 87,
+  "title": "Men",
+  "content": "Here we go",
+  "category": "Private",
+  "createdAt": "2017-06-23T15:15:14.163Z",
+  "updatedAt": "2017-06-23T15:15:14.163Z",
+  "userId": 4
+    }
+
+### Get a user's documents [GET /users/:UserId/documents]
+- Lists all documents belonging to the user whose id has been specified.
+- For example: `api/users/5/documents`
++ Requires Authentication
+
++ Response 200 (application/json)
+    [
+    {
+      "id": 85,
+      "title": "Kinuthia",
+      "content": "Create Document is clickable",
+      "category": "Public",
+      "createdAt": "2017-06-23T14:30:16.752Z",
+      "updatedAt": "2017-06-23T14:30:16.752Z",
+      "userId": 5
+    },
+    {
+      "id": 88,
+      "title": "Men",
+      "content": "Let's get redirected",
+      "category": "Public",
+      "createdAt": "2017-06-23T17:33:30.684Z",
+      "updatedAt": "2017-06-23T17:33:30.684Z",
+      "userId": 5
+    },
+    {
+      "id": 89,
+      "title": "Menjnass",
+      "content": "",
+      "category": "",
+      "createdAt": "2017-06-26T11:43:25.210Z",
+      "updatedAt": "2017-06-26T11:43:25.210Z",
+      "userId": 5
+    },
+    {
+      "id": 90,
+      "title": "Basic  Variant",
+      "content": "Let's get redirected",
+      "category": "Public",
+      "createdAt": "2017-06-26T11:48:48.562Z",
+      "updatedAt": "2017-06-26T11:48:48.562Z",
+      "userId": 5
+    },
+    {
+      "id": 82,
+      "title": "Sequelize",
+      "content": "has got it right",
+      "category": "Private",
+      "createdAt": "2017-06-23T14:27:29.582Z",
+      "updatedAt": "2017-06-23T14:27:29.582Z",
+      "userId": 5
+    }
+  ]
+
+### Update a document [PUT /api/documents/:id]
+Updates the document whose id is provided.
+-  For example: `/api/documents/87`
+- Requires authentication
+
++ Response 200 (application/json)
+     {
+  "id": 87,
+  "title": "Redux store",
+  "content": "React with redux",
+  "category": "Private",
+  "createdAt": "2017-06-23T15:15:14.163Z",
+  "updatedAt": "2017-06-27T09:14:46.503Z",
+  "userId": "5"
+      }
+
+### Deletes a document [DELETE /api/documents/:id]
+
+- Deletes the document whose id has been specified.
+- For example i.e `/api/documents/87`
+- Requires authentication
+
+- Response 204 (application/json)
+
+ - If the document does not exist:
+ + Response 404 (application/json)
+          {
+            "message": "Document not Found"
+          }
+
+### Search for a document [GET /api/documents/search]
+- Searches for documents by their titles.
+- For example: `api/search/documents/?q=men`
+
++ Requires authentication
+
++ Response 200 (application/json)
+    [
+  {
+    "id": 86,
+    "title": "Men",
+    "content": "Here we go",
+    "category": "Private",
+    "createdAt": "2017-06-23T14:57:19.908Z",
+    "updatedAt": "2017-06-23T14:57:19.908Z",
+    "userId": 4
+  },
+  {
+    "id": 87,
+    "title": "Men",
+    "content": "Here we go",
+    "category": "Private",
+    "createdAt": "2017-06-23T15:15:14.163Z",
+    "updatedAt": "2017-06-23T15:15:14.163Z",
+    "userId": 4
+  },
+  {
+    "id": 6,
+    "title": "Women",
+    "content": "Let's get redirected",
+    "category": "Public",
+    "createdAt": "2017-06-23T08:30:44.290Z",
+    "updatedAt": "2017-06-23T08:30:44.290Z",
+    "userId": 4
+  },
+  {
+    "id": 88,
+    "title": "Men",
+    "content": "Let's get redirected",
+    "category": "Public",
+    "createdAt": "2017-06-23T17:33:30.684Z",
+    "updatedAt": "2017-06-23T17:33:30.684Z",
+    "userId": 5
+  },
+  {
+    "id": 89,
+    "title": "Menjnass",
+    "content": "",
+    "category": "",
+    "createdAt": "2017-06-26T11:43:25.210Z",
+    "updatedAt": "2017-06-26T11:43:25.210Z",
+    "userId": 5
+  }
+]
+

@@ -123,6 +123,8 @@ module.exports = {
             bcrypt.hash(req.body.password, 2, (err, hash) => {
               return user
                 .update({
+                  firstName: req.body.firstName || user.firstName,
+                  lastName: req.body.lastName || user.lastName,
                   username: req.body.username || user.username,
                   password: hash,
                   email: req.body.email || user.email

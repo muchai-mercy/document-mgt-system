@@ -72,7 +72,7 @@ module.exports = {
           .update({
             title: req.body.title || document.title,
             content: req.body.content || document.content,
-            userId: req.body.userId || document.userId
+            category: req.body.category || document.category
           })
           .then(() => res.status(200).send(document))
           .catch(error => res.status(400).send(error));
