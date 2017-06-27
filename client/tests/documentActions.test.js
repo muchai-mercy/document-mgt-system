@@ -1,5 +1,8 @@
 
 import expect from 'expect';
+import thunk from "redux-thunk";
+import nock from "nock";
+import configureMockStore from "redux-mock-store";
 import * as documentActions from '../actions/documentActions';
 import * as types from '../actions/actionTypes';
 
@@ -21,3 +24,7 @@ describe('Documents Actions', () => {
     });
   });
 });
+
+const middleware = [thunk];
+const mockStore = configureMockStore(middleware);
+

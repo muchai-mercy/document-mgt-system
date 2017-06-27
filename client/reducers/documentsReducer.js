@@ -1,7 +1,6 @@
 import * as types from '../actions/actionTypes';
 
 export default function documentsReducer(state = [], action) {
-  // console.log('action......', action);
   switch (action.type) {
     case types.ALL_DOCUMENTS_SUCCESS:
       return action.documents;
