@@ -24,8 +24,9 @@ class Login extends React.Component {
   onSave(event) {
     event.preventDefault();
     this.props.actions.loginUser(this.state.credentials);
+     this.context.router.push('/');
     toastr.success('Logged in successfully!');
-    browserHistory.push('/');
+   
   }
 
   render() {
@@ -59,6 +60,11 @@ class Login extends React.Component {
 Login.propTypes = {
   actions: PropTypes.object.isRequired,
 };
+//Make router available by using React Router Context
+Login.contextTypes = {
+  router: PropTypes.object
+};
+
 function mapStateToProps(state, ownProps) {
   return {
     credentials: state.credentials

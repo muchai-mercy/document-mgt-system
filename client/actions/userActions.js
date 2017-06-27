@@ -60,7 +60,7 @@ export function deleteUsers(users) {
 
 export function searchUsers(username, email) {
   return (dispatch) => {
-    getEndpoint(`/api/search/users/?q=${username}&q=${email}`)
+    getEndpoint(`/api/search/users/?q=${username}`)
       .set('access-token', token)
       .end((err, res) => dispatch(searchUsersSuccess(res.body)
       ));

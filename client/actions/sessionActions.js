@@ -1,11 +1,11 @@
 import request from "superagent";
-import { LOGIN_SUCCESS, SIGNUP_USER } from "./actionTypes";
+import { LOGIN_SUCCESS, SIGNUP_USER, LOGOUT_SUCCESS } from "./actionTypes";
 import { postEndpoint } from "../api/consumeApi";
 
 export const loginSuccess = (token) => {
   return { type: LOGIN_SUCCESS, token };
 };
-
+export const logOut = res => ({ type: LOGOUT_SUCCESS, token: res.token });
 export const signUpUser = user => ({ type: SIGNUP_USER, user });
 
 export function loginUser(credentials) {
@@ -23,7 +23,10 @@ export function loginUser(credentials) {
       });
   };
 }
-
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem('jwt');
+  return dispatch(logOut({}));
+};
 export const userSignup = userInfo => (dispatch) => {
   dispatch(signUpUser(userInfo));
   return (

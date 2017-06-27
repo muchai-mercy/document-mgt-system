@@ -13,37 +13,50 @@ class Header extends React.Component {
     this.logOut = this.logOut.bind(this);
   }
 
-  logOut() {
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('username');
+ logOut() {
+    this.props.actions.logoutUser();
   }
   render() {
-    const token = localStorage.getItem('jwt');
+    const { token } = this.props;
     const username = localStorage.getItem('username');
+    const role = localStorage.getItem('role');
     const user = token && jwtDecode;
+
+    function auth(token, logOut) {
+      if(token) {
+        return (
+          <Link to={"/login"} onClick={logOut} activeClassName="active" style={{ color: "white" }}>
+           Logout {username}
+          </Link>
+        );
+      }
+      return (<Link to="/login" activeClassName="active" style={{ color: "white" }}>Login</Link>);
+    }
     return (
       <div className="card-panel teal lighten-2 header">
-        <IndexLink to="/" activeClassName="active" style={{color:"white"}}> Home</IndexLink>
+        <IndexLink to="/" activeClassName="active" style={{ color: "white" }}> Home</IndexLink>
         {" | "}
-        <Link to="/documents" activeClassName="active"style={{color:"white"}}>Documents</Link>
+        <Link to="/documents" activeClassName="active" style={{ color: "white" }}>Documents</Link>
         {" | "}
-        <Link to="/about" activeClassName="active"style={{color:"white"}}>About   </Link>
-        {localStorage.getItem('role') === 'Admin' &&
-        <Link to="/users" activeClassName="active"style={{color:"white"}}>Users</Link>}
+        <Link to="/about" activeClassName="active" style={{ color: "white" }}>About   </Link>
+        {role === 'Admin' && <Link to="/users" activeClassName="active" style={{ color: "white" }}>Users</Link>}
         {" | "}
-        {token ?
-          (<Link to={"/login"} onClick={this.logOut} activeClassName="active"style={{color:"white"}}> Logout {username}</Link>)
-          : (<Link to="/login" activeClassName="active"style={{color:"white"}}>Login</Link>)
-        }
+        {auth(token, this.logOut)}    
         {" | "}
-        <Link to="/signup" activeClassName="active"style={{color:"white"}}>SignUp</Link>
+        <Link to="/signup" activeClassName="active" style={{ color: "white" }}>SignUp</Link>
       </div>
     );
   }
 }
-function mapStateToProps(dispatch) {
+//Props Validation
+Header.propTypes = {
+  token: PropTypes.string.isRequired,
+  actions: PropTypes.object.isRequired
+};
+function mapStateToProps(state, ownProps) {
+
   return {
-  token: state.token
+    token: state.login.token
   };
 }
 

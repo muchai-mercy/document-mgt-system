@@ -119,16 +119,13 @@ module.exports = {
     return User
       .findById(req.params.userId)
       .then(user => {
-
         if (!user) {
           return res.status(404).send({
             message: 'User Not Found'
           });
         }
-
         if (req.body.password) {
           const hashedPassword = bcrypt(req.body.password);
-
           return user
             .update({
               firstName: req.body.firstName || user.firstName,
@@ -140,8 +137,6 @@ module.exports = {
             .then(() => res.status(200).send(user))
             .catch(error => res.status(400).send(error));
         }
-
-
         return user.update();
       })
       .catch(error => res.status(400).send(error));
