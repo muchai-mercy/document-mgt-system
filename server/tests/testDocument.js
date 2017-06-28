@@ -17,11 +17,8 @@ describe('Documents', () => {
       .send({ email: 'testing@gmail.com', password: 'tests' })
       .then((res) => {
         token = res.body.token;
-        console.log('>>>>>>>>>>');
-        console.log(process.env.NODE_ENV);
         done();
-      })
-      .catch(err => console.log(process.env.NODE_ENV));
+      });
   });
 
   describe('/GET', () => {

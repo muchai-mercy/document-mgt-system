@@ -14,8 +14,8 @@ export function updateUsersSuccess(user) {
 export function deleteUsersSuccess(user) {
   return { type: DELETE_USERS_SUCCESS, user };
 }
-export function searchUsersSuccess(username, email) {
-  return { type: SEARCH_USERS_SUCCESS, username, email };
+export function searchUsersSuccess(users) {
+  return { type: SEARCH_USERS_SUCCESS, users};
 }
 
 const token = localStorage.getItem('jwt');
@@ -58,7 +58,7 @@ export function deleteUsers(users) {
   };
 }
 
-export function searchUsers(username, email) {
+export function searchUsers(username) {
   return (dispatch) => {
     getEndpoint(`/api/search/users/?q=${username}`)
       .set('access-token', token)

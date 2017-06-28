@@ -30,20 +30,19 @@ class Header extends React.Component {
           </Link>
         );
       }
-      return (<Link to="/login" activeClassName="active" style={{ color: "white" }}>Login</Link>);
+      return (<Link to="/login" activeClassName="active" style={{ color: "white" }}>Login | </Link>);
     }
     return (
       <div className="card-panel teal lighten-2 header">
         <IndexLink to="/" activeClassName="active" style={{ color: "white" }}> Home</IndexLink>
         {" | "}
-        <Link to="/documents" activeClassName="active" style={{ color: "white" }}>Documents</Link>
-        {" | "}
-        <Link to="/about" activeClassName="active" style={{ color: "white" }}>About   </Link>
-        {role === 'Admin' && <Link to="/users" activeClassName="active" style={{ color: "white" }}>Users</Link>}
+        <Link to="/documents" activeClassName="active" style={{ color: "white" }}> My Documents</Link>
+        {role === 'Admin' && <Link to="/users" activeClassName="active" style={{ color: "white" }}> | Users</Link>}
         {" | "}
         {auth(token, this.logOut)}    
-        {" | "}
+        {!token ?
         <Link to="/signup" activeClassName="active" style={{ color: "white" }}>SignUp</Link>
+        : null}
       </div>
     );
   }

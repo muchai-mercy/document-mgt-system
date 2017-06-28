@@ -20,8 +20,8 @@ export default function usersReducer(state = [], action) {
       newState.splice(indexOfUserToDelete, 1);
       return newState;
     }
-    case types.SEARCH_DOCUMENTS_SUCCESS:
-      return (action.username, action.email);
+    case types.SEARCH_USERS_SUCCESS:
+      return (action.users);
 
     default:
       return state;
