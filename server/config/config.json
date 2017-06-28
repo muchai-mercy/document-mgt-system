@@ -9,7 +9,7 @@
   "test": {
     "username": "mercymuchai",
     "password": null,
-    "database": "doc-mgt-sys-test",
+    "database": "doc_mgt_sys_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

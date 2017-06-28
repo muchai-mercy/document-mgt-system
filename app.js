@@ -9,6 +9,7 @@ const NODE_ENV = process.env.NODE_ENV;
 
 if (NODE_ENV !== 'production') {
   require('dotenv').load();
+  console.log(process.env.SECRET);
 }
 const port = 3000;
 const app = express();
@@ -28,9 +29,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 require('./server/routes')(app);
-// app.get('*', (req, res) => res.status(200).send({
-//   message: "Let's get this started!"
-// }));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join( __dirname, './client/index.html'));

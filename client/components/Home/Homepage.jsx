@@ -9,14 +9,13 @@ import DocumentList from "../Documents/DocumentList.jsx";
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = this.props.documents;
   }
   componentDidMount() {
     this.props.actions.publicDocuments();
   }
 render() {
     return (
-    <div>
+    <div className="container">
     <Link to="documents" className="btn btn-primary btn-lg"> My Docs </Link>
         <DocumentList documents={this.props.documents} />
       </div>

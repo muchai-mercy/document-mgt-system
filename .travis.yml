@@ -1,12 +1,12 @@
-env:
-- NODE_ENV=test
 language: node_js
 node_js:
   - "6"
 services:
-- postgresql
+  - postgresql: "9.6"
 before_script:
-  - psql -U postgres -c 'create database "doc-mgt-sys-test";'
-  - psql -U 'CREATE_USER mercymuchai' postgres -c
+  - psql -c "create database doc_mgt_sys_test;" -U postgres
+  - psql -c "CREATE USER mercymuchai;" -U postgres
 after_script:
-  - npm run coveralls
+  - npm run coverage
+env:
+  - SECRET=nottheactualthing NODE_ENV=test
