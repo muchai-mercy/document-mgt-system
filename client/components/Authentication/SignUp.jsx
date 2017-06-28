@@ -85,7 +85,7 @@ class SignUp extends React.Component {
             className="btn waves-effect waves-light"
             label="Create New Account"
             onClick={this.onSubmit} />
-          <div>Already have an account? <Link to={'/login'}>Log in</Link>
+          <div style={{marginTop: "10px"}}>Already have an account? <Link to={'/login'}>Log in</Link>
           </div>
         </div>
       </div>

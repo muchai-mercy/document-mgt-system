@@ -20,9 +20,9 @@ export function searchUsersSuccess(users) {
 
 const token = localStorage.getItem('jwt');
 
-export function allUsers() {
+export function allUsers(limit = 10, offset = 0) {
   return (dispatch) => {
-    getEndpoint('/api/users')
+    getEndpoint(`/api/users/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)
       .end((err, res) => dispatch(allUsersSuccess(res.body)
       ));

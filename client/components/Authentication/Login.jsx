@@ -24,16 +24,16 @@ class Login extends React.Component {
   onSave(event) {
     event.preventDefault();
     this.props.actions.loginUser(this.state.credentials);
-     this.context.router.push('/');
+    this.context.router.push('/');
     toastr.success('Logged in successfully!');
    
   }
 
   render() {
     return (
-      < div>
-        < form>
-          < TextInput
+    <div className="doc-form">
+      <form>
+          <TextInput
             name="email"
             label="Enter Email"
             value={this.state.credentials.email}
@@ -46,7 +46,7 @@ class Login extends React.Component {
             value={this.state.credentials.password}
             onChange={this.onChange} />
 
-          < input
+          <input
             type="submit"
             className="btn waves-effect waves-light"
             onClick={this.onSave} />

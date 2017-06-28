@@ -17,7 +17,7 @@ class Header extends React.Component {
     this.props.actions.logoutUser();
   }
   render() {
-    const { token } = this.props;
+    const token = localStorage.getItem('jwt');
     const username = localStorage.getItem('username');
     const role = localStorage.getItem('role');
     const user = token && jwtDecode;

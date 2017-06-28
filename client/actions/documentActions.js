@@ -23,7 +23,7 @@ export function publicDocumentsSuccess(documents){
 const token = localStorage.getItem('jwt');
 const userId = localStorage.getItem('userId');
 
-export function allDocuments(limit = 3, offset = 0) {
+export function allDocuments(limit = 10, offset = 0) {
   return (dispatch) => {
     getEndpoint(`/api/documents/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)

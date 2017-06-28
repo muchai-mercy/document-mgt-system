@@ -3,5 +3,10 @@ env:
 language: node_js
 node_js:
   - "6"
+services:
+- postgresql
+before_script:
+  - psql -U postgres -c 'create database "doc-mgt-sys-test";'
+  - psql -U 'CREATE_USER mercymuchai' postgres -c
 after_script:
   - npm run coveralls

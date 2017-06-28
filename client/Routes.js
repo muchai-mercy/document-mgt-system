@@ -10,20 +10,31 @@ import ManageUsers from "./components/Users/ManageUsers.jsx";
 import Login from "./components/Authentication/Login.jsx";
 import SignUp from "./components/Authentication/SignUp.jsx";
 
+function loggedIn() {
+  return !!window.localStorage.getItem('jwt');
+}
+
+function requireAuth(nextState, replace) {
+  if (!loggedIn()) {
+    replace({
+      pathname: '/login'
+    });
+  }
+}
+
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
     <Route path="login" component={Login} />
     <Route path="signup" component={SignUp} />
-    <Route path="documents" component={DocumentsPage} />
-    <Route path="document" component={ManageDocument} />
-    <Route path="documents/:id" component={ManageDocument} />
-    <Route path="about" component={AboutPage} />
+    <Route path="documents" component={DocumentsPage} onEnter={requireAuth} />
+    <Route path="document" component={ManageDocument} onEnter={requireAuth} />
+    <Route path="documents/:id" component={ManageDocument} onEnter={requireAuth} />
     { localStorage.getItem('role') === 'Admin' ? 
     <div>
-    <Route path="users" component={UsersPage} />
-    <Route path="user" component={ManageUsers} />
-    <Route path="users/:id" component={ManageUsers} />
+    <Route path="users" component={UsersPage} onEnter={requireAuth} />
+    <Route path="user" component={ManageUsers} onEnter={requireAuth} />
+    <Route path="users/:id" component={ManageUsers} onEnter={requireAuth} />
     </div>
     : null}
   </Route>

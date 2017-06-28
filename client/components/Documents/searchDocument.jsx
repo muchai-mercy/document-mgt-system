@@ -26,11 +26,11 @@ class SearchDoc extends React.Component {
   }
   render() {
     return (
-      <div className="search-wrapper card" style={{ marginLeft: "84%", marginTop: "-40px" }}>
-        <input
-        id="search"
+      <div className="search-wrapper card" style={{marginLeft: "618px", marginTop: "-36px"}}>
+        <input id="search" style={{border: "0"}}
           onChange={this.onChange} />
-        <i className="material-icons" style={{ paddingLeft: "160px"}}
+        <i className="material-icons"
+        style={{position: "absolute", right: "10px", top: "10px"}}
           onClick={this.onSubmit}>search</i>
       </div>
     );

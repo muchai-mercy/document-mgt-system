@@ -11,7 +11,7 @@ class DocumentsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      activePage: 1, limit: 3
+      activePage: 1, limit: 10
     };
     this.redirectToCreateDocumentPage = this.redirectToCreateDocumentPage.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -36,7 +36,7 @@ class DocumentsPage extends React.Component {
   render() {
     const { documents } = this.props;
     return (
-      <div>
+      <div className="container">
         <div>
         <input type="submit"
           value="Create Document 🙌"
@@ -47,7 +47,7 @@ class DocumentsPage extends React.Component {
         <DocumentList documents={documents} />
         <Pagination
           activePage={this.state.activePage}
-          itemsCountPerPage={3}
+          itemsCountPerPage={10}
           totalItemsCount={100}
           pageRangeDisplayed={5}
           onChange={this.handlePageChange}
