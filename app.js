@@ -7,9 +7,9 @@ const config = require('./webpack.config.js');
 const bodyParser = require('body-parser');
 const NODE_ENV = process.env.NODE_ENV;
 
-if (NODE_ENV !== 'production') {
+if (NODE_ENV !== 'development') {
   require('dotenv').load();
-  console.log(process.env.SECRET);
+  console.log(process.env.SECRET_TOKEN_KEY);
 }
 const port = 3000;
 const app = express();

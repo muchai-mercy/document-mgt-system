@@ -9,4 +9,4 @@ before_script:
 after_script:
   - npm run coverage
 env:
-  - SECRET=nottheactualthing NODE_ENV=test
+  - SECRET_TOKEN_KEY=nottheactualthing NODE_ENV=test
