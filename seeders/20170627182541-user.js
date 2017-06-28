@@ -6,8 +6,8 @@ module.exports = {
       firstName: 'tests',
       lastName: 'hhhh',
       username: 'test',
-      email: 'tests@gmail.com',
-      password: 'tests',
+      email: 'testing@gmail.com',
+      password: '$2a$10$EUGSivMTHd2EPhShm8Wn9.jdfDBTfYJQ8f6B8UjW1wEStSikebRgO',
       role: 'Admin',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()

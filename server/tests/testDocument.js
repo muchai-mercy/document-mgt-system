@@ -9,17 +9,19 @@ const users = ('../controllers/document.js');
 chai.use(chaiHttp);
 let token = '';
 
-
 describe('Documents', () => {
-  // login /
+  // login 
   beforeEach('login user', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send({ email: 'tests@gmail.com', password: 'tests' })
+      .send({ email: 'testing@gmail.com', password: 'tests' })
       .then((res) => {
         token = res.body.token;
+        console.log('>>>>>>>>>>');
+        console.log(process.env.NODE_ENV);
         done();
-      });
+      })
+      .catch(err => console.log(process.env.NODE_ENV));
   });
 
   describe('/GET', () => {
@@ -64,7 +66,7 @@ describe('Documents', () => {
           title: "Men",
           content: "Here we go",
           category: "Private",
-          userId: 4
+          userId: 1
         })
         .set('access-token', token)
         .end((err, res) => {

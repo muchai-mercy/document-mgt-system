@@ -14,7 +14,7 @@ describe('Users', () => {
   beforeEach('login user', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send({ email: 'tests@gmail.com', password: 'tests' })
+      .send({ email: 'testing@gmail.com', password: 'tests' })
       .then((res) => {
         token = res.body.token;
         done();
@@ -55,27 +55,27 @@ describe('/SEARCH/user', () => {
       });
   });
 });
-// // Test the POST route
-// describe('/POST user', () => {
-//   it('should create a new user', (done) => {
-//     chai.request(app)
-//       .post('/api/users/')
-//       .set('access-token', token)
-//       .send({
-//         firstName: "Mike",
-//         lastName: "Mikey",
-//         username: "mikey",
-//         email: "mickeyy@yal.com",
-//         password: "mikey",
-//         role: 'User'
-//       })
-//       .set('access-token', token)
-//       .end((err, res) => {
-//         res.should.have.status(201);
-//         done();
-//       });
-//   });
-// });
+// Test the POST route
+describe('/POST user', () => {
+  it('should create a new user', (done) => {
+    chai.request(app)
+      .post('/api/users/')
+      .set('access-token', token)
+      .send({
+        firstName: "Mike",
+        lastName: "Mikey",
+        username: "mikey",
+        email: "mickeyy@ymail.com",
+        password: "mikey",
+        role: 'User'
+      })
+      .set('access-token', token)
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
+});
 
 describe('/GET/users', () => {
   it('should GET users and paginate', (done) => {
@@ -84,18 +84,6 @@ describe('/GET/users', () => {
       .set('access-token', token)
       .end((err, res) => {
         res.should.have.status(200);
-        done();
-      });
-  });
-});
-
-describe('/DELETE user', () => {
-  it('should return a 404 response', (done) => {
-    chai.request(app)
-      .get('/api/users/0')
-      .set('access-token', token)
-      .end((err, res) => {
-        res.should.have.status(404);
         done();
       });
   });

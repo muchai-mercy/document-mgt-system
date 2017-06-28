@@ -14,8 +14,8 @@
     "open:client": "babel-node app.js",
     "lint": "node_modules/.bin/esw webpack.config.* client server",
     "lint:watch": "npm run lint -- --watch",
-    "pretest": "export NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
-    "test": "npm run test:front; npm run test:back",
+    "pretest": "NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
+    "test": "export NODE_ENV=test && npm run test:front && npm run test:back",
     "test:front": "nyc --reporter=html --reporter=text mocha --require tools/testSetup.js --require mock-local-storage client/tests/**/*.test.js",
     "test:back": "nyc --reporter=html --reporter=text mocha server/tests/**/*.js --timeout 30000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -50,6 +50,7 @@
     "redux": "3.5.2",
     "redux-thunk": "2.0.1",
     "sequelize": "^3.30.4",
+    "sequelize-cli": "^2.7.0",
     "superagent": "^3.5.2",
     "toastr": "2.1.2"
   },
