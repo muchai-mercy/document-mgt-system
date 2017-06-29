@@ -116,6 +116,7 @@ module.exports = {
 
   // update username details
   update(req, res) {
+    console.log(req.body)
     return User
       .findById(req.params.userId)
       .then(user => {
@@ -132,7 +133,8 @@ module.exports = {
               lastName: req.body.lastName || user.lastName,
               username: req.body.username || user.username,
               password: hashedPassword,
-              email: req.body.email || user.email
+              email: req.body.email || user.email,
+              role: req.body.role || user.role
             })
             .then(() => res.status(200).send(user))
             .catch(error => res.status(400).send(error));

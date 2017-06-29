@@ -14,7 +14,7 @@ describe('Documents', () => {
   beforeEach('login user', (done) => {
     chai.request(app)
       .post('/api/users/login')
-      .send({ email: 'testing@gmail.com', password: 'tests' })
+      .send({ email: 'tests@gmail.com', password: 'tests' })
       .then((res) => {
         token = res.body.token;
         done();

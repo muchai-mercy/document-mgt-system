@@ -9,7 +9,7 @@ const SelectOptions = ({ name, label, onChange, defaultOption, value, error, opt
       <option value="" disabled selected>Select Access</option>
       <option value="Admin">Admin</option>
       <option value="User">User</option>
-       <option value="User">Developer</option>
+       <option value="Developer">Developer</option>
     </select>
     {error && <div className="alert-danger">{error}</div>}
   </div>

@@ -62,6 +62,7 @@ userFormisValid() {
       toastr.error('Username must be at least 6 characters!');
       return;
     }
+    console.log(this.state.user);
     this.props.actions.updateUsers(this.state.user);
     toastr.success('User Updated 😎!');
     this.context.router.push('/users');
