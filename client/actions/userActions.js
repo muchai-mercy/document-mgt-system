@@ -1,5 +1,5 @@
 import { ALL_USERS_SUCCESS, POST_USERS_SUCCESS, UPDATE_USERS_SUCCESS,
-  DELETE_USERS_SUCCESS, SEARCH_USERS_SUCCESS } from "./actionTypes";
+  DELETE_USERS_SUCCESS, SEARCH_USERS_SUCCESS, PAGINATE_USERS_SUCCESS } from "./actionTypes";
 import { postEndpoint, getEndpoint, putEndpoint, deleteEndpoint } from "../api/consumeApi";
 
 export function allUsersSuccess(users) {
@@ -18,18 +18,28 @@ export function deleteUsersSuccess(user) {
 export function searchUsersSuccess(users) {
   return { type: SEARCH_USERS_SUCCESS, users};
 }
+export function paginateUsersSuccess(pages) {
+  return { type: PAGINATE_USERS_SUCCESS, pages};
+}
 
 const token = localStorage.getItem('jwt');
 
-export function allUsers(limit = 10, offset = 0) {
+export function allUsers() {
   return (dispatch) => {
-    getEndpoint(`/api/users/?limit=${limit}&offset=${offset}`)
+    getEndpoint(`/api/users/`)
       .set('access-token', token)
       .end((err, res) => dispatch(allUsersSuccess(res.body)
       ));
   };
 }
-
+export function paginateUsers(limit = 4, offset = 0) {
+  return (dispatch) => {
+    getEndpoint(`/api/users/?limit=${limit}&offset=${offset}`)
+      .set('access-token', token)
+      .end((err, res) => dispatch(paginateUsersSuccess(res.body)
+      ));
+  };
+}
 export function postUsers(users) {
   return (dispatch) => {
     postEndpoint('/api/users')

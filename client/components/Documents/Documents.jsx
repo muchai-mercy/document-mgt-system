@@ -50,7 +50,7 @@ class DocumentsPage extends React.Component {
         <DocumentList documents={documents} />
         <Pagination
           activePage={this.state.activePage}
-          itemsCountPerPage={10}
+          itemsCountPerPage={this.state.limit}
           totalItemsCount={totalItems}
           pageRangeDisplayed={5}
           onChange={this.handlePageChange}

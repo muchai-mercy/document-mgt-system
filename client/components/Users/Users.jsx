@@ -11,11 +11,13 @@ class UsersPage extends React.Component {
   constructor(props, context) {
     super(props, context);
       this.state = {
-      activePage: 1, limit: 10
+      activePage: 1, limit: 4
     };
     this.redirectToCreateUserPage = this.redirectToCreateUserPage.bind(this);
+     this.handlePageChange = this.handlePageChange.bind(this);
   }
   componentDidMount() {
+       this.props.actions.paginateUsers();
     this.props.actions.allUsers();
   }
 
@@ -30,11 +32,12 @@ class UsersPage extends React.Component {
   }
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber });
-    this.props.actions.allUsers(this.state.limit, (this.state.limit * (pageNumber - 1)));
+    this.props.actions.paginateUsers(this.state.limit, (this.state.limit * (pageNumber - 1)));
   }
 
   render() {
-    const { user } = this.props;
+    const user = this.props.pages;
+    const totalItems = this.props.user.length; 
     return (
       <div className="container">
         { localStorage.getItem('role') === 'Admin' ? 
@@ -47,8 +50,8 @@ class UsersPage extends React.Component {
         <UsersList user={user} />
         <Pagination
           activePage={this.state.activePage}
-          itemsCountPerPage={10}
-          totalItemsCount={100}
+          itemsCountPerPage={this.state.limit}
+          totalItemsCount={totalItems}
           pageRangeDisplayed={5}
           onChange={this.handlePageChange}
         />
@@ -61,10 +64,12 @@ class UsersPage extends React.Component {
 UsersPage.propTypes = {
   actions: PropTypes.object.isRequired,
   user: PropTypes.array.isRequired,
+  pages: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
+    pages: state.pages,
     user: state.user
   };
 }
