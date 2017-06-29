@@ -1,4 +1,5 @@
-import { ALL_DOCUMENTS_SUCCESS, POST_DOCUMENTS_SUCCESS, UPDATE_DOCUMENTS_SUCCESS, DELETE_DOCUMENTS_SUCCESS, SEARCH_DOCUMENTS_SUCCESS, PUBLIC_DOCUMENTS_SUCCESS } from './actionTypes';
+import { ALL_DOCUMENTS_SUCCESS, POST_DOCUMENTS_SUCCESS, UPDATE_DOCUMENTS_SUCCESS,
+   DELETE_DOCUMENTS_SUCCESS, SEARCH_DOCUMENTS_SUCCESS, PUBLIC_DOCUMENTS_SUCCESS, PAGINATE_DOCUMENTS_SUCCESS } from './actionTypes';
 import { postEndpoint, getEndpoint, deleteEndpoint, putEndpoint } from "../api/consumeApi";
 
 export function allDocumentsSuccess(documents) {
@@ -20,14 +21,25 @@ export function searchDocumentsSuccess(documents) {
 export function publicDocumentsSuccess(documents){
     return { type: PUBLIC_DOCUMENTS_SUCCESS, documents };
 }
+export function paginateDocumentsSuccess(pages){
+    return { type: PAGINATE_DOCUMENTS_SUCCESS, pages };
+}
 const token = localStorage.getItem('jwt');
 const userId = localStorage.getItem('userId');
 
-export function allDocuments(limit = 10, offset = 0) {
+export function allDocuments() {
+  return (dispatch) => {
+    getEndpoint(`/api/documents`)
+      .set('access-token', token)
+      .end((err, res) => dispatch(allDocumentsSuccess(res.body)
+      ));
+  };
+}
+export function paginateDocuments(limit = 10, offset = 0) {
   return (dispatch) => {
     getEndpoint(`/api/documents/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)
-      .end((err, res) => dispatch(allDocumentsSuccess(res.body)
+      .end((err, res) => dispatch(paginateDocumentsSuccess(res.body)
       ));
   };
 }

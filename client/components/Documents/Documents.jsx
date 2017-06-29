@@ -17,7 +17,9 @@ class DocumentsPage extends React.Component {
     this.handlePageChange = this.handlePageChange.bind(this);
   }
   componentDidMount() {
+    this.props.actions.paginateDocuments();
     this.props.actions.allDocuments();
+
   }
 
   documentRow(document, index) {
@@ -30,25 +32,26 @@ class DocumentsPage extends React.Component {
   }
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber });
-    this.props.actions.allDocuments(this.state.limit, (this.state.limit * (pageNumber - 1)));
+    this.props.actions.paginateDocuments(this.state.limit, (this.state.limit * (pageNumber - 1)));
   }
 
   render() {
-    const { documents } = this.props;
+    const documents = this.props.pages;
+    const totalItems = this.props.documents.length;
     return (
       <div className="container">
         <div>
-        <input type="submit"
-          value="Create Document 🙌"
-          className="btn btn-primary"
-          onClick={this.redirectToCreateDocumentPage} />
-           <SearchDoc />
-           </div>
+          <input type="submit"
+            value="Create Document 🙌"
+            className="btn btn-primary"
+            onClick={this.redirectToCreateDocumentPage} />
+          <SearchDoc />
+        </div>
         <DocumentList documents={documents} />
         <Pagination
           activePage={this.state.activePage}
           itemsCountPerPage={10}
-          totalItemsCount={100}
+          totalItemsCount={totalItems}
           pageRangeDisplayed={5}
           onChange={this.handlePageChange}
         />
@@ -56,13 +59,16 @@ class DocumentsPage extends React.Component {
     );
   }
 }
+
 DocumentsPage.propTypes = {
   actions: PropTypes.object.isRequired,
   documents: PropTypes.array.isRequired,
+  pages: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
+    pages: state.pages,
     documents: state.documents
   };
 }
