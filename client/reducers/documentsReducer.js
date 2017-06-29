@@ -4,8 +4,6 @@ export default function documentsReducer(state = [], action) {
   switch (action.type) {
     case types.ALL_DOCUMENTS_SUCCESS:
       return action.documents;
-    case types.PAGINATE_DOCUMENTS_SUCCESS:
-    return action.pages;
     case types.POST_DOCUMENTS_SUCCESS:
       return [...state,
       Object.assign({}, action.documents)
