@@ -53,20 +53,21 @@ describe('Documents Actions', () => {
     });
 });
 
-// describe('Async tests', () => {
-//     afterEach(() => {
-//         nock.cleanAll();
-//     });
-//     it('should create BEGIN_AJAX_CALL and ALL_DOCUMENTS_SUCCESS when loading documents', (done) => {
-//         const expectedActions = {
-//             type: types.POST_DOCUMENTS_SUCCESS,
-//             body: { document: [{ id: '10', title: 'Clothes', content: 'Women clothes', category: 'Public' }] }
-//         };
-//         const store = mockStore({ document: [], expectedActions });
-//         store.dispatch(documentActions.allDocuments()).then(() => {
-//             const actions = store.getActions();
-//             expect(actions[0]).type.toEqual(types.ALL_DOCUMENTS_SUCCESS);
-//             done();
-//         });
-//     });
-// });
+describe('Async Actions', () => {
+  it('should mock LOAD_DOCUMENTS_SUCCESS', (done) => {
+    nock('http://localhost:3000/')
+     .get('/api/documents')
+    .reply(200, { body: { document: [{ id: 5, name: 'Women Clothes', content: 'test it out' }] } });
+
+    const expectedActions = [
+      { type: types.ALL_DOCUMENTS_SUCCESS, body: { DOCUMENTS: [{ id: '60', name: 'Document 60' }] } }
+    ];
+
+    const store = mockStore({ documents: [] }, expectedActions, done());
+    store.dispatch(documentActions.allDocuments()).then(() => {
+      const actions = store.getActions();
+      expect(actions[1].type).toEqual(types.ALL_DOCUMENTS_SUCCESS);
+      done();
+    });
+  });
+});
