@@ -12,10 +12,10 @@ const DocumentList = ({ documents }) => {
         </tr>
       </thead>
       <tbody>
-        {documents ? documents.map(document =>
+        {documents.length ? documents.map(document =>
 
           <DocumentsListRow key={document.id} document={document} />
-        ) : <span />}
+        ) : <span>Document Does Not Exist </span>}
       </tbody>
     </table>
   );

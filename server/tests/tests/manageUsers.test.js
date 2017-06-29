@@ -1,7 +1,8 @@
 import React from "react";
 import expect from "expect";
+import sinon from 'sinon';
 import { mount, shallow } from "enzyme";
-import { ManageUsers } from "../components/Users/ManageUsers.jsx";
+import { ManageUsers } from "../../../client/components/Users/ManageUsers.jsx";
 
 describe('Manage Users Page', () => {
   it('has a saveButton that submits input', () => {

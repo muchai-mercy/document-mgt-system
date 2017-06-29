@@ -1,6 +1,6 @@
 import expect from "expect";
-import documentsReducer from "../reducers/documentsReducer";
-import * as documentActions from '../actions/documentActions';
+import documentsReducer from "../../../client/reducers/documentsReducer";
+import * as documentActions from '../../../client/actions/documentActions';
 
 describe('Documents Reducer', () => {
   it('should create document when passed POST_DOCUMENTS_SUCCESS', () => {

@@ -15,8 +15,8 @@ export function updateDocumentsSuccess(document) {
 export function deleteDocumentsSuccess(document) {
   return { type: DELETE_DOCUMENTS_SUCCESS, document };
 }
-export function searchDocumentsSuccess(documents) {
-  return { type: SEARCH_DOCUMENTS_SUCCESS, documents };
+export function searchDocumentsSuccess(pages) {
+  return { type: SEARCH_DOCUMENTS_SUCCESS, pages };
 }
 export function publicDocumentsSuccess(documents){
     return { type: PUBLIC_DOCUMENTS_SUCCESS, documents };

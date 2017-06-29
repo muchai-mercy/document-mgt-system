@@ -1,7 +1,7 @@
 import React from "react";
 import expect from "expect";
 import { mount, shallow } from "enzyme";
-import { SelectOptions } from "../components/Common/SelectOptions.jsx";
+import { SelectOptions } from "../../../client/components/Common/SelectOptions.jsx";
 
 describe('select options page', () => {
   it('should have select options', () => {

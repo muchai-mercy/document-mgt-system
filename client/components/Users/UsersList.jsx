@@ -13,10 +13,9 @@ const UserList = ({ user }) => {
         </tr>
       </thead>
       <tbody>
-        {user ? user.map(user =>
-
+        {user.length > 0 ? user.map(user =>
           <UsersListRow key={user.id} user={user} />
-        ) : <span />}
+        ) : <span>User Does Not Exist </span>}
       </tbody>
     </table>
   );

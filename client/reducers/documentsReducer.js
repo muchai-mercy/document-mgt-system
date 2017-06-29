@@ -20,8 +20,6 @@ export default function documentsReducer(state = [], action) {
       newState.splice(indexOfDocToDelete, 1);
       return newState;
     }
-    case types.SEARCH_DOCUMENTS_SUCCESS:
-      return action.documents;
     case types.PUBLIC_DOCUMENTS_SUCCESS:
       return action.documents;
     default:

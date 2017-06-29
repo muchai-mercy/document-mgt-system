@@ -37,7 +37,6 @@ class DocumentsPage extends React.Component {
 
   render() {
     const documents = this.props.pages;
-    console.log('>>>',this.props.pages);
     const totalItems = this.props.documents.length;
     return (
       <div className="container">

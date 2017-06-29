@@ -15,10 +15,10 @@
     "lint": "node_modules/.bin/esw webpack.config.* client server",
     "lint:watch": "npm run lint -- --watch",
     "pretest": "NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
-    "test": "export NODE_ENV=test && npm run test:front && npm run test:back",
+    "test": "export NODE_ENV=test && npm run test:back",
     "test:front": "istanbul cover _mocha **.js --require tools/testSetup.js -R client/tests/**",
-    "test:back": "nyc --reporter=html --reporter=text mocha server/tests/**/*.js --timeout 30000",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test:back": "istanbul cover _mocha **.js --require tools/testSetup.js -R server/tests/**/*.js --timeout 30000",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js | coveralls",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Muchai",

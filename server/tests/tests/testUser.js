@@ -3,8 +3,8 @@ const expect = require('chai').expect;
 const chai = require('chai');
 let should = chai.should();
 const chaiHttp = require('chai-http');
-const app = require('../../app');
-const User = ('../controllers/users.js');
+const app = require('../../../app');
+const User = ('../../controllers/users.js');
 
 chai.use(chaiHttp);
 let token = '';
