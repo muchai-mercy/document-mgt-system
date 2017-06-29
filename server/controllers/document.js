@@ -10,7 +10,8 @@ module.exports = {
         title: req.body.title,
         content: req.body.content,
         userId: req.body.userId,
-        category: req.body.category
+        category: req.body.category,
+        access: req.body.access
       })
         .then(document => {
           res.status(201).send(document);
@@ -25,7 +26,10 @@ module.exports = {
     let documentQuery = {};
       // if not admin get only the docs belonging to the authenticated user
     if(req.decoded.data.role != "Admin"){
-      documentQuery["where"] = {userId: req.decoded.data.id};
+      documentQuery["where"] = {$or: [{userId: req.decoded.data.id},{
+          access: req.decoded.data.role
+        }]
+      };
     }
     if (req.query.limit || req.query.offset) {
       documentQuery["offset"] = req.query.offset;
@@ -72,7 +76,8 @@ module.exports = {
           .update({
             title: req.body.title || document.title,
             content: req.body.content || document.content,
-            category: req.body.category || document.category
+            category: req.body.category || document.category,
+            access: req.body.category || document.access,
           })
           .then(() => res.status(200).send(document))
           .catch(error => res.status(400).send(error));

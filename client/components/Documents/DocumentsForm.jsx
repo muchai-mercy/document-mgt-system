@@ -1,7 +1,8 @@
 import React from "react";
 import TextInput from "../Common/TextInput.jsx";
 import TextArea from "../Common/TextArea.jsx";
-import { SelectOptions } from '../Common/SelectOptions.jsx';
+import SelectOptions from '../Common/SelectOptions.jsx';
+import AccessOptions from '../Common/AccessOptions.jsx';
 
 
 const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }) => (
@@ -26,6 +27,12 @@ const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }
       name="category"
       label="category"
       value={document.category}
+      onChange={onChange}
+    />
+     <AccessOptions
+      name="access"
+      label="access"
+      value={document.access}
       onChange={onChange}
     />
 
@@ -58,6 +65,12 @@ const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }
       name="category"
       label="category"
       value={document.category}
+      onChange={onChange}
+    />
+     <AccessOptions
+      name="access"
+      label="access"
+      value={document.access}
       onChange={onChange}
     />
 

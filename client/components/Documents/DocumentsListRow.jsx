@@ -7,6 +7,7 @@ const DocumentsListRow = ({ document }) => {
       <td><Link to={`/documents/${document.id}`}>{document.title}</Link></td>
       <td>{document.content}</td>
       <td>{document.category}</td>
+      <td>{document.access}</td>
     </tr>
   );
 };

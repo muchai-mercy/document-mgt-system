@@ -4,7 +4,8 @@ module.exports = {
     return queryInterface.bulkInsert('Documents', [{
       title: 'Document 1',
       content: 'test document',
-      category: 'Public',
+      category: 'Private',
+      access: 'Developer',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     },
@@ -12,6 +13,7 @@ module.exports = {
       title: 'Document 2',
       content: 'test document',
       category: 'Public',
+      access: 'Developer',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     }

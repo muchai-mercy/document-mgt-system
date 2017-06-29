@@ -18,7 +18,6 @@
     "test": "export NODE_ENV=test && npm run test:back",
     "test:front": "istanbul cover _mocha **.js --require tools/testSetup.js -R client/tests/**",
     "test:back": "istanbul cover _mocha **.js --require tools/testSetup.js -R server/tests/**/*.js --timeout 30000",
-    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js | coveralls",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Muchai",

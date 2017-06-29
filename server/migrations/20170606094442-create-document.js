@@ -17,6 +17,10 @@ module.exports = {
       category: {
         type: Sequelize.STRING
       },
+      access: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',

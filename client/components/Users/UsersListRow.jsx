@@ -8,6 +8,7 @@ const UsersListRow = ({ user }) => {
       <td>{user.firstName}</td>
       <td>{user.lastName}</td>
       <td>{user.email}</td>
+      <td>{user.role}</td>
     </tr>
   );
 };

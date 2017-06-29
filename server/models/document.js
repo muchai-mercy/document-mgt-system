@@ -12,16 +12,20 @@ module.exports = (sequelize, DataTypes) => {
     category: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    access: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
-    classMethods: {
-      associate:(models) => {
-        Document.belongsTo(models.Users, {
-          foreignKey: 'userId',
-          onDelete: 'CASCADE'
-        });
+      classMethods: {
+        associate: (models) => {
+          Document.belongsTo(models.Users, {
+            foreignKey: 'userId',
+            onDelete: 'CASCADE'
+          });
+        }
       }
-    }
-  });
+    });
   return Document;
 };
