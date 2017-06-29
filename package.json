@@ -16,7 +16,7 @@
     "lint:watch": "npm run lint -- --watch",
     "pretest": "NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
     "test": "export NODE_ENV=test && npm run test:front && npm run test:back",
-    "test:front": "nyc --reporter=html --reporter=text mocha --require tools/testSetup.js --require mock-local-storage client/tests/**/*.test.js",
+    "test:front": "istanbul cover _mocha **.js --require tools/testSetup.js -R client/tests/**",
     "test:back": "nyc --reporter=html --reporter=text mocha server/tests/**/*.js --timeout 30000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test:watch": "npm run test -- --watch"
@@ -86,6 +86,8 @@
     "express": "4.13.4",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.8.5",
+    "istanbul": "^0.4.5",
+    "istanbul-coveralls": "^1.0.3",
     "localStorage": "^1.0.3",
     "materialize-css": "^0.98.2",
     "mocha": "^3.4.2",
