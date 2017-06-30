@@ -27,18 +27,12 @@ export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('jwt');
   return dispatch(logOut({}));
 };
-export const userSignup = userInfo => (dispatch) => {
-  dispatch(signUpUser(userInfo));
-  return (
-    request
-      .post('/api/users')
-      .send(userInfo)
-      .then((res) => {
-        localStorage.setItem('jwt', res.body.token);
-        dispatch(loginSuccess({ token: res.body.token }));
-      })
-      .catch((error) => {
-        "Login failed";
-      })
-  );
-};
+
+export function userSignup(users) {
+  return (dispatch) => {
+    postEndpoint('/api/users')
+      .send(users)
+      .end((err, res) => dispatch(signUpUser({ users: res.body })
+      ));
+  };
+}

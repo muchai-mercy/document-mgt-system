@@ -1,8 +1,10 @@
 import request from "superagent";
 
+
+const doclabApiUrl = 'https://doclabapi.herokuapp.com';
 // get endpoint
 export const getEndpoint = (endpoint => {
-  const url = endpoint;
+  const url = doclabApiUrl + endpoint;
   return (
     request
     .get(url)
@@ -11,7 +13,7 @@ export const getEndpoint = (endpoint => {
 
 //post endpoint
 export const postEndpoint = (endpoint => {
-  const url = endpoint;
+  const url = doclabApiUrl + endpoint;
   return (
     request
     .post(url)
@@ -20,7 +22,7 @@ export const postEndpoint = (endpoint => {
 
 //put endpoint
 export const putEndpoint = (endpoint => {
-  const url = endpoint;
+  const url = doclabApiUrl + endpoint;
   return (
     request
     .put(url)
@@ -29,7 +31,7 @@ export const putEndpoint = (endpoint => {
 
 //delete endpoint
 export const deleteEndpoint = (endpoint => {
-  const url = endpoint;
+  const url = doclabApiUrl + endpoint;
   return (
     request
     .delete(url)

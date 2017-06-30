@@ -20,7 +20,6 @@ function bcrypt(password) {
 module.exports = {
   // create new user
   create(req, res) {
-    // console.log(req.body);
     const hashedPassword = bcrypt(req.body.password);
     return User
       .create({
@@ -116,7 +115,6 @@ module.exports = {
 
   // update username details
   update(req, res) {
-    console.log(req.body)
     return User
       .findById(req.params.userId)
       .then(user => {
