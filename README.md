@@ -1,7 +1,5 @@
 # Document Management System
-[![Build Status](https://travis-ci.org/Mercy-Muchai/document-mgt-system.svg?branch=master)](https://travis-ci.org/Mercy-Muchai/document-mgt-system)
-
-
+[![Build Status](https://travis-ci.org/Mercy-Muchai/document-mgt-system.svg?branch=master)](https://travis-ci.org/Mercy-Muchai/document-mgt-system) [![Coverage Status](https://coveralls.io/repos/github/Mercy-Muchai/document-mgt-system/badge.svg?branch=develop)](https://coveralls.io/github/Mercy-Muchai/document-mgt-system?branch=develop)
 
 ## Description
 
@@ -20,18 +18,23 @@ The front end was done with [React](https://facebook.github.io/react/docs/hello-
 [here](https://github.com/Mercy-Muchai/document-mgt-system.git)
 
 3. Install the dependencies:
-- npm install
+ -          npm install
+      
 4. Create a .env file on the route of the application:
-- SECRET_TOKEN_KEY = "somesecretstring"
-- NODE_ENV=development
-- DATABASE_URL=postgres://localhost:5432/test_db
+ -          SECRET_TOKEN_KEY = "somesecretstring"
+            NODE_ENV=development
+            DATABASE_URL=postgres://localhost:5432/test_db
 
 4. Run the application:
-- npm start
+ -          npm start
 
 ## Tests
 - Run the tests:
-  npm test
+ -          npm test
+
+## Task Management
+- The project was managed using Pivotal Tracker: [checkpoint-finale](https://www.pivotaltracker.com/n/projects/2035037)
+
 
 ### API Blueprint
 -  This can be found on the documentation.html file on the route of this project.
