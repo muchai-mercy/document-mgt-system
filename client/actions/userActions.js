@@ -32,7 +32,7 @@ export function allUsers() {
       ));
   };
 }
-export function paginateUsers(limit = 4, offset = 0) {
+export function paginateUsers(limit = 2, offset = 1) {
   return (dispatch) => {
     getEndpoint(`/api/users/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)

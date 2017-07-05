@@ -11,13 +11,13 @@ class UsersPage extends React.Component {
   constructor(props, context) {
     super(props, context);
       this.state = {
-      activePage: 1, limit: 4
+      activePage: 1, limit: 2
     };
     this.redirectToCreateUserPage = this.redirectToCreateUserPage.bind(this);
      this.handlePageChange = this.handlePageChange.bind(this);
   }
   componentDidMount() {
-       this.props.actions.paginateUsers();
+    this.props.actions.paginateUsers();
     this.props.actions.allUsers();
   }
 

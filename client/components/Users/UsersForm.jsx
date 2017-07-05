@@ -52,6 +52,7 @@ const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
         type="submit"
         disabled={loading}
         value={loading ? 'Saving...' : 'Save'}
+        style={{marginTop: "10px"}}
         className="btn btn-primary"
         onSave={onSave}
       />
@@ -102,6 +103,7 @@ const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
         type="submit"
         disabled={loading}
         value={loading ? 'Saving...' : 'Save 👍'}
+        style={{marginTop: "10px"}}
         className="btn btn-primary"
         onSave={onSave}
       />
