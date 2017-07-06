@@ -1,4 +1,8 @@
 language: node_js
+addons:
+  apt:
+    sources:
+      - google-chrome
 node_js:
   - "6"
 services:
@@ -6,6 +10,7 @@ services:
 before_script:
   - psql -c "create database doc_mgt_sys_test;" -U postgres
   - psql -c "CREATE USER mercymuchai;" -U postgres
+  - sleep 3
 after_script:
   - npm run coverage
 env:

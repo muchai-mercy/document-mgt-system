@@ -7,6 +7,9 @@
     "type": "git",
     "url": "document-mgt-system"
   },
+  "istanbul": {
+    "exclude": "./tools/"
+  },
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
     "start": "npm-run-all --parallel open:client lint:watch",
@@ -16,7 +19,7 @@
     "lint:watch": "npm run lint -- --watch",
     "pretest": "NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
     "test": "NODE_ENV=test ./node_modules/.bin/istanbul cover _mocha --require tools/testSetup.js --report lcov -- -R spec \"server/tests/**/*.js\"",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Muchai",
@@ -68,6 +71,7 @@
     "chai": "^4.0.2",
     "chai-http": "^3.0.0",
     "cheerio": "0.22.0",
+    "chromedriver": "^2.30.1",
     "colors": "1.1.2",
     "compression": "1.6.1",
     "coveralls": "^2.13.1",
@@ -87,6 +91,7 @@
     "file-loader": "0.8.5",
     "istanbul": "^0.4.5",
     "istanbul-coveralls": "^1.0.3",
+    "jsdom": "^8.5.0",
     "localStorage": "^1.0.3",
     "materialize-css": "^0.98.2",
     "mocha": "^3.4.2",
@@ -100,6 +105,7 @@
     "redux-mock-store": "1.0.2",
     "rimraf": "2.5.2",
     "sass-loader": "^6.0.5",
+    "selenium-webdriver": "^3.4.0",
     "sinon": "^2.3.6",
     "style-loader": "0.13.1",
     "supertest": "^3.0.0",
