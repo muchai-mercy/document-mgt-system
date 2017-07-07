@@ -18,7 +18,7 @@
     "lint": "node_modules/.bin/esw webpack.config.* client server",
     "lint:watch": "npm run lint -- --watch",
     "pretest": "NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
-    "test": "NODE_ENV=test istanbul cover node_modules/.bin/_mocha --require tools/testSetup.js  --report lcov -- -R spec \"server/tests/**/*.js\"",
+    "test": "NODE_ENV=test istanbul cover node_modules/.bin/_mocha --require tools/testSetup.js  --report lcov -- -R spec \"server/tests/**/*.js\" --timeout 30000",
     "coverage": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test -- --watch"
   },
