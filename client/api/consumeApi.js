@@ -1,7 +1,7 @@
 import request from "superagent";
 
 
-const doclabApiUrl = 'https://doclabapi.herokuapp.com';
+const doclabApiUrl = 'http://localhost:3030';
 // get endpoint
 export const getEndpoint = (endpoint => {
   const url = doclabApiUrl + endpoint;

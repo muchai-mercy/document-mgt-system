@@ -6,6 +6,8 @@ import DocumentsPage from "./components/Documents/Documents.jsx";
 import ManageDocument from "./components/Documents/ManageDocument.jsx";
 import UsersPage from "./components/Users/Users.jsx";
 import ManageUsers from "./components/Users/ManageUsers.jsx";
+import RolesPage from "./components/Roles/Roles.jsx";
+import ManageRoles from "./components/Roles/ManageRoles.jsx";
 import Login from "./components/Authentication/Login.jsx";
 import SignUp from "./components/Authentication/SignUp.jsx";
 
@@ -29,12 +31,13 @@ export default (
     <Route path="documents" component={DocumentsPage} onEnter={requireAuth} />
     <Route path="document" component={ManageDocument} onEnter={requireAuth} />
     <Route path="documents/:id" component={ManageDocument} onEnter={requireAuth} />
-    { localStorage.getItem('role') === 'Admin' ? 
     <div>
+    <Route path="roles" component={RolesPage} onEnter={requireAuth} />
+    <Route path="role" component={ManageRoles} onEnter={requireAuth} />
+    <Route path="roles/:id" component={ManageRoles} onEnter={requireAuth} />
     <Route path="users" component={UsersPage} onEnter={requireAuth} />
     <Route path="user" component={ManageUsers} onEnter={requireAuth} />
     <Route path="users/:id" component={ManageUsers} onEnter={requireAuth} />
     </div>
-    : null}
   </Route>
 );

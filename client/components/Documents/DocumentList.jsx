@@ -9,7 +9,6 @@ const DocumentList = ({ documents }) => {
           <th>Title</th>
           <th>Content</th>
           <th>Category</th>
-          <th>Access</th>
         </tr>
       </thead>
       <tbody>

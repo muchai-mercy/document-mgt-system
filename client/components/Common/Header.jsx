@@ -13,49 +13,46 @@ class Header extends React.Component {
     this.logOut = this.logOut.bind(this);
   }
 
- logOut() {
+  logOut() {
     this.props.actions.logoutUser();
   }
   render() {
     const token = localStorage.getItem('jwt');
-    const username = localStorage.getItem('username');
-    const role = localStorage.getItem('role');
-    const user = token && jwtDecode;
-
-    function auth(token, logOut) {
-      if(token) {
-        return (
-          <Link to={"/login"} onClick={logOut} activeClassName="active" style={{ color: "white" }}>
-           Logout {username}
-          </Link>
-        );
-      }
-      return (<Link to="/login" activeClassName="active" style={{ color: "white" }}>Login | </Link>);
-    }
+    const user = token && jwtDecode(token);
     return (
       <div className="card-panel teal lighten-2 header">
         <IndexLink to="/" activeClassName="active" style={{ color: "white" }}> Home</IndexLink>
-        {" | "}
-        <Link to="/documents" activeClassName="active" style={{ color: "white" }}> My Documents</Link>
-        {role === 'Admin' && <Link to="/users" activeClassName="active" style={{ color: "white" }}> | Users</Link>}
-        {" | "}
-        {auth(token, this.logOut)}    
+        <Link to="/documents" activeClassName="active" style={{ color: "white" }}> | Documents</Link>
+        {token
+          ? user.data.role === "Admin"
+            ? <Link to="/users" activeClassName="active" style={{ color: "white" }}> | Users </Link>
+            : ''
+          : ''}
+        {token
+          ? user.data.role === "Admin"
+            ? <Link to="/roles" activeClassName="active" style={{ color: "white" }}> | Roles </Link>
+            : ''
+          : ''}
+        {token
+          ? <Link to={"/login"} onClick={this.logOut} activeClassName="active" style={{ color: "white" }}>
+            | Logout {user.data.username}
+          </Link>
+          : <Link to="/login" activeClassName="active" style={{ color: "white" }}> | Login | </Link>}
         {!token ?
-        <Link to="/signup" activeClassName="active" style={{ color: "white" }}>SignUp</Link>
-        : null}
-      </div>
-    );
+          <Link to="/signup" activeClassName="active" style={{ color: "white" }}>SignUp</Link>
+          : ''}
+      </div>);
   }
 }
 //Props Validation
-Header.propTypes = {
+Header.PropTypes = {
   token: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired
 };
 function mapStateToProps(state, ownProps) {
 
   return {
-    token: state.login.token
+    token: state.token
   };
 }
 

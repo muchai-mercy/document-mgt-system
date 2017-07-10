@@ -40,7 +40,6 @@ class UsersPage extends React.Component {
     const totalItems = this.props.user.length; 
     return (
       <div className="container">
-        { localStorage.getItem('role') === 'Admin' ? 
         <div>
         <input type="submit"
           value="Create User 🙌"
@@ -56,7 +55,6 @@ class UsersPage extends React.Component {
           onChange={this.handlePageChange}
         />
         </div>
-        : null}
       </div>
     );
   }
