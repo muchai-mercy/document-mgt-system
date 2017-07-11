@@ -12,7 +12,7 @@ export class ManageRoles extends React.Component {
     super(props, context);
 
     this.state = {
-      user: Object.assign({}, this.props.role),
+      roles: Object.assign({}, this.props.roles),
       errors: {}
     };
     this.updateRoleState = this.updateRoleState.bind(this);
@@ -21,23 +21,23 @@ export class ManageRoles extends React.Component {
     this.deleteRole = this.deleteRole.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    if (this.props.role.id != nextProps.role.id) {
+    if (this.props.roles.id != nextProps.roles.id) {
       // update state on reload when props change
-      this.setState({ role: Object.assign({}, nextProps.role) });
+      this.setState({ roles: Object.assign({}, nextProps.roles) });
 
     }
   }
   updateRoleState(event) {
     const field = event.target.name;
-    let role = this.state.role;
-    role[field] = event.target.value;
-    return this.setState({ role: role });
+    let roles = this.state.roles;
+    roles[field] = event.target.value;
+    return this.setState({ roles: roles });
   }
-userFormisValid() {
+roleFormisValid() {
     let formisValid = true;
     let errors = {};
 
-    if (this.state.role.role.length < 4) {
+    if (this.state.roles.role.length < 4) {
       errors.role = 'Role must be at least 5 characters.';
       formisValid = false;
     }
@@ -47,29 +47,29 @@ userFormisValid() {
   }
   postRole(event) {
     event.preventDefault();
-     if (!this.userFormisValid()) {
+     if (!this.roleFormisValid()) {
       toastr.error('Role must be at least 5 characters!');
       return;
     }
-    this.props.actions.postRole(this.state.user);
+    this.props.actions.postRoles(this.state.roles);
     this.props.actions.allRoles();
-    toastr.success('User Created 😎!');
-    this.context.router.push('/users');
+    toastr.success('Role Created 😎!');
+    this.context.router.push('/roles');
 
   }
   updateRole(event) {
     event.preventDefault();
-    if (!this.userFormisValid()) {
-      toastr.error('Role must be at least 6 characters!');
+    if (!this.roleFormisValid()) {
+      toastr.error('Role must be at least 5 characters!');
       return;
     }
-    this.props.actions.updateRole(this.state.user);
+    this.props.actions.updateRoles(this.state.roles);
     toastr.success('Role Updated 😎!');
     this.context.router.push('/roles');
 
   }
   deleteRole(event) {
-    this.props.actions.deleteRole(this.state.role);
+    this.props.actions.deleteRole(this.state.roles);
     toastr.success('Role Deleted 😯');
     browserHistory.push('/roles');
   }
@@ -77,7 +77,7 @@ userFormisValid() {
     return (
       <div className="doc-form">
         <RolesForm
-          role={this.state.role}
+          roles={this.state.roles}
           onChange={this.updateRoleState}
           onSave={this.postRole}
           onUpdate={this.updateRole}
@@ -94,7 +94,7 @@ userFormisValid() {
 
 //Props Validation
 ManageRoles.propTypes = {
-  role: PropTypes.object.isRequired,
+  roles: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -103,21 +103,25 @@ ManageRoles.contextTypes = {
   router: PropTypes.object
 };
 
-function getRoleById(role, id) {
-  const roles = role.filter(role => role.id == id);
-  if (roles) return roles[0]; //return the first role
+function getRoleById(roles, id) {
+  const role = roles.filter(role => role.id === id);
+  if (role) return role[0]; //return the first role
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
-  const role = ownProps.params.role; // from the path role/:id
+  console.log('state', ownProps.params.id);
+  const roleId = ownProps.params.id; // from the path role/:id
   let roles = { id: '', role: '' };
 
-  if (role && state.role.length > 0) {
-    roles = getRoleById(state.role, role);
-  }
+  // if ( roleId && state.roles.length > 0) {
+  //   roles = getRoleById(state.roles, roleId);
+  // }
+  // return {
+  //   roles: state.roles
+  // };
   return {
-    role: role
+   roles: getRoleById(state.roles, roleId)
   };
 }
 function mapDispatchToProps(dispatch) {

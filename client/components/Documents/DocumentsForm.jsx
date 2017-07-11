@@ -5,7 +5,7 @@ import SelectOptions from '../Common/SelectOptions.jsx';
 import AccessOptions from '../Common/AccessOptions.jsx';
 
 
-const DocumentsForm = ({ document, onSave, role, onChange, loading, errors, onUpdate }) => (
+const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }) => (
   document.hasOwnProperty("id") ? 
   <form onSubmit={onUpdate}>
     <h4> Update Document </h4>

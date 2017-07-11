@@ -49,7 +49,7 @@ export function postRoles(roles) {
       ));
   };
 }
-export function updateRole(roles) {
+export function updateRoles(roles) {
   return (dispatch) => {
     putEndpoint(`/api/roles/${roles.id}`)
       .send(roles)
