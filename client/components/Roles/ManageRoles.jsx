@@ -17,7 +17,7 @@ export class ManageRoles extends React.Component {
     };
     this.updateRoleState = this.updateRoleState.bind(this);
     this.postRole = this.postRole.bind(this);
-    this.updateRole = this.updateRole.bind(this);
+    this.updateRoles = this.updateRoles.bind(this);
     this.deleteRole = this.deleteRole.bind(this);
   }
   componentWillReceiveProps(nextProps) {
@@ -57,7 +57,7 @@ roleFormisValid() {
     this.context.router.push('/roles');
 
   }
-  updateRole(event) {
+    updateRoles(event) {
     event.preventDefault();
     if (!this.roleFormisValid()) {
       toastr.error('Role must be at least 5 characters!');
@@ -66,8 +66,8 @@ roleFormisValid() {
     this.props.actions.updateRoles(this.state.roles);
     toastr.success('Role Updated 😎!');
     this.context.router.push('/roles');
+    }
 
-  }
   deleteRole(event) {
     this.props.actions.deleteRole(this.state.roles);
     toastr.success('Role Deleted 😯');
@@ -80,7 +80,7 @@ roleFormisValid() {
           roles={this.state.roles}
           onChange={this.updateRoleState}
           onSave={this.postRole}
-          onUpdate={this.updateRole}
+          onUpdate={this.updateRoles}
           errors={this.state.errors} />
         <button
           onClick={this.deleteRole}
@@ -103,23 +103,17 @@ ManageRoles.contextTypes = {
   router: PropTypes.object
 };
 
-function getRoleById(roles, id) {
-  const role = roles.filter(role => role.id === id);
+function getRoleById(roles, id) {  
+  const role = roles.filter(role => role.id === Number(id));
   if (role) return role[0]; //return the first role
   return null;
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log('state', ownProps.params.id);
+  console.log(ownProps.params.id);
   const roleId = ownProps.params.id; // from the path role/:id
   let roles = { id: '', role: '' };
 
-  // if ( roleId && state.roles.length > 0) {
-  //   roles = getRoleById(state.roles, roleId);
-  // }
-  // return {
-  //   roles: state.roles
-  // };
   return {
    roles: getRoleById(state.roles, roleId)
   };

@@ -5,8 +5,11 @@ import { Link } from "react-router";
 const DocumentsListRow = ({ role }) => {
   return (
     <tr>
-      <td><Link to={`/roles/${role.id}`}>{role.role}</Link></td>
+      <div className="card" style={{marginRight: "80%"}}>
+        <td><Link to={`/roles/${role.id}`}>{role.role}</Link></td>
+      </div>
     </tr>
+
   );
 };
 
