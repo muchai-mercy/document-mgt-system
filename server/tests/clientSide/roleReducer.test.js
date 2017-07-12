@@ -23,20 +23,20 @@ describe('Roles Reducer', () => {
   it('should update role when passed UPDATE_ROLES_SUCCESS', () => {
     // arrange
     const initialState = [
-      { id: "1", role: 'Admin' },
+      { id: "3", role: 'Developer' },
       { id: '2', role: 'User' },
   
     ];
 
-    const roles = { id: '1', role: 'Admini' };
+    const roles = { id: '3', role: 'Developers' };
     const action = roleActions.updateRoleSuccess(roles);
 
     // action
     const newState = rolesReducer(initialState, action);
-    const updatedRole = newState.find(action => action.roles.id === roles.id);
-    const untouchedRole = newState.find(action => action.id === '1');
+    const updatedRole = newState.find(action => action.id === roles.id);
+    const untouchedRole = newState.find(action => action.id === '3');
 
     // assertion
-    expect(newState.length).toEqual(3);
+    expect(newState.length).toEqual(2);
   });
 });

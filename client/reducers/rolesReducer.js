@@ -9,7 +9,7 @@ export default function rolesReducer(state = [], action) {
       Object.assign({}, action.roles)
       ];
     case types.UPDATE_ROLE_SUCCESS:
-      return [...state.filter(role => role.id !== action.role.id),
+      return [...state.filter(roles => roles.id !== action.roles.id),
       Object.assign({}, action.roles)
       ];
     case types.DELETE_ROLE_SUCCESS: {

@@ -20,26 +20,24 @@ describe('Users', () => {
       });
   });
   describe('/GET/users', () => {
-    it('should GET all users', (done) => {
+    it('should GET all users', () => {
       chai.request(app)
         .get('/api/users')
         .set('access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
-          done();
         });
     });
   });
 });
 describe('/GET user by id', () => {
-  it('should GET a user by its id', (done) => {
+  it('should GET a user by its id', () => {
     chai.request(app)
       .get('/api/users/1')
       .set('access-token', token)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
-        done();
       });
   });
 });

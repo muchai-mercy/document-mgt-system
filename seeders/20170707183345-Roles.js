@@ -11,8 +11,15 @@ module.exports = {
       role: "User",
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
+    },
+    {
+      role: "Developer",
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
     }], {});
+    
   },
+  
 
   down(queryInterface, Sequelize) {
     // Return a promise to correctly handle asynchronicity.

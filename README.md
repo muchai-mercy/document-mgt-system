@@ -1,7 +1,7 @@
 # Document Management System
 [![Build Status](https://travis-ci.org/Mercy-Muchai/document-mgt-system.svg?branch=develop)](https://travis-ci.org/Mercy-Muchai/document-mgt-system) [![Coverage Status](https://coveralls.io/repos/github/Mercy-Muchai/document-mgt-system/badge.svg?branch=develop)](https://coveralls.io/github/Mercy-Muchai/document-mgt-system?branch=develop)
 
-## Description
+## Description 
 
 - This is a simple API that creates documents per user, complete with roles and privileges.
 - Users can register, perform CRUD methods for documents, set access levels for their documents, view public documents.
