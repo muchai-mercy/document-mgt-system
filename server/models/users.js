@@ -26,20 +26,20 @@ module.exports = (sequelize, DataTypes) => {
       },
       unique: true,
     },
-    role: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    }
   },
     {
       classMethods: {
         associate: (models) => {
-          Users.hasMany(models.Document, {
+          Users.belongsTo(models.Roles, {
+            foreignKey: 'role',
+            OnDelete: 'CASCADE',
+          });
+          Users.hasMany(models.Documents, {
             foreignKey: 'userId',
             as: 'documents'
           });
-        }
-      }
+        },
+      },
     });
   return Users;
 };

@@ -27,7 +27,13 @@ module.exports = {
       },
       role: {
         type: Sequelize.STRING,
-        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Roles',
+          key: 'role',
+          as: 'role',
+          allowNull: false
+        }
       },
       createdAt: {
         allowNull: false,

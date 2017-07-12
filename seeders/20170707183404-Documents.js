@@ -5,23 +5,22 @@ module.exports = {
       title: 'Document 1',
       content: 'test document',
       category: 'Private',
-      access: 'Developer',
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
+      userId: 1
     },
     {
       title: 'Document 2',
       content: 'test document',
       category: 'Public',
-      access: 'Developer',
       createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
+      updatedAt: new Date().toISOString(),
+      userId: 2
     }
     ], {});
   },
 
   down(queryInterface, Sequelize) {
-      // Add reverting commands here.
       // Return a promise to correctly handle asynchronicity.
     return queryInterface.bulkDelete('Documents', null, {});
   }

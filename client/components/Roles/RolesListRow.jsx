@@ -9,7 +9,6 @@ const DocumentsListRow = ({ role }) => {
         <td><Link to={`/roles/${role.id}`}>{role.role}</Link></td>
       </div>
     </tr>
-
   );
 };
 

@@ -26,7 +26,7 @@ describe('Manage Documents Page', () => {
 //   expect(wrapper.contains(<div className="doc-form" />)).toEqual(true);
 // });
 it('renders doc-div', () => {
-  expect(wrapper.find('div').length).toBe(7);
+  expect(wrapper.find('div').length).toBe(6);
 }),
   it('renders DocumentHeader component', () => {
     expect(wrapper.find('DocumentForm').length).toBe(0);
@@ -40,4 +40,3 @@ it('renders doc-div', () => {
 //     expect(onButtonClick).to.have.property('Delete', 1);
 //   });
 
-// it npgit 
