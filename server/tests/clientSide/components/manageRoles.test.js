@@ -2,15 +2,15 @@ import React from "react";
 import expect from "expect";
 import sinon from 'sinon';
 import { mount, shallow } from "enzyme";
-import { ManageUsers } from "../../../client/components/Users/ManageUsers.jsx";
+import { ManageRoles } from "../../../../client/components/Roles/ManageRoles.jsx";
 
-describe('Manage Users Page', () => {
+describe('Manage Roles Page', () => {
   it('has a saveButton that submits input', () => {
     const props = {
-      users: [],
-      user: { id: '', firstName: '', lastName: '', username: '', email: '', password: '' }
+      roles: [],
+      role: { id: '', role: '' }
     };
-    const wrapper = mount(<ManageUsers {... props}/>);
+    const wrapper = mount(<ManageRoles {... props}/>);
     const saveButton = wrapper.find('input').last();
     expect(saveButton.prop('type')).toBe('submit');
   });

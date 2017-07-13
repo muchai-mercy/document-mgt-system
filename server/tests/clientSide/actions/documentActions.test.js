@@ -3,8 +3,8 @@ import expect from 'expect';
 import thunk from "redux-thunk";
 import nock from "nock";
 import configureMockStore from "redux-mock-store";
-import * as documentActions from '../../../client/actions/documentActions';
-import * as types from '../../../client/actions/actionTypes';
+import * as documentActions from '../../../../client/actions/documentActions';
+import * as types from '../../../../client/actions/actionTypes';
 
 
 const middleware = [thunk];
@@ -115,7 +115,7 @@ it('should mock DELETE_DOCUMENT_SUCCESS', (done) => {
     ];
 
     const store = mockStore({ documents: [] }, expectedActions, done());
-    store.dispatch(documentActions.postDocuments()).then(() => {
+    store.dispatch(documentActions.deleteDocuments()).then(() => {
         const actions = store.deleteActions();
         expect(actions[1].type).toEqual(types.DELETE_DOCUMENTS_SUCCESS);
         done();

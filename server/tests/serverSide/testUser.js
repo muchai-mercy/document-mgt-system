@@ -8,7 +8,7 @@ const app = require('../../../app');
 chai.use(chaiHttp);
 let token = '';
 
-describe('Users', () => {
+describe('Users', (done) => {
   // login
   beforeEach('login user', (done) => {
     chai.request(app)

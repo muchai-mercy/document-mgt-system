@@ -7,7 +7,7 @@ import { push } from 'react-router-redux';
 import * as sessionActions from '../../actions/sessionActions';
 
 
-class Header extends React.Component {
+export class Header extends React.Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);

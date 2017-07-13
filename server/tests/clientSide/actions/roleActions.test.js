@@ -3,8 +3,8 @@ import expect from 'expect';
 import thunk from "redux-thunk";
 import nock from "nock";
 import configureMockStore from "redux-mock-store";
-import * as roleActions from '../../../client/actions/roleActions';
-import * as types from '../../../client/actions/actionTypes';
+import * as roleActions from '../../../../client/actions/roleActions';
+import * as types from '../../../../client/actions/actionTypes';
 
 
 const middleware = [thunk];

@@ -1,6 +1,6 @@
 import expect from "expect";
-import usersReducer from "../../../client/reducers/usersReducer";
-import * as userActions from '../../../client/actions/userActions';
+import usersReducer from "../../../../client/reducers/usersReducer";
+import * as userActions from '../../../../client/actions/userActions';
 
 describe('Users Reducer', () => {
   it('should create user when passed POST_USERS_SUCCESS', () => {
@@ -34,5 +34,21 @@ describe('Users Reducer', () => {
 
     // assertion
     expect(newState.length).toEqual(2);
+  });
+  it('it should get all users when passed LOAD_USERS_SUCCESS', () => {
+    const initialState = [];
+     const user = { id: '2', username: 'womanwoman' };
+
+    const action = userActions.allUsersSuccess(user);
+    const newState = usersReducer(initialState, action);
+    expect(newState).toEqual(user);
+  });
+    it('it should delete a user when passed DELETE_USER_SUCCESS', () => {
+    const initialState = [];
+     const user = { id: '2', username: 'womanwoman' };
+
+    const action = userActions.deleteUsersSuccess(user);
+    const newState = usersReducer(initialState, action);
+    expect(newState.length).toEqual(0);
   });
 });

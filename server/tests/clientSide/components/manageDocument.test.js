@@ -1,8 +1,8 @@
 import React from "react";
 import expect from "expect";
 import sinon from 'sinon';
-import { mount, shallow } from "enzyme";
-import { ManageDocument } from "../../../client/components/Documents/ManageDocument.jsx";
+import { mount, render, shallow } from "enzyme";
+import { ManageDocument } from "../../../../client/components/Documents/ManageDocument.jsx";
 
 const props = {
   deleteDocuments() {},
@@ -22,9 +22,7 @@ describe('Manage Documents Page', () => {
     expect(saveButton.prop('type')).toBe('submit');
   });
 });
-// it('has a class doc-form', () => {
-//   expect(wrapper.contains(<div className="doc-form" />)).toEqual(true);
-// });
+
 it('renders doc-div', () => {
   expect(wrapper.find('div').length).toBe(6);
 }),
