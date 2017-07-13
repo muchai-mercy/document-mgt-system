@@ -10,45 +10,8 @@ import * as types from '../../../../client/actions/actionTypes';
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 const roles = {};
-// Test a sync action
-describe('Roles Actions', () => {
-    describe('postRoleSuccess', () => {
-        it('should have a create role action', () => {
-            // arrange
-         
-            const expectedAction = {
-                type: types.POST_ROLE_SUCCESS,
-                roles
-            };
-            // action
-            const action = roleActions.postRoleSuccess(roles);
-            // assertion
-            expect(action).toEqual(expectedAction);
-        });
-        it('should GET all roles success', () => {
-            const expectedAction = {
-                type: types.ALL_ROLES_SUCCESS
-            };
-        });
-        it('should UPDATE a role success', () => {
-            const expectedAction = {
-                type: types.UPDATE_ROLE_SUCCESS
-            };
-        });
-        it('should DELETE a role success', () => {
-            const expectedAction = {
-                type: types.DELETE_ROLE_SUCCESS
-            };
-        });
-        it('should SEARCH a role by title success', () => {
-            const expectedAction = {
-                type: types.SEARCH_ROLE_SUCCESS
-            };
-        });
-    });
-});
 
-describe('Async Actions', () => {
+describe('Roles Actions', () => {
     it('should mock LOAD_ROLES_SUCCESS', (done) => {
         nock('http://localhost:3000/')
             .get('/api/roles')
