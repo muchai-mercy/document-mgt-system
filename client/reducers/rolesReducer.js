@@ -15,7 +15,7 @@ export default function rolesReducer(state = [], action) {
     case types.DELETE_ROLE_SUCCESS: {
       const newState = Object.assign([], state);
       const indexOfRoleToDelete = state.findIndex(role => {
-        return role.id == action.role.id;
+        return role.id == action.roles.id;
       });
       newState.splice(indexOfRoleToDelete, 1);
       return newState;
