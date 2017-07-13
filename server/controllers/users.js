@@ -3,7 +3,7 @@ const { sign } = require('jsonwebtoken');
 const secretKey = process.env.SECRET_TOKEN_KEY;
 const db = require('../models');
 const User = db.Users;
-const Document = db.Document;
+const Documents = db.Documents;
 
 function generateToken(payload, secretSessionKey, expiresIn) {
   return sign({
@@ -83,11 +83,13 @@ module.exports = {
     return User
       .findAll({
         include: [{
-          model: Document,
+          model: Documents,
           as: 'documents'
         }]
       })
-      .then(user => res.status(200).send(user))
+      .then(user => {
+        res.status(200).send(user);
+      })
       .catch(error => res.status(400).send(error));
   },
 
@@ -96,7 +98,7 @@ module.exports = {
     return User
       .findById(req.params.userId, {
         include: [{
-          model: Document,
+          model: Documents,
           as: 'documents'
         }]
       })
@@ -130,7 +132,7 @@ module.exports = {
               firstName: req.body.firstName || user.firstName,
               lastName: req.body.lastName || user.lastName,
               username: req.body.username || user.username,
-              password: hashedPassword,
+              password: req.body.password || user.password,
               email: req.body.email || user.email,
               role: req.body.role || user.role
             })
@@ -138,43 +140,45 @@ module.exports = {
             .catch(error => res.status(400).send(error));
         }
         return user.update();
-      })
-      .catch(error => res.status(400).send(error));
-},
+      });
+  },
 
   //delete a user
   destroy(req, res) {
-  return User
-    .findById(req.params.userId)
-    .then(user => {
-      if (!user) {
-        res.status(404).send({
-          message: 'User Not Found'
-        });
-      }
-      return user
-        .destroy({
-          username: req.body.username || user.username,
-          password: req.body.password || user.password,
-          email: req.body.email || user.email
-        })
-        .then(() => res.status(204).send())
-        .catch(error => res.status(400).send(error));
-    });
-},
+    return User
+      .findById(req.params.userId)
+      .then(user => {
+        if (!user) {
+          res.status(404).send({
+            message: 'User Not Found'
+          });
+        }
+        return user
+          .destroy({
+            firstName: req.body.firstName || user.firstName,
+            lastName: req.body.lastName || user.lastName,
+            username: req.body.username || user.username,
+            password: req.body.password || user.password,
+            email: req.body.email || user.email,
+            role: req.body.role || user.role
+          })
+          .then(() => res.status(204).send())
+          .catch(error => res.status(400).send(error));
+      });
+  },
 
-//search for a user by query input
-findByq(req, res) {
-  return User
-    .findAll({
-      where: {
-        $or: [
-          { username: { $ilike: `%${req.query.q}%` } },
-          { email: { $ilike: `%${req.query.q}%` } }
-        ]
-      }
-    })
-    .then(response => res.status(200).send(response))
-    .catch(error => res.status(400).send(error));
-}
+  //search for a user by query input
+  findByq(req, res) {
+    return User
+      .findAll({
+        where: {
+          $or: [
+            { username: { $ilike: `%${req.query.q}%` } },
+            { email: { $ilike: `%${req.query.q}%` } }
+          ]
+        }
+      })
+      .then(response => res.status(200).send(response))
+      .catch(error => res.status(400).send(error));
+  }
 };

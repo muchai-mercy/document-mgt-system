@@ -8,7 +8,7 @@ const app = require('../../../app');
 chai.use(chaiHttp);
 let token = '';
 
-describe('Documents', (done) => {
+describe('Documents', () => {
   beforeEach('login user', (done) => {
     chai.request(app)
       .post('/api/users/login')
@@ -20,18 +20,29 @@ describe('Documents', (done) => {
   });
 
   describe('/GET', () => {
-    it('returns a list of existing documents', () => {
+    it('returns a list of existing documents', (done) => {
       chai.request(app)
         .get('/api/documents/')
         .set('access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
+          done();
+        });
+    });
+  });
+  describe('/GET public documents', () => {
+    it('returns a list of public existing documents', (done) => {
+      chai.request(app)
+        .get('/api/documents/public')
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
         });
     });
   });
 
-  describe('/GET/document by id', (done) => {
-    it('should GET a document by its id', () => {
+  describe('/GET/document by id', () => {
+    it('should GET a document by its id', (done) => {
       chai.request(app)
         .get('/api/documents/1')
         .set('access-token', token)
@@ -40,11 +51,20 @@ describe('Documents', (done) => {
           done();
         });
     });
-  });
-  describe('/SEARCH/document', (done) => {
-    it('it should find docs when searched', () => {
+    it('should return a 404', (done) => {
       chai.request(app)
-        .get('/search/documents/')
+        .get('/api/documents/11')
+        .set('access-token', token)
+        .end((err, res) => {
+          res.should.have.status(404);
+          done();
+        });
+    });
+  });
+  describe('/SEARCH/document', () => {
+    it('it should find docs when searched', (done) => {
+      chai.request(app)
+        .get('/api/search/documents/')
         .set('access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
@@ -53,8 +73,8 @@ describe('Documents', (done) => {
     });
   });
 
-  describe('/POST document', (done) => {
-    it('should create a document', () => {
+  describe('/POST document', () => {
+    it('should create a document', (done) => {
       chai.request(app)
         .post('/api/documents')
         .set('access-token', token)
@@ -69,9 +89,39 @@ describe('Documents', (done) => {
         });
     });
   });
+  describe('/PUT document', () => {
+    it('should update a document', (done) => {
+      chai.request(app)
+        .put('/api/documents/1')
+        .set('access-token', token)
+        .send({
+          title: "Men",
+          content: "Here we go",
+          category: "Private",
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
+    it('should return a 404', (done) => {
+      chai.request(app)
+        .put('/api/documents/11')
+        .set('access-token', token)
+        .send({
+          title: "Men",
+          content: "Here we go",
+          category: "Private",
+        })
+        .end((err, res) => {
+          res.should.have.status(404);
+          done();
+        });
+    });
+  });
 
-  describe('/GET/documents', (done) => {
-    it('should GET documents and paginate', () => {
+  describe('/GET/documents', () => {
+    it('should GET documents and paginate', (done) => {
       chai.request(app)
         .get('/api/documents/?limit=3&offset=0')
         .set('access-token', token)
@@ -82,47 +132,40 @@ describe('Documents', (done) => {
     });
   });
 
-
-  describe('/DELETE document', (done) => {
-    it('should return a 404 response', () => {
+  describe('/DELETE document', () => {
+    it('should return a 404 response', (done) => {
       chai.request(app)
-        .delete('/api/document/77')
+        .delete('/api/documents/77')
         .set('access-token', token)
         .end((err, res) => {
           res.should.have.status(404);
           done();
         });
     });
-  });
-
-  describe('/GET/search/documents/?q={}', (done) => {
-    it('it should GET a document by searching', () => {
+     it('should return a 204 response', (done) => {
       chai.request(app)
-        .get('/api/search/documents/?q=men')
+        .delete('/api/documents/3')
         .set('access-token', token)
         .end((err, res) => {
-          res.should.have.status(200);
+          res.should.have.status(204);
           done();
         });
     });
   });
-  describe('/POST', (done) => {
-    it('should return a 403 response while some specified fields are empty', () => {
-      it('should create a document', () => {
-        chai.request(app)
-          .post('/api/documents')
-          .send({
-            title: "Men",
-            content: "Here we go",
-            category: "Private",
-            userId: 1
-          })
-          .set('access-token', token)
-          .end((err, res) => {
-            res.should.have.status(403);
-            done();
-          });
-      });
+
+  describe('/POST', () => {
+    it('should return a 400 response', (done) => {
+      chai.request(app)
+        .post('/api/documents')
+        .set('access-token', token)
+        .send({
+          title: "Men",
+          content: "Here we go"
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          done();
+        });
     });
   });
 });

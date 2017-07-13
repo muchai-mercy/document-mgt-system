@@ -17,8 +17,8 @@ describe('login form', function () {
     });
 
     it('login successfully', function (done) {
-        driver.findElement(By.xpath('//*[@id="app"]/div/div[2]/div/form/div[1]/div/input')).sendKeys('human@gmail.com');
-        driver.findElement(By.xpath('//*[@id="app"]/div/div[2]/div/form/input[1]')).sendKeys('human');
+        driver.findElement(By.xpath('//*[@id="app"]/div/div[2]/div/form/div[1]/div/input')).sendKeys('tests@gmail.com');
+        driver.findElement(By.xpath('//*[@id="app"]/div/div[2]/div/form/input[1]')).sendKeys('tests');
         driver.findElement(By.xpath('//*[@id="app"]/div/div[2]/div/form/input[2]')).click()
             .then(() => done());
     });

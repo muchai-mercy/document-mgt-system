@@ -25,7 +25,7 @@ module.exports = {
     loaders: [
       {test: /\.js|jsx$/, include: path.join(__dirname, 'client'), loaders: ['babel-loader']},
       {test: /\.(scss|css)$/, loaders: ['style-loader', 'css-loader', 'sass-loader'] },
-      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
+      {test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
   }
 };

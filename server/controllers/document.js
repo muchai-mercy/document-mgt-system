@@ -1,5 +1,5 @@
 const db = require('../models');
-const Document = db.Document;
+const Document = db.Documents;
 const Users = db.Users;
 
 module.exports = {
@@ -125,11 +125,6 @@ module.exports = {
       }
     })
     .then((data) => {
-      if (!data) {
-        return res.status(404).send({
-          message: 'No Documents Found',
-          });
-        }
         return res.status(200).send(data);
       })
       .catch((error) => {
