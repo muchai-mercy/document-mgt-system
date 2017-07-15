@@ -24,20 +24,19 @@ describe('Documents Reducer', () => {
     // arrange
     const initialState = [
       { id: '1', title: 'Men' },
-      { id: '2', title: 'Women' },
-      { id: '3', title: 'All' }
+      { id: '2', title: 'Women' }
     ];
 
-    const document = { id: 'Women', title: 'Other Women' };
+    const document = { id: '2', title: 'Other Women' };
     const action = documentActions.updateDocumentsSuccess(document);
 
     // action
     const newState = documentsReducer(initialState, action);
-    const updatedDocument = newState.find(action => action.id === document.id);
-    const untouchedDocument = newState.find(action => action.id === 'A');
+    const updatedDocument = newState.find(action => action.id === action.document.id);
+    const untouchedDocument = newState.find(action => action.id === '1');
 
     // assertion
-    expect(newState.length).toEqual(4);
+    expect(newState.length).toEqual(2);
   });
    it('it should delete a document when passed DELETE_DOCUMENT_SUCCESS', () => {
     const initialState = [];

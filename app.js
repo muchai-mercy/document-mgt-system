@@ -10,7 +10,7 @@ const NODE_ENV = process.env.NODE_ENV;
 if (NODE_ENV !== 'development') {
   require('dotenv').load();
 }
-const port = 3001;
+const port = 3000;
 const app = express();
 const compiler = webpack(config);
 

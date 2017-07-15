@@ -73,7 +73,7 @@ export function deleteDocuments(documents) {
     deleteEndpoint(`/api/documents/${documents.id}`)
       .set('access-token', token)
       .send(documents)
-      .end((err, res) => dispatch(deleteDocumentsSuccess(documents)
+      .end((err, res) => dispatch(deleteDocumentsSuccess({documents: res.body})
       ));
   };
 }

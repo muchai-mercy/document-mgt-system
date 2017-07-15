@@ -33,6 +33,9 @@ export class Header extends React.Component {
             ? <Link to="/roles" activeClassName="active" style={{ color: "white" }}> | Roles </Link>
             : ''
           : ''}
+        {token ?
+          <Link to="/profile" activeClassName="active" style={{ color: "white" }}> | My Profile </Link>
+          : ''}
         {token
           ? <Link to={"/login"} onClick={this.logOut} activeClassName="active" style={{ color: "white" }}>
             | Logout {user.data.username}
@@ -50,7 +53,6 @@ Header.PropTypes = {
   actions: PropTypes.object.isRequired
 };
 function mapStateToProps(state, ownProps) {
-
   return {
     token: state.token
   };

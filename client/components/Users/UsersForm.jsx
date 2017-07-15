@@ -6,41 +6,8 @@ import SelectOptions from './SelectOptions.jsx';
 const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
   user.id != '' ?
     <form onSubmit={onUpdate}>
-      <h4> Update Data </h4>
-      <TextArea
-        name="firstName"
-        label="First Name"
-        value={user.firstName}
-        onChange={onChange}
-      />
+      <h4> Assign Role </h4>
 
-      <TextInput
-        name="lastName"
-        label="Last Name"
-        value={user.lastName}
-        onChange={onChange}
-      />
-      <TextInput
-        name="username"
-        label="Username"
-        value={user.username}
-        onChange={onChange}
-      />
-
-      <TextArea
-        name="email"
-        label="Email Address"
-        value={user.email}
-        onChange={onChange}
-      />
-
-      <TextArea
-        name="password"
-        type="password"
-        label="Password"
-        value={user.password}
-        onChange={onChange}
-      />
       <SelectOptions
         name="role"
         label="Role"
@@ -48,11 +15,34 @@ const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
         onChange={onChange}
       />
 
+      <TextArea
+        name="firstName"
+        label="First Name"
+        value={user.firstName}
+      />
+
+      <TextInput
+        name="lastName"
+        label="Last Name"
+        value={user.lastName}
+      />
+      <TextInput
+        name="username"
+        label="Username"
+        value={user.username}
+      />
+
+      <TextArea
+        name="email"
+        label="Email Address"
+        value={user.email}
+      />
+
       <input
         type="submit"
         disabled={loading}
         value={loading ? 'Saving...' : 'Save'}
-        style={{marginTop: "10px"}}
+        style={{ marginTop: "10px" }}
         className="btn btn-primary"
         onSave={onSave}
       />
@@ -98,12 +88,11 @@ const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
         value={user.role}
         onChange={onChange}
       />
-
       <input
         type="submit"
         disabled={loading}
         value={loading ? 'Saving...' : 'Save 👍'}
-        style={{marginTop: "10px"}}
+        style={{ marginTop: "10px" }}
         className="btn btn-primary"
         onSave={onSave}
       />
