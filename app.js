@@ -10,7 +10,8 @@ const NODE_ENV = process.env.NODE_ENV;
 if (NODE_ENV !== 'development') {
   require('dotenv').load();
 }
-const port = 3000;
+
+const port = process.env.PORT || 3000;
 const app = express();
 const compiler = webpack(config);
 
@@ -37,7 +38,7 @@ app.listen(port, function(err) {
   if (err) {
     // console.log(err);
   } else {
-    open(`http://localhost:${port}`);
+    open(`http://0.0.0.0:${port}`);
   }
 });
 

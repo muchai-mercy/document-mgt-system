@@ -5,7 +5,7 @@ import Pagination from "react-js-pagination";
 import { browserHistory } from "react-router";
 import * as documentActions from "../../actions/documentActions.js";
 import DocumentList from "./DocumentList.jsx";
-import SearchDoc from "./SearchDocument.jsx";
+import SearchDoc from "./searchDocument.jsx";
 
 class DocumentsPage extends React.Component {
   constructor(props, context) {
