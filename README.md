@@ -1,5 +1,6 @@
 # Document Management System
-[![Build Status](https://travis-ci.org/Mercy-Muchai/document-mgt-system.svg?branch=develop)](https://travis-ci.org/Mercy-Muchai/document-mgt-system) [![Coverage Status](https://coveralls.io/repos/github/Mercy-Muchai/document-mgt-system/badge.svg?branch=develop)](https://coveralls.io/github/Mercy-Muchai/document-mgt-system?branch=develop)
+
+[![Coverage Status](https://coveralls.io/repos/github/Mercy-Muchai/document-mgt-system/badge.svg?branch=develop)](https://coveralls.io/github/Mercy-Muchai/document-mgt-system?branch=develop)
 
 ## Description 
 
