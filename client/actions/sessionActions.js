@@ -1,4 +1,5 @@
 import request from "superagent";
+import toastr from 'toastr';
 import { LOGIN_SUCCESS, SIGNUP_USER, LOGOUT_SUCCESS } from "./actionTypes";
 import { postEndpoint } from "../api/consumeApi";
 
@@ -13,12 +14,14 @@ export function loginUser(credentials) {
     postEndpoint('/api/users/login')
       .send(credentials)
       .end((err, res) => {
+          toastr.success(res.body.message);
         if (!err) {
           localStorage.setItem('jwt', res.body.token);
           localStorage.setItem('username', res.body.username);
           localStorage.setItem('userId', res.body.id);
           localStorage.setItem('role', res.body.role);
-          return dispatch(loginSuccess({ token: res.body.token }));
+          return dispatch(loginSuccess(res.body));
+
         }
       });
   };

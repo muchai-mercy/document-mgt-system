@@ -31,7 +31,12 @@ componentDidMount() {
   </div>);
   }
 }
-
+//Props Validation
+SelectOptions.propTypes = {
+  roles: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
+};
 function mapStateToProps(state, ownProps) {
   return {
     roles: state.roles

@@ -82,11 +82,14 @@ export class ManageDocument extends React.Component {
           onSave={this.postDocuments}
           onUpdate={this.updateDocuments}
           errors={this.state.errors} />
-        <button
+          {/\/document$/.test(this.props.location.pathname)
+          ? ""
+          :<button
           onClick={this.deleteDocuments}
           className="btn btn-default" style={{ backgroundColor: '#f44336', marginLeft: "82%", marginTop: "-60px" }}>
           Delete
-       </button>
+             </button>
+          }
       </div>
     );
   }
