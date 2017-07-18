@@ -14,7 +14,7 @@ export function loginUser(credentials) {
     postEndpoint('/api/users/login')
       .send(credentials)
       .end((err, res) => {
-          toastr.success(res.body.message);
+        toastr.success(res.body.message);
         if (!err) {
           localStorage.setItem('jwt', res.body.token);
           localStorage.setItem('username', res.body.username);
@@ -26,6 +26,7 @@ export function loginUser(credentials) {
       });
   };
 }
+
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('jwt');
   return dispatch(logOut({}));

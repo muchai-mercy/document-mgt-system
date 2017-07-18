@@ -32,7 +32,7 @@ describe('Documents Reducer', () => {
 
     // action
     const newState = documentsReducer(initialState, action);
-    const updatedDocument = newState.find(action => action.id === action.document.id);
+    const updatedDocument = newState.find(action => action.id === document.id);
     const untouchedDocument = newState.find(action => action.id === '1');
 
     // assertion

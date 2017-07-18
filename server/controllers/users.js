@@ -154,14 +154,7 @@ module.exports = {
           });
         }
         return user
-          .destroy({
-            firstName: req.body.firstName || user.firstName,
-            lastName: req.body.lastName || user.lastName,
-            username: req.body.username || user.username,
-            password: req.body.password || user.password,
-            email: req.body.email || user.email,
-            role: req.body.role || user.role
-          })
+          .destroy()
           .then(() => res.status(204).send())
           .catch(error => res.status(400).send(error));
       });

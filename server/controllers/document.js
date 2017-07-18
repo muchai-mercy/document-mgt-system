@@ -95,11 +95,7 @@ module.exports = {
           });
         }
         return document
-          .destroy({
-            title: req.body.title || document.title,
-            content: req.body.content || document.content,
-            userId: req.body.userId || document.userId
-          })
+          .destroy()
           .then(() => res.status(204).send())
           .catch(error => res.status(400).send(error));
       });
@@ -121,7 +117,7 @@ module.exports = {
     return Document
     .findAll({
        where: {
-        category: { $iLike: 'Public' }
+        category: { $ilike: 'Public' }
       }
     })
     .then((data) => {

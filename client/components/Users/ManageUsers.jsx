@@ -81,11 +81,14 @@ userFormisValid() {
           onSave={this.postUsers}
           onUpdate={this.updateUsers}
           errors={this.state.errors} />
-        <button
-          onClick={this.deleteUsers}
+      {/\/user$/.test(this.props.location.pathname)
+          ? ""
+          :<button
+          onClick={this.deleteDocuments}
           className="btn btn-default" style={{ backgroundColor: '#f44336', marginLeft: "82%", marginTop: "-60px" }}>
           Delete
-       </button>
+             </button>
+          }   
       </div>
     );
   }
@@ -94,7 +97,8 @@ userFormisValid() {
 //Props Validation
 ManageUsers.propTypes = {
   user: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 //Make router available by using React Router Context

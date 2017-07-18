@@ -81,9 +81,7 @@ module.exports = {
           });
         }
         return role
-          .destroy({
-            role: req.body.role || role.role,
-          })
+          .destroy()
           .then(() => res.status(204).send())
           .catch(error => res.status(400).send(error));
       });

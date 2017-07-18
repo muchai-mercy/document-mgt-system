@@ -2,7 +2,6 @@ import React from "react";
 import TextInput from "../Common/TextInput.jsx";
 import TextArea from "../Common/TextArea.jsx";
 import SelectOptions from '../Common/SelectOptions.jsx';
-import AccessOptions from '../Common/AccessOptions.jsx';
 
 
 const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }) => (

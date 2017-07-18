@@ -35,6 +35,7 @@ export function allDocuments() {
       ));
   };
 }
+
 export function paginateDocuments(limit = 10, offset = 0) {
   return (dispatch) => {
     getEndpoint(`/api/documents/?limit=${limit}&offset=${offset}`)
@@ -43,12 +44,14 @@ export function paginateDocuments(limit = 10, offset = 0) {
       ));
   };
 }
+
 export const publicDocuments = () => (dispatch) => {
   getEndpoint('/api/documents/public')
     .end((err, res) => {
       dispatch(publicDocumentsSuccess(res.body));
     });
 };
+
 export function postDocuments(documents) {
   return (dispatch) => {
     postEndpoint('/api/documents')
@@ -58,6 +61,7 @@ export function postDocuments(documents) {
       ));
   };
 }
+
 export function updateDocuments(documents) {
   return (dispatch) => {
     putEndpoint(`/api/documents/${documents.id}`)

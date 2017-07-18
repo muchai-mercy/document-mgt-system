@@ -32,6 +32,7 @@ export function allUsers() {
       ));
   };
 }
+
 export function paginateUsers(limit = 2, offset = 1) {
   return (dispatch) => {
     getEndpoint(`/api/users/?limit=${limit}&offset=${offset}`)
@@ -40,6 +41,7 @@ export function paginateUsers(limit = 2, offset = 1) {
       ));
   };
 }
+
 export function postUsers(users) {
   return (dispatch) => {
     postEndpoint('/api/users')
@@ -49,6 +51,7 @@ export function postUsers(users) {
       ));
   };
 }
+
 export function updateUsers(users) {
   return (dispatch) => {
     putEndpoint(`/api/users/${users.id}`)

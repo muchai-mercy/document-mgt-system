@@ -98,7 +98,8 @@ export class ManageDocument extends React.Component {
 //Props Validation
 ManageDocument.propTypes = {
   document: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 //Make router available by using React Router Context

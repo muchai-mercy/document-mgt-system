@@ -82,11 +82,14 @@ roleFormisValid() {
           onSave={this.postRole}
           onUpdate={this.updateRoles}
           errors={this.state.errors} />
-        <button
-          onClick={this.deleteRole}
+             {/\/role$/.test(this.props.location.pathname)
+          ? ""
+          :<button
+          onClick={this.deleteDocuments}
           className="btn btn-default" style={{ backgroundColor: '#f44336', marginLeft: "82%", marginTop: "-60px" }}>
           Delete
-       </button>
+             </button>
+          } 
       </div>
     );
   }
@@ -95,7 +98,8 @@ roleFormisValid() {
 //Props Validation
 ManageRoles.propTypes = {
   roles: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 //Make router available by using React Router Context
@@ -110,7 +114,6 @@ function getRoleById(roles, id) {
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log(ownProps.params.id);
   const roleId = ownProps.params.id; // from the path role/:id
   let roles = { id: '', role: '' };
 
