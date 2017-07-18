@@ -6,7 +6,7 @@ import { postEndpoint } from "../api/consumeApi";
 export const loginSuccess = (token) => {
   return { type: LOGIN_SUCCESS, token };
 };
-export const logOut = res => ({ type: LOGOUT_SUCCESS, token: res.token });
+export const logOut = token => ({ type: LOGOUT_SUCCESS, token });
 export const signUpUser = user => ({ type: SIGNUP_USER, user });
 
 export function loginUser(credentials) {

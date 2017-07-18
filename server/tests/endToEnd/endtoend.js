@@ -11,7 +11,7 @@ describe('login form', function () {
     this.timeout(10000);
 
     before(function (done) {
-        driver.navigate().to('http://localhost:3000/login')
+        driver.navigate().to('https://doc-lab.herokuapp.com/login')
             .then(() => done());
     });
 
