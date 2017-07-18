@@ -53,7 +53,6 @@ roleFormisValid() {
     }
     this.props.actions.postRoles(this.state.roles);
     this.props.actions.allRoles();
-    toastr.success('Role Created 😎!');
     this.context.router.push('/roles');
 
   }
@@ -64,7 +63,6 @@ roleFormisValid() {
       return;
     }
     this.props.actions.updateRoles(this.state.roles);
-    toastr.success('Role Updated 😎!');
     this.context.router.push('/roles');
     }
 
@@ -85,7 +83,7 @@ roleFormisValid() {
              {/\/role$/.test(this.props.location.pathname)
           ? ""
           :<button
-          onClick={this.deleteDocuments}
+          onClick={this.deleteRole}
           className="btn btn-default" style={{ backgroundColor: '#f44336', marginLeft: "82%", marginTop: "-60px" }}>
           Delete
              </button>

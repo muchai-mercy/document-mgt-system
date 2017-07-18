@@ -1,3 +1,4 @@
+import toastr from "toastr";
 import { ALL_USERS_SUCCESS, POST_USERS_SUCCESS, UPDATE_USERS_SUCCESS,
   DELETE_USERS_SUCCESS, SEARCH_USERS_SUCCESS, PAGINATE_USERS_SUCCESS } from "./actionTypes";
 import { postEndpoint, getEndpoint, putEndpoint, deleteEndpoint } from "../api/consumeApi";
@@ -47,8 +48,10 @@ export function postUsers(users) {
     postEndpoint('/api/users')
       .send(users)
       .set('access-token', token)
-      .end((err, res) => dispatch(postUsersSuccess({ users: res.body })
-      ));
+      .end((err, res) => { toastr.success(res.body.message);
+        dispatch(postUsersSuccess({ users: res.body })
+      );
+    });
   };
 }
 
@@ -57,8 +60,10 @@ export function updateUsers(users) {
     putEndpoint(`/api/users/${users.id}`)
       .send(users)
       .set('access-token', token)
-      .end((err, res) => dispatch(updateUsersSuccess({ users: res.body })
-      ));
+      .end((err, res) => { toastr.success(res.body.message);
+        dispatch(updateUsersSuccess({ users: res.body })
+      );
+      });
   };
 }
 

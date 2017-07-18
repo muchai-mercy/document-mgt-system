@@ -1,3 +1,4 @@
+import toastr from "toastr";
 import { ALL_DOCUMENTS_SUCCESS, POST_DOCUMENTS_SUCCESS, UPDATE_DOCUMENTS_SUCCESS,
    DELETE_DOCUMENTS_SUCCESS, SEARCH_DOCUMENTS_SUCCESS, PUBLIC_DOCUMENTS_SUCCESS, PAGINATE_DOCUMENTS_SUCCESS } from './actionTypes';
 import { postEndpoint, getEndpoint, deleteEndpoint, putEndpoint } from "../api/consumeApi";
@@ -57,8 +58,10 @@ export function postDocuments(documents) {
     postEndpoint('/api/documents')
       .send(documents)
       .set('access-token', token)
-      .end((err, res) => dispatch(postDocumentsSuccess({ documents: res.body })
-      ));
+      .end((err, res) => { toastr.success(res.body.message),
+      dispatch(postDocumentsSuccess({ documents: res.body })
+      );
+  });
   };
 }
 
@@ -67,8 +70,10 @@ export function updateDocuments(documents) {
     putEndpoint(`/api/documents/${documents.id}`)
       .set('access-token', token)
       .send(documents)
-      .end((err, res) => dispatch(updateDocumentsSuccess({ documents: res.body })
-      ));
+      .end((err, res) => {toastr.success(res.body.message),
+        dispatch(updateDocumentsSuccess({ documents: res.body })
+      );
+    });
   };
 }
 

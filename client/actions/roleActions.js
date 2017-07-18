@@ -1,3 +1,4 @@
+import toastr from "toastr";
 import { ALL_ROLES_SUCCESS, POST_ROLE_SUCCESS, UPDATE_ROLE_SUCCESS,
   DELETE_ROLE_SUCCESS, SEARCH_ROLE_SUCCESS, PAGINATE_ROLES_SUCCESS } from "./actionTypes";
 import { postEndpoint, getEndpoint, putEndpoint, deleteEndpoint } from "../api/consumeApi";
@@ -45,8 +46,10 @@ export function postRoles(roles) {
     postEndpoint('/api/roles')
       .send(roles)
       .set('access-token', token)
-      .end((err, res) => dispatch(postRoleSuccess({ roles: res.body })
-      ));
+      .end((err, res) => { toastr.success(res.body.message);
+        dispatch(postRoleSuccess({ roles: res.body })
+      );
+    });
   };
 }
 
@@ -55,8 +58,10 @@ export function updateRoles(roles) {
     putEndpoint(`/api/roles/${roles.id}`)
       .send(roles)
       .set('access-token', token)
-      .end((err, res) => dispatch(updateRoleSuccess({ roles: res.body })
-      ));
+      .end((err, res) => { toastr.success(res.body.message);
+        dispatch(updateRoleSuccess({ roles: res.body })
+      );
+      });
   };
 }
 

@@ -23,10 +23,9 @@ class Login extends React.Component {
 
   onSave(event) {
     event.preventDefault();
-    this.props.actions.loginUser(this.state.credentials);
-    this.context.router.push('/');
-    toastr.success('Logged in successfully!');
+    this.props.actions.loginUser(this.state.credentials)
 
+    this.context.router.push('/');
   }
 
   render() {

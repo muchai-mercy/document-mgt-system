@@ -52,7 +52,6 @@ userFormisValid() {
     }
     this.props.actions.postUsers(this.state.user);
     this.props.actions.allUsers();
-    toastr.success('User Created 😎!');
     this.context.router.push('/users');
 
   }
@@ -63,7 +62,6 @@ userFormisValid() {
       return;
     }
     this.props.actions.updateUsers(this.state.user);
-    toastr.success('User Updated 😎!');
     this.context.router.push('/users');
 
   }
@@ -84,7 +82,7 @@ userFormisValid() {
       {/\/user$/.test(this.props.location.pathname)
           ? ""
           :<button
-          onClick={this.deleteDocuments}
+          onClick={this.deleteUsers}
           className="btn btn-default" style={{ backgroundColor: '#f44336', marginLeft: "82%", marginTop: "-60px" }}>
           Delete
              </button>

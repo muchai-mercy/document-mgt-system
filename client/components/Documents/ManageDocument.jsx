@@ -53,7 +53,6 @@ export class ManageDocument extends React.Component {
     }
     this.setState({ saving: true });
     this.props.actions.postDocuments(Object.assign({}, this.state.document, { userId }));
-    toastr.success('Document Created 😎!');
     this.context.router.push('/documents');
 
   }
@@ -64,7 +63,6 @@ export class ManageDocument extends React.Component {
       return;
     }
     this.props.actions.updateDocuments(this.state.document);
-    toastr.success('Document Updated 😎!');
     this.context.router.push('/documents');
 
   }
