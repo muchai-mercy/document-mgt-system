@@ -1,10 +1,14 @@
-import { ALL_USERS_SUCCESS, POST_USERS_SUCCESS, UPDATE_USERS_SUCCESS, DELETE_USERS_SUCCESS } from '../actions/actionTypes';
+import { ALL_USERS_SUCCESS, POST_USERS_SUCCESS, UPDATE_USERS_SUCCESS, DELETE_USERS_SUCCESS, SIGNUP_USER } from '../actions/actionTypes';
 
 export default function usersReducer(state = [], action) {
   switch (action.type) {
     case ALL_USERS_SUCCESS:
       return action.users;
     case POST_USERS_SUCCESS:
+      return [...state,
+      Object.assign({}, action.users)
+      ];
+    case SIGNUP_USER:
       return [...state,
       Object.assign({}, action.users)
       ];

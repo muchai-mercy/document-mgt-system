@@ -36,7 +36,9 @@ export function userSignup(users) {
   return (dispatch) => {
     postEndpoint('/api/users')
       .send(users)
-      .end((err, res) => dispatch(signUpUser({ users: res.body })
-      ));
+      .end((err, res) => { toastr.success(res.body.message)
+      dispatch(signUpUser({ users: res.body }) 
+      );
+      });
   };
 }
