@@ -22,19 +22,22 @@ The app can be accessed here: [DocLab](https://doc-lab.herokuapp.com/)
 [here](https://github.com/Mercy-Muchai/document-mgt-system.git)
 
 3. Install the dependencies:
- -          npm install
+            
+            npm install
       
 4. Create a .env file on the route of the application:
- -          SECRET_TOKEN_KEY = "somesecretstring"
+            SECRET_TOKEN_KEY = "somesecretstring"
             NODE_ENV=development
             DATABASE_URL=postgres://localhost:5432/test_db
 
 4. Run the application:
- -          npm start
+
+            npm start
 
 ## Tests
 - Run the tests:
- -          npm test
+
+          npm test
 
 ## Task Management
 - The project was managed using Pivotal Tracker: [checkpoint-finale](https://www.pivotaltracker.com/n/projects/2035037)
