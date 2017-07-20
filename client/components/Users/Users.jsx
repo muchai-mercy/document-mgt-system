@@ -4,14 +4,14 @@ import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 import Pagination from "react-js-pagination";
 import * as userActions from "../../actions/userActions.js";
-import UsersList from "./UsersList.jsx";
+import { UsersList } from "./UsersList.jsx";
 import SearchUser from "./SearchUsers.jsx";
 
 class UsersPage extends React.Component {
   constructor(props, context) {
     super(props, context);
       this.state = {
-      activePage: 1, limit: 2
+      activePage: 1, limit: 5
     };
     this.redirectToCreateUserPage = this.redirectToCreateUserPage.bind(this);
      this.handlePageChange = this.handlePageChange.bind(this);
@@ -65,15 +65,15 @@ UsersPage.propTypes = {
   pages: PropTypes.array.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   return {
     pages: state.pages,
     user: state.user
   };
-}
-function mapDispatchToProps(dispatch) {
+};
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(userActions, dispatch)
   };
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(UsersPage);

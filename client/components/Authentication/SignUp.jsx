@@ -2,13 +2,10 @@ import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from "react-router";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextInput from '../Common/TextInput.jsx';
+import { TextInput } from '../Common/TextInput.jsx';
 import * as sessionActions from '../../actions/sessionActions.js';
 
-class SignUp extends React.Component {
+export class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -91,11 +88,11 @@ SignUp.propTypes = {
   actions: PropTypes.object.isRequired,
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(sessionActions, dispatch)
   };
-}
+};
 SignUp.contextTypes = {
   router: React.PropTypes.object.isRequired
 };

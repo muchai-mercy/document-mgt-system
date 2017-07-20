@@ -1,9 +1,9 @@
 import React from "react";
-import TextInput from "../Common/TextInput.jsx";
-import TextArea from "../Common/TextArea.jsx";
+import { TextInput } from "../Common/TextInput.jsx";
+import { TextArea } from "../Common/TextArea.jsx";
 
 
-const RolesForm = ({ roles, onSave, onChange, loading, errors, onUpdate }) => (
+export const RolesForm = ({ roles, onSave, onChange, loading, errors, onUpdate }) => (
   roles.hasOwnProperty("id") ?
     <form onSubmit={onUpdate}>
       <h4> Update Role </h4>
@@ -44,10 +44,8 @@ const RolesForm = ({ roles, onSave, onChange, loading, errors, onUpdate }) => (
 );
 RolesForm.propTypes = {
   roles: React.PropTypes.object.isRequired,
-  onSave: React.PropTypes.func.isRequired,
   onUpdate: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
   loading: React.PropTypes.bool.isRequired,
   errors: React.PropTypes.object.isRequired
 };
-export default RolesForm;

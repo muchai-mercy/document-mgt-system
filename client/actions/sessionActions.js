@@ -9,8 +9,8 @@ export const loginSuccess = (token) => {
 export const logOut = token => ({ type: LOGOUT_SUCCESS, token });
 export const signUpUser = user => ({ type: SIGNUP_USER, user });
 
-export function loginUser(credentials) {
-  return function (dispatch) {
+export const loginUser = (credentials) => {
+  return (dispatch) => {
     postEndpoint('/api/users/login')
       .send(credentials)
       .end((err, res) => {
@@ -25,14 +25,14 @@ export function loginUser(credentials) {
         }
       });
   };
-}
+};
 
 export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('jwt');
   return dispatch(logOut({}));
 };
 
-export function userSignup(users) {
+export const userSignup = (users) => {
   return (dispatch) => {
     postEndpoint('/api/users')
       .send(users)
@@ -41,4 +41,4 @@ export function userSignup(users) {
       );
       });
   };
-}
+};

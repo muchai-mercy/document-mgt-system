@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
-import UsersListRow from "./UsersListRow.jsx";
+import { UsersListRow } from "./UsersListRow.jsx";
 
-const UserList = ({ user }) => {
+export const UsersList = ({ user }) => {
   return (
     <table className="table">
       <thead>
@@ -22,8 +22,6 @@ const UserList = ({ user }) => {
   );
 };
 
-UserList.propTypes = {
+UsersList.propTypes = {
   user: PropTypes.array.isRequired
 };
-
-export default UserList;

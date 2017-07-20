@@ -40,9 +40,9 @@ class SearchUser extends React.Component {
 SearchUser.propTypes = {
   actions: PropTypes.object.isRequired
 };
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(userActions, dispatch)
   };
-}
+};
 export default connect(null, mapDispatchToProps)(SearchUser);

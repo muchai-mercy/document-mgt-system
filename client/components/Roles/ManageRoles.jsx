@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 import * as roleActions from "../../actions/roleActions.js";
-import RolesForm from "./RolesForm.jsx";
+import { RolesForm } from "./RolesForm.jsx";
 import toastr from "toastr";
 
 export class ManageRoles extends React.Component {
@@ -105,23 +105,23 @@ ManageRoles.contextTypes = {
   router: PropTypes.object
 };
 
-function getRoleById(roles, id) {  
+const getRoleById = (roles, id) => {  
   const role = roles.filter(role => role.id === Number(id));
   if (role) return role[0]; //return the first role
   return null;
-}
+};
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   const roleId = ownProps.params.id; // from the path role/:id
   let roles = { id: '', role: '' };
 
   return {
    roles: getRoleById(state.roles, roleId)
   };
-}
-function mapDispatchToProps(dispatch) {
+};
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(roleActions, dispatch)
   };
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(ManageRoles);

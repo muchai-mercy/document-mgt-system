@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
+export const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += '' + 'has error';
@@ -31,4 +31,3 @@ TextInput.propTypes = {
   value: PropTypes.string,
   error: PropTypes.string,
 };
-export default TextInput;

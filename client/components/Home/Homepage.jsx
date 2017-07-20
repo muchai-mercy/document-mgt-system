@@ -4,9 +4,9 @@ import { bindActionCreators } from "redux";
 import Pagination from "react-js-pagination";
 import { browserHistory, Link } from "react-router";
 import * as documentActions from "../../actions/documentActions.js";
-import DocumentList from "../Documents/DocumentList.jsx";
+import { DocumentList } from "../Documents/DocumentList.jsx";
 
-class HomePage extends React.Component {
+export class HomePage extends React.Component {
   constructor(props) {
     super(props);
   }

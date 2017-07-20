@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
 
-const UsersListRow = ({ user }) => {
+export const UsersListRow = ({ user }) => {
   return (
     <tr>
       <td><Link to={`/users/${user.id}`}>{user.username}</Link></td>
@@ -15,6 +15,4 @@ const UsersListRow = ({ user }) => {
 
 UsersListRow.propTypes = {
   user: PropTypes.object.isRequired
-}
-
-export default UsersListRow;
+};

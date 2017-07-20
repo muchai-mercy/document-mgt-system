@@ -41,9 +41,9 @@ class SearchRole extends React.Component {
 SearchRole.propTypes = {
   actions: PropTypes.object.isRequired
 };
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(roleActions, dispatch)
   };
-}
+};
 export default connect(null, mapDispatchToProps)(SearchRole);
