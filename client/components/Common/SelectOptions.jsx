@@ -27,4 +27,3 @@ SelectOptions.propTypes = {
   role: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object)
 };
-export default SelectOptions;

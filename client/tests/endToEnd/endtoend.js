@@ -8,7 +8,7 @@ const driver = new webdriver.Builder()
 
 describe('login form', function () {
     // e2e tests are too slow for default Mocha timeout
-    this.timeout(10000);
+    this.timeout(30000);
 
     before(function (done) {
         driver.navigate().to('https://doc-lab.herokuapp.com/login')

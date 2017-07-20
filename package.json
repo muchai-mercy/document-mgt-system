@@ -16,10 +16,11 @@
     "start": "babel-node app.js",
     "lint": "node_modules/.bin/esw webpack.config.* client server",
     "lint:watch": "npm run lint -- --watch",
-    "pretest:back": "NODE_ENV=test && sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
+    "pretest:back": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test && sequelize db:seed:all --env test",
     "test": "npm run test:back && npm run test:front",
     "test:back": "NODE_ENV=test istanbul cover node_modules/.bin/_mocha --report lcov -- -R spec \"server/tests/serverSide/*.js\" --timeout 30000",
-    "test:front": "NODE_ENV=test istanbul cover node_modules/.bin/_mocha --require tools/testSetup.js  --report lcov -- -R spec \"server/tests/clientSide/**/*.js\" \"server/tests/endToEnd/*.js\" --timeout 30000",
+    "test:front": "NODE_ENV=test istanbul cover node_modules/.bin/_mocha --require tools/testSetup.js  --report lcov -- -R spec \"server/tests/clientSide/**/*.test.js\" --timeout 30000",
+    "test:e2e": "NODE_ENV=test istanbul cover node_modules/.bin/_mocha --require tools/testSetup.js  --report lcov -- -R spec \"client/tests/endToEnd/*.js\"",
     "coverage": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "test:watch": "npm run test -- --watch"
   },

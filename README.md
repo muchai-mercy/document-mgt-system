@@ -1,6 +1,5 @@
 # Document Management System
-
-[![Coverage Status](https://coveralls.io/repos/github/Mercy-Muchai/document-mgt-system/badge.svg?branch=develop)](https://coveralls.io/github/Mercy-Muchai/document-mgt-system?branch=develop)
+[![Build Status](https://travis-ci.org/Mercy-Muchai/document-mgt-system.svg?branch=develop)](https://travis-ci.org/Mercy-Muchai/document-mgt-system)   [![Coverage Status](https://coveralls.io/repos/github/Mercy-Muchai/document-mgt-system/badge.svg?branch=develop)](https://coveralls.io/github/Mercy-Muchai/document-mgt-system?branch=develop)
 
 ## Description 
 
@@ -11,6 +10,10 @@
 
 The server side of the application was developed with [NodeJS](https://nodejs.org/en/docs/), [Express](https://expressjs.com/en/4x/api.html) and [Sequelize](http://docs.sequelizejs.com/manual/tutorial/models-usage.html) as the ORM.
 The front end was done with [React](https://facebook.github.io/react/docs/hello-world.html) and [Redux](http://redux.js.org/).
+
+## Production
+
+The app can be accessed here: [DocLab](https://doc-lab.herokuapp.com/)
 
 ## Installation
 1. Install [NodeJS](https://nodejs.org/en/docs/) and [Postgress](https://www.postgresql.org/) locally.

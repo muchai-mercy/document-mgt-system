@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
-import DocumentsListRow from "./DocumentsListRow.jsx";
+import { DocumentsListRow } from "./DocumentsListRow.jsx";
 
-const DocumentList = ({ documents }) => {
+export const DocumentList = ({ documents }) => {
   return (
     <table className="table">
       <thead>
@@ -24,5 +24,3 @@ const DocumentList = ({ documents }) => {
 DocumentList.propTypes = {
   documents: PropTypes.array.isRequired
 };
-
-export default DocumentList;

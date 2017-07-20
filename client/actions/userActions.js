@@ -3,47 +3,47 @@ import { ALL_USERS_SUCCESS, POST_USERS_SUCCESS, UPDATE_USERS_SUCCESS,
   DELETE_USERS_SUCCESS, SEARCH_USERS_SUCCESS, PAGINATE_USERS_SUCCESS } from "./actionTypes";
 import { postEndpoint, getEndpoint, putEndpoint, deleteEndpoint } from "../api/consumeApi";
 
-export function allUsersSuccess(users) {
+export const allUsersSuccess = (users) => {
   return { type: ALL_USERS_SUCCESS, users };
-}
+};
 
-export function postUsersSuccess(user) {
+export const postUsersSuccess = (user) => {
   return { type: POST_USERS_SUCCESS, user };
-}
-export function updateUsersSuccess(user) {
+};
+export const updateUsersSuccess = (user) => {
   return { type: UPDATE_USERS_SUCCESS, user };
-}
-export function deleteUsersSuccess(user) {
+};
+export const deleteUsersSuccess = (user) => {
   return { type: DELETE_USERS_SUCCESS, user };
-}
-export function searchUsersSuccess(users) {
+};
+export const searchUsersSuccess = (users) => {
   return { type: SEARCH_USERS_SUCCESS, users};
-}
-export function paginateUsersSuccess(pages) {
+};
+export const paginateUsersSuccess = (pages) => {
   return { type: PAGINATE_USERS_SUCCESS, pages};
-}
+};
 
 const token = localStorage.getItem('jwt');
 
-export function allUsers() {
+export const allUsers = () => {
   return (dispatch) => {
     getEndpoint(`/api/users/`)
       .set('access-token', token)
       .end((err, res) => dispatch(allUsersSuccess(res.body)
       ));
   };
-}
+};
 
-export function paginateUsers(limit = 2, offset = 1) {
+export const paginateUsers = (limit = 5, offset = 1) => {
   return (dispatch) => {
     getEndpoint(`/api/users/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)
       .end((err, res) => dispatch(paginateUsersSuccess(res.body)
       ));
   };
-}
+};
 
-export function postUsers(users) {
+export const postUsers = (users) => {
   return (dispatch) => {
     postEndpoint('/api/users')
       .send(users)
@@ -53,9 +53,9 @@ export function postUsers(users) {
       );
     });
   };
-}
+};
 
-export function updateUsers(users) {
+export const updateUsers = (users) => {
   return (dispatch) => {
     putEndpoint(`/api/users/${users.id}`)
       .send(users)
@@ -65,9 +65,9 @@ export function updateUsers(users) {
       );
       });
   };
-}
+};
 
-export function deleteUsers(users) {
+export const deleteUsers = (users) => {
   return (dispatch) => {
     deleteEndpoint(`/api/users/${users.id}`)
       .send(users)
@@ -75,13 +75,13 @@ export function deleteUsers(users) {
       .end((err, res) => dispatch(deleteUsersSuccess(users)
       ));
   };
-}
+};
 
-export function searchUsers(username) {
+export const searchUsers = (username) => {
   return (dispatch) => {
     getEndpoint(`/api/search/users/?q=${username}`)
       .set('access-token', token)
       .end((err, res) => dispatch(searchUsersSuccess(res.body)
       ));
   };
-}
+};
