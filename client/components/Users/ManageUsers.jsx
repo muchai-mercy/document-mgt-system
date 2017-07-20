@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 import * as userActions from "../../actions/userActions.js";
-import UsersForm from "./UsersForm.jsx";
+import { UsersForm } from "./UsersForm.jsx";
 import toastr from "toastr";
 
 export class ManageUsers extends React.Component {
@@ -104,13 +104,13 @@ ManageUsers.contextTypes = {
   router: PropTypes.object
 };
 
-function getUserById(user, id) {
+const getUserById = (user, id) => {
   const users = user.filter(user => user.id == id);
   if (users) return users[0]; //return the first user
   return null;
-}
+};
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.params.id; // from the path users/:id
   let user = { id: '', firstName: '', lastName: '', username: '', email: '', password: '' };
 
@@ -120,10 +120,10 @@ function mapStateToProps(state, ownProps) {
   return {
     user: user
   };
-}
-function mapDispatchToProps(dispatch) {
+};
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(userActions, dispatch)
   };
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(ManageUsers);

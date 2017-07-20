@@ -52,17 +52,17 @@ Header.PropTypes = {
   token: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired
 };
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   return {
     token: state.token
   };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(sessionActions, dispatch)
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router";
 
-const DocumentsListRow = ({ role }) => {
+export const DocumentsListRow = ({ role }) => {
   return (
     <tr>
       <div className="card" style={{marginRight: "80%"}}>

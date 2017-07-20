@@ -3,48 +3,48 @@ import { ALL_DOCUMENTS_SUCCESS, POST_DOCUMENTS_SUCCESS, UPDATE_DOCUMENTS_SUCCESS
    DELETE_DOCUMENTS_SUCCESS, SEARCH_DOCUMENTS_SUCCESS, PUBLIC_DOCUMENTS_SUCCESS, PAGINATE_DOCUMENTS_SUCCESS } from './actionTypes';
 import { postEndpoint, getEndpoint, deleteEndpoint, putEndpoint } from "../api/consumeApi";
 
-export function allDocumentsSuccess(documents) {
+export const allDocumentsSuccess = (documents) => {
   return { type: ALL_DOCUMENTS_SUCCESS, documents };
-}
+};
 
-export function postDocumentsSuccess(document) {
+export const postDocumentsSuccess = (document) => {
   return { type: POST_DOCUMENTS_SUCCESS, document };
-}
-export function updateDocumentsSuccess(document) {
+};
+export const updateDocumentsSuccess = (document) => {
   return { type: UPDATE_DOCUMENTS_SUCCESS, document };
-}
-export function deleteDocumentsSuccess(document) {
+};
+export const deleteDocumentsSuccess = (document) => {
   return { type: DELETE_DOCUMENTS_SUCCESS, document };
-}
-export function searchDocumentsSuccess(pages) {
+};
+export const searchDocumentsSuccess = (pages) => {
   return { type: SEARCH_DOCUMENTS_SUCCESS, pages };
-}
-export function publicDocumentsSuccess(documents){
+};
+export const publicDocumentsSuccess = (documents) => {
     return { type: PUBLIC_DOCUMENTS_SUCCESS, documents };
-}
-export function paginateDocumentsSuccess(pages){
+};
+export const paginateDocumentsSuccess = (pages) => {
     return { type: PAGINATE_DOCUMENTS_SUCCESS, pages };
-}
+};
 const token = localStorage.getItem('jwt');
 const userId = localStorage.getItem('userId');
 
-export function allDocuments() {
+export const allDocuments = () => {
   return (dispatch) => {
     getEndpoint(`/api/documents`)
       .set('access-token', token)
       .end((err, res) => dispatch(allDocumentsSuccess(res.body)
       ));
   };
-}
+};
 
-export function paginateDocuments(limit = 10, offset = 0) {
+export const paginateDocuments =(limit = 10, offset = 0) => {
   return (dispatch) => {
     getEndpoint(`/api/documents/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)
       .end((err, res) => dispatch(paginateDocumentsSuccess(res.body)
       ));
   };
-}
+};
 
 export const publicDocuments = () => (dispatch) => {
   getEndpoint('/api/documents/public')
@@ -53,7 +53,7 @@ export const publicDocuments = () => (dispatch) => {
     });
 };
 
-export function postDocuments(documents) {
+export const postDocuments = (documents) => {
   return (dispatch) => {
     postEndpoint('/api/documents')
       .send(documents)
@@ -63,9 +63,9 @@ export function postDocuments(documents) {
       );
   });
   };
-}
+};
 
-export function updateDocuments(documents) {
+export const updateDocuments = (documents) => {
   return (dispatch) => {
     putEndpoint(`/api/documents/${documents.id}`)
       .set('access-token', token)
@@ -75,9 +75,9 @@ export function updateDocuments(documents) {
       );
     });
   };
-}
+};
 
-export function deleteDocuments(documents) {
+export const deleteDocuments = (documents) => {
   return (dispatch) => {
     deleteEndpoint(`/api/documents/${documents.id}`)
       .set('access-token', token)
@@ -85,9 +85,9 @@ export function deleteDocuments(documents) {
       .end((err, res) => dispatch(deleteDocumentsSuccess({documents: res.body})
       ));
   };
-}
+};
 
-export function searchDocuments(title) {
+export const searchDocuments = (title) => {
   return (dispatch) => {
     getEndpoint(`/api/search/documents/?q=${title}`)
       .set('access-token', token)

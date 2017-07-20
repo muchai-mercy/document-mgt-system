@@ -37,13 +37,13 @@ SelectOptions.propTypes = {
   actions: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired
 };
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   return {
     roles: state.roles
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(roleActions, dispatch)
   };

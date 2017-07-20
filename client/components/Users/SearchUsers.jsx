@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import * as userActions from "../../actions/userActions.js";
 import toastr from "toastr";
 
-class SearchUser extends React.Component {
+export class SearchUser extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -40,7 +40,7 @@ class SearchUser extends React.Component {
 SearchUser.propTypes = {
   actions: PropTypes.object.isRequired
 };
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(userActions, dispatch)
   };

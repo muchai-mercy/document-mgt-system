@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const TextArea = ({ name, label, onChange, placeholder, value, error }) => {
+export const TextArea = ({ name, label, onChange, placeholder, value, error }) => {
   let wrapperClass = 'form-group';
   if (error && error.length > 0) {
     wrapperClass += '' + 'has error';
@@ -31,4 +31,3 @@ TextArea.propTypes = {
   value: PropTypes.string,
   error: PropTypes.string,
 };
-export default TextArea;

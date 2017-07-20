@@ -4,10 +4,10 @@ import { bindActionCreators } from "redux";
 import Pagination from "react-js-pagination";
 import { browserHistory } from "react-router";
 import * as documentActions from "../../actions/documentActions.js";
-import DocumentList from "./DocumentList.jsx";
-import SearchDoc from "./searchDocument.jsx";
+import { DocumentList } from "./DocumentList.jsx";
+import { SearchDoc } from "./searchDocument.jsx";
 
-class DocumentsPage extends React.Component {
+export class DocumentsPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -66,13 +66,13 @@ DocumentsPage.propTypes = {
   pages: PropTypes.array.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   return {
     pages: state.pages,
     documents: state.documents
   };
 }
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(documentActions, dispatch)
   };

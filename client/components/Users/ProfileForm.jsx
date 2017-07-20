@@ -1,9 +1,10 @@
 import React from "react";
-import TextInput from "../Common/TextInput.jsx";
-import TextArea from "../Common/TextArea.jsx";
+import { TextInput } from "../Common/TextInput.jsx";
+import { TextArea } from "../Common/TextArea.jsx";
 
-const ProfileForm = ({ user, onChange, loading, errors, onUpdate }) => (
-  user != '' ?
+export const ProfileForm = ({ user, onChange, loading, errors, onUpdate }) => (
+  console.log('user', user),
+  user ?
     <form onSubmit={onUpdate}>
       <h4> Edit Profile </h4>
       <TextArea
@@ -32,8 +33,7 @@ const ProfileForm = ({ user, onChange, loading, errors, onUpdate }) => (
         value={user.email}
         onChange={onChange}
       />
-
-      <TextArea
+       <TextArea
         name="password"
         type="password"
         label="Password"
@@ -45,12 +45,12 @@ const ProfileForm = ({ user, onChange, loading, errors, onUpdate }) => (
         type="submit"
         disabled={loading}
         value={loading ? 'Saving...' : 'Save'}
-        style={{marginTop: "10px"}}
+        style={{ marginTop: "10px" }}
         className="btn btn-primary"
         onSubmit={onUpdate}
       />
- </form> :
-null
+    </form> :
+    null
 );
 ProfileForm.propTypes = {
   user: React.PropTypes.object.isRequired,
@@ -59,4 +59,3 @@ ProfileForm.propTypes = {
   loading: React.PropTypes.bool,
   errors: React.PropTypes.object
 };
-export default ProfileForm;

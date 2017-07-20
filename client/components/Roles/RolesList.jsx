@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import RolesListRow from "./RolesListRow.jsx";
+import { RolesListRow } from "./RolesListRow.jsx";
 
-const RolesList = ({ roles }) => {
+export const RolesList = ({ roles }) => {
   return (
     <table className="table">
       <thead>

@@ -3,7 +3,7 @@ import TextInput from "../Common/TextInput.jsx";
 import TextArea from "../Common/TextArea.jsx";
 import SelectOptions from './SelectOptions.jsx';
 
-const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
+export const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
   user.id != '' ?
     <form onSubmit={onUpdate}>
       <h4> Assign Role </h4>
@@ -106,4 +106,3 @@ UsersForm.propTypes = {
   loading: React.PropTypes.bool,
   errors: React.PropTypes.object
 };
-export default UsersForm;

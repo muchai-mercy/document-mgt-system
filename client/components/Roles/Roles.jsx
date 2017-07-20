@@ -5,10 +5,10 @@ import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 import Pagination from "react-js-pagination";
 import * as roleActions from "../../actions/roleActions.js";
-import RoleList from "./RolesList.jsx";
-import SearchRole from "./SearchRoles.jsx";
+import { RoleList } from "./RolesList.jsx";
+import  { SearchRole } from "./SearchRoles.jsx";
 
-class RolePage extends React.Component {
+export class RolePage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -66,15 +66,16 @@ RolePage.propTypes = {
   pages: PropTypes.array.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   return {
     pages: state.pages,
     roles: state.roles
   };
-}
-function mapDispatchToProps(dispatch) {
+};
+
+const mapDispatchToProps =(dispatch) => {
   return {
     actions: bindActionCreators(roleActions, dispatch)
   };
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(RolePage);

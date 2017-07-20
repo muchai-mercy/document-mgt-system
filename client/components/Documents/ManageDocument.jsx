@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 import * as documentActions from "../../actions/documentActions.js";
-import DocumentsForm from "./DocumentsForm.jsx";
+import { DocumentsForm } from "./DocumentsForm.jsx";
 import toastr from "toastr";
 
 const userId = localStorage.getItem('userId');
@@ -105,21 +105,22 @@ ManageDocument.contextTypes = {
   router: PropTypes.object
 };
 
-function getDocumentById(document, id) {
+const getDocumentById = (document, id) => {
   const documents = document.filter(document => document.id == id);
   if (documents) return documents[0]; //return the first doc
   return null;
-}
+};
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   const documentId = ownProps.params.id; // from the path documents/:id
   return {
     document: getDocumentById(state.documents, documentId)
   };
-}
-function mapDispatchToProps(dispatch) {
+};
+
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(documentActions, dispatch)
   };
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(ManageDocument);

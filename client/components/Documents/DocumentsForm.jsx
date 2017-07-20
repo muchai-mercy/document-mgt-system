@@ -1,10 +1,10 @@
 import React from "react";
-import TextInput from "../Common/TextInput.jsx";
-import TextArea from "../Common/TextArea.jsx";
-import SelectOptions from '../Common/SelectOptions.jsx';
+import  { TextInput } from "../Common/TextInput.jsx";
+import { TextArea }from "../Common/TextArea.jsx";
+import { SelectOptions } from '../Common/SelectOptions.jsx';
 
 
-const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }) => (
+export const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }) => (
   document.hasOwnProperty("id") ? 
   <form onSubmit={onUpdate}>
     <h4> Update Document </h4>
@@ -80,4 +80,3 @@ DocumentsForm.propTypes = {
   loading: React.PropTypes.bool.isRequired,
   errors: React.PropTypes.object.isRequired
 };
-export default DocumentsForm;

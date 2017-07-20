@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
 
-const DocumentsListRow = ({ document }) => {
+export const DocumentsListRow = ({ document }) => {
   return (
     <tr>
       <td><Link to={`/documents/${document.id}`}>{document.title}</Link></td>
@@ -14,5 +14,3 @@ const DocumentsListRow = ({ document }) => {
 DocumentsListRow.propTypes = {
   document: PropTypes.object.isRequired
 };
-
-export default DocumentsListRow;

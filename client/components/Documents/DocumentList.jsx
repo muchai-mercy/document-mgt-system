@@ -1,7 +1,8 @@
 import React, { PropTypes } from "react";
-import DocumentsListRow from "./DocumentsListRow.jsx";
+import { DocumentsListRow } from "./DocumentsListRow.jsx";
 
-const DocumentList = ({ documents }) => {
+export const DocumentList = ({ documents }) => {
+  console.log("dooocs", documents);
   return (
     <table className="table">
       <thead>
@@ -12,7 +13,7 @@ const DocumentList = ({ documents }) => {
         </tr>
       </thead>
       <tbody>
-        {documents.length ? documents.map(document =>
+        {document.length ? documents.map(document =>
 
           <DocumentsListRow key={document.id} document={document} />
         ) : <span>Document Does Not Exist </span>}
@@ -25,4 +26,3 @@ DocumentList.propTypes = {
   documents: PropTypes.array.isRequired
 };
 
-export default DocumentList;

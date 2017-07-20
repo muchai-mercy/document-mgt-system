@@ -3,21 +3,28 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 import * as userActions from "../../actions/userActions.js";
-import ProfileForm from "./ProfileForm.jsx";
+import * as sessionActions from "../../actions/sessionActions.js";
+import { ProfileForm } from "./ProfileForm.jsx";
 import toastr from "toastr";
+
+const authUser = () => localStorage.getItem('jwt');
 
 export class UserProfile extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-      user: Object.assign({}, this.props.user),
+      user: {},
       errors: {}
     };
     this.updateState = this.updateState.bind(this);
-    this.updateUser = this.updateUser.bind(this);
+    this.updateUsers = this.updateUsers.bind(this);
   }
-  componentWillReceiveProps(nextProps) {
+componentWillMount() {
+  let user = authUser();
+  this.setState({ user: user});
+}
+componentWillReceiveProps(nextProps) {
     if (this.props.user.id != nextProps.user.id) {
       // update state on reload when props change
       this.setState({ user: Object.assign({}, nextProps.user) });
@@ -26,7 +33,7 @@ export class UserProfile extends React.Component {
   }
   updateState(event) {
     const field = event.target.name;
-    let user = this.state.user;
+    let user = this.props.user;
     user[field] = event.target.value;
     return this.setState({ user: user });
   }
@@ -34,7 +41,7 @@ userFormisValid() {
     let formisValid = true;
     let errors = {};
 
-    if (this.state.user.username.length < 5) {
+    if (this.props.user.username.length < 5) {
       errors.username = 'Username must be at least 5 characters.';
       formisValid = false;
     }
@@ -43,7 +50,7 @@ userFormisValid() {
     return formisValid;
   }
 
-  updateUser(event) {
+  updateUsers(event) {
     event.preventDefault();
     if (!this.userFormisValid()) {
       toastr.error('Username must be at least 6 characters!');
@@ -55,12 +62,14 @@ userFormisValid() {
 
   }
   render() {
+    console.log(this.state);
+        console.log('userr', this.state);
     return (
       <div className="doc-form">
         <ProfileForm
-          user={this.state.user}
+          user={this.props.user}
           onChange={this.updateState}
-          onUpdate={this.updateUser}
+          onUpdate={this.updateUsers}
           errors={this.state.errors} />
       </div>
     );
@@ -69,7 +78,7 @@ userFormisValid() {
 
 //Props Validation
 UserProfile.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
@@ -78,26 +87,26 @@ UserProfile.contextTypes = {
   router: PropTypes.object
 };
 
-function getUserById(user, id) {
+const getUserById = (user, id) => {
   const users = user.filter(user => user.id == id);
   if (users) return users[0]; //return the first user
   return null;
-}
+};
 
-function mapStateToProps(state, ownProps) {
-  // const userId = ownProps.params.id; // from the path users/:id
-  // let user = { id: '', firstName: '', lastName: '', username: '', email: '', password: '' };
+const mapStateToProps = (state, ownProps) => {
+  const userId = ownProps.params.id; // from the path users/:id
+  let user = { id: '', firstName: '', lastName: '', username: '', email: '', password: '', role: '' };
 
-  // if (userId && state.user.length > 0) {
-  //   user = getUserById(state.user, userId);
-  // }
+  if (userId && state.user.length > 0) {
+    user = getUserById(state.user, userId);
+  }
   return {
-    user: state.user
+    user: state.credentials.user
   };
-}
-function mapDispatchToProps(dispatch) {
+};
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(userActions, dispatch)
   };
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

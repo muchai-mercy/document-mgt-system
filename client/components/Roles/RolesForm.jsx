@@ -1,9 +1,9 @@
 import React from "react";
-import TextInput from "../Common/TextInput.jsx";
-import TextArea from "../Common/TextArea.jsx";
+import { TextInput } from "../Common/TextInput.jsx";
+import { TextArea } from "../Common/TextArea.jsx";
 
 
-const RolesForm = ({ roles, onSave, onChange, loading, errors, onUpdate }) => (
+export const RolesForm = ({ roles, onSave, onChange, loading, errors, onUpdate }) => (
   roles.hasOwnProperty("id") ?
     <form onSubmit={onUpdate}>
       <h4> Update Role </h4>

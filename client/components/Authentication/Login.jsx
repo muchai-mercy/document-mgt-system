@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
-import TextInput from '../Common/TextInput.jsx';
+import { TextInput } from '../Common/TextInput.jsx';
 import { bindActionCreators } from 'redux';
 import { browserHistory, Link } from "react-router";
 import { connect } from 'react-redux';
 import * as sessionActions from '../../actions/sessionActions.js';
 import toastr from "toastr";
 
-class Login extends React.Component {
+export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { credentials: { email: '', password: '' } };
@@ -23,7 +23,7 @@ class Login extends React.Component {
 
   onSave(event) {
     event.preventDefault();
-    this.props.actions.loginUser(this.state.credentials)
+    this.props.actions.loginUser(this.state.credentials);
 
     this.context.router.push('/');
   }
@@ -65,16 +65,17 @@ Login.contextTypes = {
   router: PropTypes.object
 };
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   return {
     credentials: state.credentials
   };
-}
-function mapDispatchToProps(dispatch) {
+};
+
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(sessionActions, dispatch)
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
 

@@ -4,10 +4,10 @@ import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 import Pagination from "react-js-pagination";
 import * as userActions from "../../actions/userActions.js";
-import UsersList from "./UsersList.jsx";
-import SearchUser from "./SearchUsers.jsx";
+import { UsersList } from "./UsersList.jsx";
+import { SearchUser } from "./SearchUsers.jsx";
 
-class UsersPage extends React.Component {
+export class UsersPage extends React.Component {
   constructor(props, context) {
     super(props, context);
       this.state = {
@@ -65,13 +65,13 @@ UsersPage.propTypes = {
   pages: PropTypes.array.isRequired
 };
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = (state, ownProps) => {
   return {
     pages: state.pages,
     user: state.user
   };
 }
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(userActions, dispatch)
   };

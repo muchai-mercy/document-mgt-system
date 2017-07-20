@@ -5,7 +5,7 @@ import { bindActionCreators } from "redux";
 import * as roleActions from "../../actions/roleActions.js";
 import toastr from "toastr";
 
-class SearchRole extends React.Component {
+export class SearchRole extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -41,7 +41,7 @@ class SearchRole extends React.Component {
 SearchRole.propTypes = {
   actions: PropTypes.object.isRequired
 };
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(roleActions, dispatch)
   };
