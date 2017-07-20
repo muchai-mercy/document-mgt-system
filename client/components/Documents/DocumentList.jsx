@@ -2,7 +2,6 @@ import React, { PropTypes } from "react";
 import { DocumentsListRow } from "./DocumentsListRow.jsx";
 
 export const DocumentList = ({ documents }) => {
-  console.log("dooocs", documents);
   return (
     <table className="table">
       <thead>
@@ -25,4 +24,3 @@ export const DocumentList = ({ documents }) => {
 DocumentList.propTypes = {
   documents: PropTypes.array.isRequired
 };
-

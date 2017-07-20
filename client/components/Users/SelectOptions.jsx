@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as roleActions from "../../actions/roleActions.js";
 
-export class SelectOptions extends React.Component {
+class SelectOptions extends React.Component {
   constructor(props) {
     super(props);
      this.state = {
@@ -41,12 +41,12 @@ const mapStateToProps = (state, ownProps) => {
   return {
     roles: state.roles
   };
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(roleActions, dispatch)
   };
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectOptions);

@@ -34,7 +34,7 @@ export const allUsers = () => {
   };
 };
 
-export const paginateUsers = (limit = 2, offset = 1) => {
+export const paginateUsers = (limit = 5, offset = 1) => {
   return (dispatch) => {
     getEndpoint(`/api/users/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)

@@ -23,5 +23,3 @@ export const RolesList = ({ roles }) => {
 RolesList.propTypes = {
   roles: PropTypes.array.isRequired
 };
-
-export default RolesList;

@@ -117,7 +117,6 @@ const mapStateToProps = (state, ownProps) => {
     document: getDocumentById(state.documents, documentId)
   };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(documentActions, dispatch)

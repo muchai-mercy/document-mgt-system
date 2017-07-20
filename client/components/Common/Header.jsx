@@ -22,7 +22,7 @@ export class Header extends React.Component {
     return (
       <div className="card-panel teal lighten-2 header">
         <IndexLink to="/" activeClassName="active" style={{ color: "white" }}> Home</IndexLink>
-        <Link to="/documents" activeClassName="active" style={{ color: "white" }}> | Documents</Link>
+        <Link to="/documents" activeClassName="active" style={{ color: "white" }}> | Documents </Link>
         {token
           ? user.data.role === "Admin"
             ? <Link to="/users" activeClassName="active" style={{ color: "white" }}> | Users </Link>
@@ -32,9 +32,6 @@ export class Header extends React.Component {
           ? user.data.role === "Admin"
             ? <Link to="/roles" activeClassName="active" style={{ color: "white" }}> | Roles </Link>
             : ''
-          : ''}
-        {token ?
-          <Link to="/profile" activeClassName="active" style={{ color: "white" }}> | My Profile </Link>
           : ''}
         {token
           ? <Link to={"/login"} onClick={this.logOut} activeClassName="active" style={{ color: "white" }}>

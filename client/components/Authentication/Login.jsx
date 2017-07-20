@@ -70,7 +70,6 @@ const mapStateToProps = (state, ownProps) => {
     credentials: state.credentials
   };
 };
-
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(sessionActions, dispatch)

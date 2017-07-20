@@ -37,7 +37,7 @@ export const allDocuments = () => {
   };
 };
 
-export const paginateDocuments =(limit = 10, offset = 0) => {
+export const paginateDocuments = (limit = 10, offset = 0) => {
   return (dispatch) => {
     getEndpoint(`/api/documents/?limit=${limit}&offset=${offset}`)
       .set('access-token', token)
@@ -94,4 +94,4 @@ export const searchDocuments = (title) => {
       .end((err, res) => dispatch(searchDocumentsSuccess(res.body)
       ));
   };
-}
+};

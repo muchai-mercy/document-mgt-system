@@ -45,5 +45,5 @@ const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(roleActions, dispatch)
   };
-}
+};
 export default connect(null, mapDispatchToProps)(SearchRole);

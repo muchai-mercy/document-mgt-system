@@ -5,8 +5,8 @@ import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
 import Pagination from "react-js-pagination";
 import * as roleActions from "../../actions/roleActions.js";
-import { RoleList } from "./RolesList.jsx";
-import  { SearchRole } from "./SearchRoles.jsx";
+import { RolesList } from "./RolesList.jsx";
+import SearchRole from "./SearchRoles.jsx";
 
 export class RolePage extends React.Component {
   constructor(props, context) {
@@ -47,7 +47,7 @@ export class RolePage extends React.Component {
             className="btn btn-primary"
             onClick={this.redirectToCreateUserPage} />
           <SearchRole />
-          <RoleList roles={roles} />
+          <RolesList roles={roles} />
           <Pagination
             activePage={this.state.activePage}
             itemsCountPerPage={this.state.limit}
@@ -72,8 +72,7 @@ const mapStateToProps = (state, ownProps) => {
     roles: state.roles
   };
 };
-
-const mapDispatchToProps =(dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(roleActions, dispatch)
   };

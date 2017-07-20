@@ -1,6 +1,6 @@
 import React from "react";
-import TextInput from "../Common/TextInput.jsx";
-import TextArea from "../Common/TextArea.jsx";
+import { TextInput } from "../Common/TextInput.jsx";
+import { TextArea } from "../Common/TextArea.jsx";
 import SelectOptions from './SelectOptions.jsx';
 
 export const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate }) => (
@@ -100,7 +100,6 @@ export const UsersForm = ({ user, onSave, onChange, loading, errors, onUpdate })
 );
 UsersForm.propTypes = {
   user: React.PropTypes.object.isRequired,
-  onSave: React.PropTypes.func.isRequired,
   onUpdate: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.isRequired,
   loading: React.PropTypes.bool,

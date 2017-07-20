@@ -44,10 +44,8 @@ export const RolesForm = ({ roles, onSave, onChange, loading, errors, onUpdate }
 );
 RolesForm.propTypes = {
   roles: React.PropTypes.object.isRequired,
-  onSave: React.PropTypes.func.isRequired,
   onUpdate: React.PropTypes.func.isRequired,
   onChange: React.PropTypes.func.isRequired,
   loading: React.PropTypes.bool.isRequired,
   errors: React.PropTypes.object.isRequired
 };
-export default RolesForm;

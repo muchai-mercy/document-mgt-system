@@ -1,8 +1,7 @@
 import React from "react";
-import  { TextInput } from "../Common/TextInput.jsx";
-import { TextArea }from "../Common/TextArea.jsx";
+import { TextInput } from "../Common/TextInput.jsx";
+import { TextArea } from "../Common/TextArea.jsx";
 import { SelectOptions } from '../Common/SelectOptions.jsx';
-
 
 export const DocumentsForm = ({ document, onSave, onChange, loading, errors, onUpdate }) => (
   document.hasOwnProperty("id") ? 

@@ -5,7 +5,7 @@ import Pagination from "react-js-pagination";
 import { browserHistory } from "react-router";
 import * as documentActions from "../../actions/documentActions.js";
 import { DocumentList } from "./DocumentList.jsx";
-import { SearchDoc } from "./searchDocument.jsx";
+import SearchDoc from "./searchDocument.jsx";
 
 export class DocumentsPage extends React.Component {
   constructor(props, context) {
@@ -71,10 +71,10 @@ const mapStateToProps = (state, ownProps) => {
     pages: state.pages,
     documents: state.documents
   };
-}
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(documentActions, dispatch)
   };
-}
+};
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentsPage);

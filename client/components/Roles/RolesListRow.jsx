@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router";
 
-export const DocumentsListRow = ({ role }) => {
+export const RolesListRow = ({ role }) => {
   return (
     <tr>
       <div className="card" style={{marginRight: "80%"}}>
@@ -12,8 +12,6 @@ export const DocumentsListRow = ({ role }) => {
   );
 };
 
-DocumentsListRow.propTypes = {
+RolesListRow.propTypes = {
   role: PropTypes.object.isRequired
 };
-
-export default DocumentsListRow;
