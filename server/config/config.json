@@ -1,0 +1,13 @@
+{
+  "development": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "mercymuchai",
+    "password": null,
+    "database": "doc_mgt_sys_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
