@@ -36,7 +36,7 @@
     "eslint": "^3.19.0",
     "eslint-watch": "^2.1.11",
     "express": "^4.15.3",
-    "jquery": "2.2.3",
+    "jquery": "^3.3.1",
     "jsonwebtoken": "^7.4.1",
     "jwt-decode": "^2.2.0",
     "jwt-simple": "^0.3.1",
