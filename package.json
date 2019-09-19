@@ -112,7 +112,7 @@
     "selenium-webdriver": "^3.4.0",
     "sinon": "^2.3.6",
     "superagent": "^3.5.2",
-    "supertest": "^3.0.0",
+    "supertest": "^4.0.2",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "^2.6.1",
