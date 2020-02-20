@@ -81,7 +81,7 @@
     "compression": "1.6.1",
     "coveralls": "^2.13.1",
     "cross-env": "1.0.7",
-    "css-loader": "0.23.1",
+    "css-loader": "0.28.11",
     "enzyme": "^2.9.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
