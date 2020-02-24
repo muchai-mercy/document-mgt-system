@@ -71,7 +71,7 @@
     "babel-preset-react": "6.5.0",
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "6.8.0",
+    "babel-register": "6.26.0",
     "bcrypt-nodejs": "0.0.3",
     "chai": "^4.0.2",
     "chai-http": "^4.3.0",
