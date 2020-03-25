@@ -78,7 +78,7 @@
     "chromedriver": "^80.0.1",
     "cheerio": "0.22.0",
     "colors": "1.4.0",
-    "compression": "1.6.1",
+    "compression": "1.7.4",
     "coveralls": "^3.0.9",
     "cross-env": "7.0.2",
     "css-loader": "0.28.11",
