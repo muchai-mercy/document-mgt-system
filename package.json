@@ -58,7 +58,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "4.0.5",
     "redux-thunk": "2.3.0",
-    "sequelize": "^5.21.4",
+    "sequelize": "^6.2.4",
     "sequelize-cli": "^5.5.1",
     "toastr": "2.1.4"
   },
