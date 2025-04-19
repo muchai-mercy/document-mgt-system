@@ -73,7 +73,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "6.26.0",
     "bcrypt-nodejs": "0.0.3",
-    "chai": "^4.0.2",
+    "chai": "^5.2.0",
     "chai-http": "^4.3.0",
     "chromedriver": "^85.0.0",
     "cheerio": "0.22.0",
