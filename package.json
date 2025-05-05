@@ -74,7 +74,7 @@
     "babel-register": "6.26.0",
     "bcrypt-nodejs": "0.0.3",
     "chai": "^4.0.2",
-    "chai-http": "^4.3.0",
+    "chai-http": "^5.1.2",
     "chromedriver": "^85.0.0",
     "cheerio": "0.22.0",
     "colors": "1.4.0",
